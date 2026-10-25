@@ -1,0 +1,74 @@
+{
+ "trace_id": "9bd3e34c4765",
+ "at": "2026-10-25T17:45:52.620285+00:00",
+ "question": "What does the isotretinoin label say about use in pregnancy?",
+ "entities": [
+  {
+   "mention": "isotretinoin",
+   "generic_name": "isotretinoin",
+   "rxcui": [
+    "197843",
+    "197844",
+    "197845",
+    "403930"
+   ],
+   "resolved": true,
+   "source": "synonym_map"
+  }
+ ],
+ "route": {
+  "kind": "label",
+  "reason": "The question asks what the isotretinoin drug label says about pregnancy use, which is label content (pregnancy warnings), not trial registry data."
+ },
+ "tool_calls": [],
+ "retrieved": [
+  "label:isotretinoin:use_in_specific_populations:0",
+  "label:isotretinoin:pregnancy:0",
+  "label:isotretinoin:use_in_specific_populations:2",
+  "label:isotretinoin:use_in_specific_populations:6",
+  "label:isotretinoin:use_in_specific_populations:5"
+ ],
+ "draft": {
+  "text": "The isotretinoin label says Isotretinoin Capsules are contraindicated during pregnancy because they can cause fetal harm [label:isotretinoin:pregnancy:0]. Human exposure carries an increased risk of major congenital malformations, spontaneous abortions, and premature births [label:isotretinoin:pregnancy:0]. Documented malformations involve the face, eyes, ears, skull, CNS, cardiovascular system, and thymus and parathyroid glands [label:isotretinoin:pregnancy:0]. If pregnancy occurs during treatment, the label says to discontinue the drug immediately and refer the patient to an Obstetrician-Gynecologist experienced in reproductive toxicity [label:isotretinoin:pregnancy:0]. Suspected fetal exposure during or 1 month after treatment should be reported to the FDA MedWatch and to the iPLEDGE pregnancy registry [label:isotretinoin:pregnancy:0]. Patients who can become pregnant must comply with iPLEDGE REMS requirements [label:isotretinoin:use_in_specific_populations:2]. Pregnancy testing is required before, during, and after treatment [label:isotretinoin:use_in_specific_populations:2]. During treatment, a pregnancy test is needed within 7 days before each prescription [label:isotretinoin:use_in_specific_populations:5]. After treatment, testing is required at the end of the course and one month after discontinuation [label:isotretinoin:use_in_specific_populations:6]. Patients who can get pregnant must use two forms of contraception simultaneously, at least one of them primary, for at least one month before, during, and for one month after treatment, with exceptions such as continuous abstinence, hysterectomy or bilateral oophorectomy, or confirmed post-menopause [label:isotretinoin:use_in_specific_populations:6].",
+  "citations": [
+   "label:isotretinoin:pregnancy:0",
+   "label:isotretinoin:use_in_specific_populations:2",
+   "label:isotretinoin:use_in_specific_populations:5",
+   "label:isotretinoin:use_in_specific_populations:6"
+  ],
+  "abstained": false,
+  "abstain_reason": null
+ },
+ "answer": {
+  "text": "The isotretinoin label says Isotretinoin Capsules are contraindicated during pregnancy because they can cause fetal harm [label:isotretinoin:pregnancy:0]. Human exposure carries an increased risk of major congenital malformations, spontaneous abortions, and premature births [label:isotretinoin:pregnancy:0]. Documented malformations involve the face, eyes, ears, skull, CNS, cardiovascular system, and thymus and parathyroid glands [label:isotretinoin:pregnancy:0]. If pregnancy occurs during treatment, the label says to discontinue the drug immediately and refer the patient to an Obstetrician-Gynecologist experienced in reproductive toxicity [label:isotretinoin:pregnancy:0]. Suspected fetal exposure during or 1 month after treatment should be reported to the FDA MedWatch and to the iPLEDGE pregnancy registry [label:isotretinoin:pregnancy:0]. Patients who can become pregnant must comply with iPLEDGE REMS requirements [label:isotretinoin:use_in_specific_populations:2]. Pregnancy testing is required before, during, and after treatment [label:isotretinoin:use_in_specific_populations:2]. During treatment, a pregnancy test is needed within 7 days before each prescription [label:isotretinoin:use_in_specific_populations:5]. After treatment, testing is required at the end of the course and one month after discontinuation [label:isotretinoin:use_in_specific_populations:6]. Patients who can get pregnant must use two forms of contraception simultaneously, at least one of them primary, for at least one month before, during, and for one month after treatment, with exceptions such as continuous abstinence, hysterectomy or bilateral oophorectomy, or confirmed post-menopause [label:isotretinoin:use_in_specific_populations:6].",
+  "abstained": false,
+  "abstain_reason": null,
+  "citations": [
+   "label:isotretinoin:pregnancy:0",
+   "label:isotretinoin:use_in_specific_populations:2",
+   "label:isotretinoin:use_in_specific_populations:5",
+   "label:isotretinoin:use_in_specific_populations:6"
+  ],
+  "invented": []
+ },
+ "llm_calls": [
+  {
+   "step": "router",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 814,
+   "output_tokens": 60,
+   "cost_usd": 0.00011140000000000001,
+   "latency_ms": 1707
+  },
+  {
+   "step": "generator",
+   "model": "claude-sonnet-5-5",
+   "input_tokens": 3413,
+   "output_tokens": 741,
+   "cost_usd": 0.014236,
+   "latency_ms": 4790
+  }
+ ],
+ "latency_ms": 14261,
+ "cost_usd": 0.014347
+}

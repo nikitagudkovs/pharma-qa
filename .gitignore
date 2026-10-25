@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+.pytest_cache/
+data/cache/live/
+/traces/
+.DS_Store
+data/cache/openfda/

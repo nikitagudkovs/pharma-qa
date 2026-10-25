@@ -1,0 +1,43 @@
+{
+ "trace_id": "cbc3fd2e14e4",
+ "at": "2026-10-25T17:48:19.504070+00:00",
+ "question": "I'm 70 and take warfarin. Should I stop it before my dental surgery next week?",
+ "entities": [
+  {
+   "mention": "warfarin",
+   "generic_name": "warfarin",
+   "rxcui": [
+    "855312"
+   ],
+   "resolved": true,
+   "source": "synonym_map"
+  }
+ ],
+ "route": {
+  "kind": "out_of_scope",
+  "reason": "This asks for medical advice about the user's own treatment (whether to stop warfarin before dental surgery), which neither the trial registry nor drug labels can answer.",
+  "label_query": null
+ },
+ "tool_calls": [],
+ "retrieved": [],
+ "draft": null,
+ "answer": {
+  "text": "I can't answer that from trial or label data.",
+  "abstained": true,
+  "abstain_reason": "out of scope: This asks for medical advice about the user's own treatment (whether to stop warfarin before dental surgery), which neither the trial registry nor drug labels can answer.",
+  "citations": [],
+  "invented": []
+ },
+ "llm_calls": [
+  {
+   "step": "router",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 994,
+   "output_tokens": 78,
+   "cost_usd": 0.0001384,
+   "latency_ms": 2075
+  }
+ ],
+ "latency_ms": 2076,
+ "cost_usd": 0.000138
+}

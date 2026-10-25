@@ -1,0 +1,124 @@
+{
+ "trace_id": "c0cc0f6e8203",
+ "at": "2026-10-25T17:45:33.713237+00:00",
+ "question": "Show me completed Phase 3 trials of apixaban in atrial fibrillation.",
+ "entities": [
+  {
+   "mention": "apixaban",
+   "generic_name": "apixaban",
+   "rxcui": [
+    "1364435",
+    "1364441",
+    "1364445",
+    "1364447"
+   ],
+   "resolved": true,
+   "source": "synonym_map"
+  }
+ ],
+ "route": {
+  "kind": "trials",
+  "reason": "The question asks for completed Phase 3 trials of apixaban in atrial fibrillation, which is answered from ClinicalTrials.gov registry records (phase, status, condition)."
+ },
+ "tool_calls": [
+  {
+   "name": "search_trials",
+   "input": {
+    "drug": "apixaban",
+    "condition": "atrial fibrillation",
+    "phase": [
+     "PHASE3"
+    ],
+    "status": [
+     "COMPLETED"
+    ],
+    "limit": 10
+   },
+   "ok": true,
+   "error": null,
+   "result_ids": [
+    "trial:NCT02933697",
+    "trial:NCT01924065",
+    "trial:NCT00496769",
+    "trial:NCT00412984",
+    "trial:NCT02283294",
+    "trial:NCT02889562",
+    "trial:NCT03153150",
+    "trial:NCT03996772",
+    "trial:NCT03181386"
+   ]
+  }
+ ],
+ "retrieved": [
+  "trial:NCT02933697",
+  "trial:NCT01924065",
+  "trial:NCT00496769",
+  "trial:NCT00412984",
+  "trial:NCT02283294",
+  "trial:NCT02889562",
+  "trial:NCT03153150",
+  "trial:NCT03996772",
+  "trial:NCT03181386"
+ ],
+ "draft": {
+  "text": "Completed Phase 3 trials involving apixaban in atrial fibrillation:\n- NCT02933697, Compare Apixaban and Vitamin-K Antagonists in Patients With AF and ESKD, Phase 3, Completed [trial:NCT02933697].\n- NCT00496769, A Phase III Study of Apixaban in Patients With Atrial Fibrillation, Phase 3, Completed [trial:NCT00496769].\n- NCT00412984, Apixaban for the Prevention of Stroke in Subjects With Atrial Fibrillation, Phase 3, Completed [trial:NCT00412984].\n- NCT02283294, Apixaban for Early Prevention of Recurrent Embolic Stroke and Hemorrhagic Transformation, Phase 3, Completed [trial:NCT02283294].\n- NCT03153150, Start or STop Anticoagulants Randomised Trial (SoSTART), Phase 3, Completed [trial:NCT03153150].\n- NCT03996772, PREvention of STroke in Intracerebral haemorrhaGE Survivors With Atrial Fibrillation, Phase 3, Completed [trial:NCT03996772].\n- NCT03181386, Tooth Extraction in Patients With Atrial Fibrillation in Use of New Oral Anticoagulants, Phase 3, Completed (apixaban among the interventions) [trial:NCT03181386].\nAlso listed as completed but Phase 2/3 (not pure Phase 3): NCT02889562, Apixaban Versus Warfarin for Post-operative Atrial Fibrillation [trial:NCT02889562].\nNCT01924065 (stroke risk after cardioversion) is Phase 3 and completed, but its listed interventions are cardioversion and an unspecified oral anticoagulant, so apixaban is not named [trial:NCT01924065].",
+  "citations": [
+   "trial:NCT02933697",
+   "trial:NCT00496769",
+   "trial:NCT00412984",
+   "trial:NCT02283294",
+   "trial:NCT03153150",
+   "trial:NCT03996772",
+   "trial:NCT03181386",
+   "trial:NCT02889562",
+   "trial:NCT01924065"
+  ],
+  "abstained": false,
+  "abstain_reason": null
+ },
+ "answer": {
+  "text": "Completed Phase 3 trials involving apixaban in atrial fibrillation:\n- NCT02933697, Compare Apixaban and Vitamin-K Antagonists in Patients With AF and ESKD, Phase 3, Completed [trial:NCT02933697].\n- NCT00496769, A Phase III Study of Apixaban in Patients With Atrial Fibrillation, Phase 3, Completed [trial:NCT00496769].\n- NCT00412984, Apixaban for the Prevention of Stroke in Subjects With Atrial Fibrillation, Phase 3, Completed [trial:NCT00412984].\n- NCT02283294, Apixaban for Early Prevention of Recurrent Embolic Stroke and Hemorrhagic Transformation, Phase 3, Completed [trial:NCT02283294].\n- NCT03153150, Start or STop Anticoagulants Randomised Trial (SoSTART), Phase 3, Completed [trial:NCT03153150].\n- NCT03996772, PREvention of STroke in Intracerebral haemorrhaGE Survivors With Atrial Fibrillation, Phase 3, Completed [trial:NCT03996772].\n- NCT03181386, Tooth Extraction in Patients With Atrial Fibrillation in Use of New Oral Anticoagulants, Phase 3, Completed (apixaban among the interventions) [trial:NCT03181386].\nAlso listed as completed but Phase 2/3 (not pure Phase 3): NCT02889562, Apixaban Versus Warfarin for Post-operative Atrial Fibrillation [trial:NCT02889562].\nNCT01924065 (stroke risk after cardioversion) is Phase 3 and completed, but its listed interventions are cardioversion and an unspecified oral anticoagulant, so apixaban is not named [trial:NCT01924065].",
+  "abstained": false,
+  "abstain_reason": null,
+  "citations": [
+   "trial:NCT02933697",
+   "trial:NCT00496769",
+   "trial:NCT00412984",
+   "trial:NCT02283294",
+   "trial:NCT03153150",
+   "trial:NCT03996772",
+   "trial:NCT03181386",
+   "trial:NCT02889562",
+   "trial:NCT01924065"
+  ],
+  "invented": []
+ },
+ "llm_calls": [
+  {
+   "step": "router",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 818,
+   "output_tokens": 75,
+   "cost_usd": 0.00011930000000000001,
+   "latency_ms": 2058
+  },
+  {
+   "step": "trial_planner",
+   "model": "claude-sonnet-5-5",
+   "input_tokens": 1815,
+   "output_tokens": 139,
+   "cost_usd": 0.00502,
+   "latency_ms": 1262
+  },
+  {
+   "step": "generator",
+   "model": "claude-sonnet-5-5",
+   "input_tokens": 2461,
+   "output_tokens": 764,
+   "cost_usd": 0.012562,
+   "latency_ms": 4995
+  }
+ ],
+ "latency_ms": 8318,
+ "cost_usd": 0.017701
+}

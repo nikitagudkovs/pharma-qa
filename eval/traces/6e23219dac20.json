@@ -1,0 +1,67 @@
+{
+ "trace_id": "6e23219dac20",
+ "at": "2026-10-25T17:49:21.556992+00:00",
+ "question": "Contraindications for Ozempic?",
+ "entities": [
+  {
+   "mention": "Ozempic",
+   "generic_name": "semaglutide",
+   "rxcui": [
+    "2619152",
+    "2619154"
+   ],
+   "resolved": true,
+   "source": "synonym_map"
+  }
+ ],
+ "route": {
+  "kind": "label",
+  "reason": "Contraindications are listed in the FDA drug label for semaglutide (Ozempic), so only the label source is needed.",
+  "label_query": "semaglutide contraindications"
+ },
+ "tool_calls": [],
+ "retrieved": [
+  "label:semaglutide:contraindications:0",
+  "label:semaglutide:adverse_reactions:7",
+  "label:semaglutide:mechanism_of_action:0",
+  "label:semaglutide:use_in_specific_populations:3",
+  "label:semaglutide:warnings_and_cautions:9"
+ ],
+ "draft": {
+  "text": "Ozempic (semaglutide) is contraindicated in patients with a personal or family history of medullary thyroid carcinoma (MTC) or in patients with Multiple Endocrine Neoplasia syndrome type 2 (MEN 2) [label:semaglutide:contraindications:0]. It is also contraindicated in patients with a serious hypersensitivity reaction to semaglutide or to any of the excipients in OZEMPIC [label:semaglutide:contraindications:0]. Serious hypersensitivity reactions, including anaphylaxis and angioedema, have been reported with OZEMPIC [label:semaglutide:contraindications:0].",
+  "citations": [
+   "label:semaglutide:contraindications:0"
+  ],
+  "abstained": false,
+  "abstain_reason": null
+ },
+ "answer": {
+  "text": "Ozempic (semaglutide) is contraindicated in patients with a personal or family history of medullary thyroid carcinoma (MTC) or in patients with Multiple Endocrine Neoplasia syndrome type 2 (MEN 2) [label:semaglutide:contraindications:0]. It is also contraindicated in patients with a serious hypersensitivity reaction to semaglutide or to any of the excipients in OZEMPIC [label:semaglutide:contraindications:0]. Serious hypersensitivity reactions, including anaphylaxis and angioedema, have been reported with OZEMPIC [label:semaglutide:contraindications:0].",
+  "abstained": false,
+  "abstain_reason": null,
+  "citations": [
+   "label:semaglutide:contraindications:0"
+  ],
+  "invented": []
+ },
+ "llm_calls": [
+  {
+   "step": "router",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 979,
+   "output_tokens": 70,
+   "cost_usd": 0.0001329,
+   "latency_ms": 1648
+  },
+  {
+   "step": "generator",
+   "model": "claude-sonnet-5-5",
+   "input_tokens": 3185,
+   "output_tokens": 263,
+   "cost_usd": 0.009,
+   "latency_ms": 2609
+  }
+ ],
+ "latency_ms": 4351,
+ "cost_usd": 0.009133
+}

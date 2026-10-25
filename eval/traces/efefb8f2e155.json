@@ -1,0 +1,71 @@
+{
+ "trace_id": "efefb8f2e155",
+ "at": "2026-10-25T17:48:13.384721+00:00",
+ "question": "What is the boxed warning on Eliquis?",
+ "entities": [
+  {
+   "mention": "Eliquis",
+   "generic_name": "apixaban",
+   "rxcui": [
+    "1364435",
+    "1364441",
+    "1364445",
+    "1364447"
+   ],
+   "resolved": true,
+   "source": "synonym_map"
+  }
+ ],
+ "route": {
+  "kind": "label",
+  "reason": "The question asks for the boxed warning on Eliquis (apixaban), which is found in the FDA drug label.",
+  "label_query": "apixaban boxed warning"
+ },
+ "tool_calls": [],
+ "retrieved": [
+  "label:apixaban:boxed_warning:2",
+  "label:apixaban:warnings_and_cautions:2",
+  "label:apixaban:boxed_warning:1",
+  "label:apixaban:boxed_warning:0",
+  "label:apixaban:warnings_and_cautions:7"
+ ],
+ "draft": {
+  "text": "Eliquis (apixaban) has a boxed warning with two parts. (A) Premature discontinuation increases the risk of thrombotic events: stopping any oral anticoagulant, including Eliquis, raises this risk [label:apixaban:boxed_warning:0]. If Eliquis is discontinued for a reason other than pathological bleeding or completion of a course of therapy, consider coverage with another anticoagulant [label:apixaban:boxed_warning:0]. (B) Spinal/epidural hematoma: epidural or spinal hematomas may occur in patients receiving neuraxial anesthesia or undergoing spinal puncture, and these may result in long-term or permanent paralysis [label:apixaban:boxed_warning:0]. Factors that can increase this risk include indwelling epidural catheters, concomitant drugs that affect hemostasis (such as NSAIDs, platelet inhibitors, other anticoagulants), a history of traumatic or repeated epidural or spinal punctures, and a history of spinal deformity or spinal surgery [label:apixaban:boxed_warning:1]. The optimal timing between Eliquis administration and neuraxial procedures is not known [label:apixaban:boxed_warning:1]. Patients should be monitored frequently for signs and symptoms of neurological impairment, and urgent treatment is necessary if neurological compromise is noted [label:apixaban:boxed_warning:1].",
+  "citations": [
+   "label:apixaban:boxed_warning:0",
+   "label:apixaban:boxed_warning:1"
+  ],
+  "abstained": false,
+  "abstain_reason": null
+ },
+ "answer": {
+  "text": "Eliquis (apixaban) has a boxed warning with two parts. (A) Premature discontinuation increases the risk of thrombotic events: stopping any oral anticoagulant, including Eliquis, raises this risk [label:apixaban:boxed_warning:0]. If Eliquis is discontinued for a reason other than pathological bleeding or completion of a course of therapy, consider coverage with another anticoagulant [label:apixaban:boxed_warning:0]. (B) Spinal/epidural hematoma: epidural or spinal hematomas may occur in patients receiving neuraxial anesthesia or undergoing spinal puncture, and these may result in long-term or permanent paralysis [label:apixaban:boxed_warning:0]. Factors that can increase this risk include indwelling epidural catheters, concomitant drugs that affect hemostasis (such as NSAIDs, platelet inhibitors, other anticoagulants), a history of traumatic or repeated epidural or spinal punctures, and a history of spinal deformity or spinal surgery [label:apixaban:boxed_warning:1]. The optimal timing between Eliquis administration and neuraxial procedures is not known [label:apixaban:boxed_warning:1]. Patients should be monitored frequently for signs and symptoms of neurological impairment, and urgent treatment is necessary if neurological compromise is noted [label:apixaban:boxed_warning:1].",
+  "abstained": false,
+  "abstain_reason": null,
+  "citations": [
+   "label:apixaban:boxed_warning:0",
+   "label:apixaban:boxed_warning:1"
+  ],
+  "invented": []
+ },
+ "llm_calls": [
+  {
+   "step": "router",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 981,
+   "output_tokens": 67,
+   "cost_usd": 0.00013160000000000003,
+   "latency_ms": 1392
+  },
+  {
+   "step": "generator",
+   "model": "claude-sonnet-5-5",
+   "input_tokens": 3063,
+   "output_tokens": 540,
+   "cost_usd": 0.011526,
+   "latency_ms": 3742
+  }
+ ],
+ "latency_ms": 5150,
+ "cost_usd": 0.011658
+}

@@ -1,0 +1,905 @@
+{
+ "adalimumab": {
+  "brands": [
+   "ABRILADA",
+   "AMJEVITA",
+   "Cyltezo",
+   "HADLIMA",
+   "HULIO",
+   "HUMIRA",
+   "HYRIMOZ",
+   "IDACIO",
+   "Simlandi",
+   "YUSIMRY",
+   "Yuflyma"
+  ],
+  "generic": "adalimumab",
+  "rxcui": [
+   "797544",
+   "2668074",
+   "2668078"
+  ],
+  "variants": [
+   "ADALIMUMAB-RYVK",
+   "ADALIMUMAB",
+   "ADALIMUMAB-BWWD",
+   "ADALIMUMAB-ADAZ",
+   "ADALIMUMAB-ADBM",
+   "ADALIMUMAB-AFZB",
+   "ADALIMUMAB-ATTO",
+   "ADALIMUMAB-AACF",
+   "ADALIMUMAB-AATY",
+   "ADALIMUMAB-FKJP",
+   "ADALIMUMAB-AQVH"
+  ]
+ },
+ "amiodarone": {
+  "brands": [
+   "Nexterone",
+   "Pacerone"
+  ],
+  "generic": "amiodarone",
+  "rxcui": [
+   "833528"
+  ],
+  "variants": [
+   "AMIODARONE HYDROCHLORIDE"
+  ]
+ },
+ "amlodipine": {
+  "brands": [
+   "Katerzia",
+   "NORLIQVA",
+   "Norvasc"
+  ],
+  "generic": "amlodipine",
+  "rxcui": [
+   "308135"
+  ],
+  "variants": [
+   "AMLODIPINE BESYLATE",
+   "AMLODIPINE"
+  ]
+ },
+ "apixaban": {
+  "brands": [
+   "ELIQUIS"
+  ],
+  "generic": "apixaban",
+  "rxcui": [
+   "1364435",
+   "1364441",
+   "1364445",
+   "1364447"
+  ],
+  "variants": [
+   "APIXABAN"
+  ]
+ },
+ "aripiprazole": {
+  "brands": [
+   "ABILIFY",
+   "ABILIFY MAINTENA",
+   "Abilify Asimtufii",
+   "OPIPZA"
+  ],
+  "generic": "aripiprazole",
+  "rxcui": [
+   "349490"
+  ],
+  "variants": [
+   "ARIPIPRAZOLE"
+  ]
+ },
+ "atezolizumab": {
+  "brands": [
+   "Tecentriq"
+  ],
+  "generic": "atezolizumab",
+  "rxcui": [],
+  "variants": []
+ },
+ "atorvastatin": {
+  "brands": [
+   "Lipitor"
+  ],
+  "generic": "atorvastatin",
+  "rxcui": [
+   "259255",
+   "617310",
+   "617311",
+   "617312"
+  ],
+  "variants": [
+   "ATORVASTATIN CALCIUM"
+  ]
+ },
+ "bevacizumab": {
+  "brands": [
+   "ALYMSYS",
+   "Avastin",
+   "JOBEVNE",
+   "MVASI",
+   "Vegzelma",
+   "Zirabev"
+  ],
+  "generic": "bevacizumab",
+  "rxcui": [
+   "2627650",
+   "2627656",
+   "2627658",
+   "2627659"
+  ],
+  "variants": [
+   "BEVACIZUMAB-MALY",
+   "BEVACIZUMAB",
+   "BEVACIZUMAB-ADCD",
+   "BEVACIZUMAB-AWWB",
+   "BEVACIZUMAB-BVZR",
+   "BEVACIZUMAB-NWGD"
+  ]
+ },
+ "bupropion": {
+  "brands": [
+   "Aplenzin",
+   "Forfivo XL",
+   "WELLBUTRIN SR",
+   "WELLBUTRIN XL"
+  ],
+  "generic": "bupropion",
+  "rxcui": [
+   "993691"
+  ],
+  "variants": [
+   "BUPROPION HYDROCHLORIDE",
+   "BUPROPION",
+   "BUPROPION HYDROBROMIDE",
+   "BUPROPION HCL"
+  ]
+ },
+ "ciprofloxacin": {
+  "brands": [
+   "CILOXAN",
+   "Cipro"
+  ],
+  "generic": "ciprofloxacin",
+  "rxcui": [
+   "309309"
+  ],
+  "variants": [
+   "CIPROFLOXACIN",
+   "CIPROFLOXACIN HYDROCHLORIDE",
+   "CIPROFLOXACIN TABLETS",
+   "CIPROFLOXACIN HCL"
+  ]
+ },
+ "clopidogrel": {
+  "brands": [
+   "Plavix"
+  ],
+  "generic": "clopidogrel",
+  "rxcui": [
+   "309362"
+  ],
+  "variants": [
+   "CLOPIDOGREL"
+  ]
+ },
+ "dabigatran": {
+  "brands": [
+   "Pradaxa"
+  ],
+  "generic": "dabigatran",
+  "rxcui": [
+   "1037045",
+   "1037179",
+   "1723476"
+  ],
+  "variants": [
+   "DABIGATRAN ETEXILATE",
+   "DABIGATRAN ETEXILATE MESYLATE"
+  ]
+ },
+ "dapagliflozin": {
+  "brands": [
+   "FARXIGA"
+  ],
+  "generic": "dapagliflozin",
+  "rxcui": [
+   "1488569"
+  ],
+  "variants": [
+   "DAPAGLIFLOZIN"
+  ]
+ },
+ "dupilumab": {
+  "brands": [
+   "Dupixent"
+  ],
+  "generic": "dupilumab",
+  "rxcui": [
+   "1876401",
+   "1876406",
+   "2099300",
+   "2099302",
+   "2375327",
+   "2375329",
+   "2559706",
+   "2559707"
+  ],
+  "variants": [
+   "DUPILUMAB"
+  ]
+ },
+ "durvalumab": {
+  "brands": [
+   "IMFINZI"
+  ],
+  "generic": "durvalumab",
+  "rxcui": [
+   "1919507",
+   "1919512",
+   "1919515",
+   "1919516"
+  ],
+  "variants": [
+   "DURVALUMAB"
+  ]
+ },
+ "empagliflozin": {
+  "brands": [
+   "JARDIANCE"
+  ],
+  "generic": "empagliflozin",
+  "rxcui": [
+   "1545666",
+   "1545668"
+  ],
+  "variants": [
+   "EMPAGLIFLOZIN"
+  ]
+ },
+ "escitalopram": {
+  "brands": [
+   "Lexapro"
+  ],
+  "generic": "escitalopram",
+  "rxcui": [
+   "351250"
+  ],
+  "variants": [
+   "ESCITALOPRAM"
+  ]
+ },
+ "etanercept": {
+  "brands": [
+   "ENBREL"
+  ],
+  "generic": "etanercept",
+  "rxcui": [
+   "253014",
+   "261105",
+   "727757",
+   "802652",
+   "809158",
+   "809159",
+   "1653223",
+   "1653225",
+   "2182338",
+   "2182340",
+   "2392140",
+   "2392142"
+  ],
+  "variants": [
+   "ETANERCEPT"
+  ]
+ },
+ "gabapentin": {
+  "brands": [
+   "GABARONE",
+   "Gaba 300-EZS",
+   "Gralise",
+   "Neurontin",
+   "RELGAABI"
+  ],
+  "generic": "gabapentin",
+  "rxcui": [
+   "310432"
+  ],
+  "variants": [
+   "GABAPENTIN"
+  ]
+ },
+ "ibrutinib": {
+  "brands": [
+   "Imbruvica"
+  ],
+  "generic": "ibrutinib",
+  "rxcui": [
+   "1442986",
+   "1442992",
+   "1994360",
+   "1994362",
+   "2000017",
+   "2000019",
+   "2000021",
+   "2000023",
+   "2000025",
+   "2000027",
+   "2611536",
+   "2611540"
+  ],
+  "variants": [
+   "IBRUTINIB"
+  ]
+ },
+ "imatinib": {
+  "brands": [
+   "Gleevec"
+  ],
+  "generic": "imatinib",
+  "rxcui": [
+   "403878",
+   "403879"
+  ],
+  "variants": [
+   "IMATINIB MESYLATE",
+   "IMATINIB"
+  ]
+ },
+ "insulin glargine": {
+  "brands": [
+   "BASAGLAR KwikPen",
+   "LANTUS SOLOSTAR",
+   "Lantus",
+   "REZVOGLAR KWIKPEN",
+   "SEMGLEE",
+   "TOUJEO",
+   "TOUJEO Max"
+  ],
+  "generic": "insulin glargine",
+  "rxcui": [
+   "847230",
+   "1736863",
+   "2268064",
+   "2268065"
+  ],
+  "variants": [
+   "INSULIN GLARGINE",
+   "INSULIN GLARGINE-YFGN",
+   "INSULIN GLARGINE-AGLR"
+  ]
+ },
+ "isotretinoin": {
+  "brands": [
+   "ACCUTANE",
+   "Absorica",
+   "Absorica LD",
+   "Amnesteem",
+   "Claravis",
+   "ZENATANE"
+  ],
+  "generic": "isotretinoin",
+  "rxcui": [
+   "197843",
+   "197844",
+   "197845",
+   "403930"
+  ],
+  "variants": [
+   "ISOTRETINOIN"
+  ]
+ },
+ "lenalidomide": {
+  "brands": [
+   "Revlimid"
+  ],
+  "generic": "lenalidomide",
+  "rxcui": [
+   "602910",
+   "602912",
+   "643712",
+   "643720",
+   "1242231",
+   "1428947"
+  ],
+  "variants": [
+   "LENALIDOMIDE"
+  ]
+ },
+ "levetiracetam": {
+  "brands": [
+   "ELEPSIA XR 1000 MG",
+   "ELEPSIA XR 1500 MG",
+   "Keppra",
+   "Keppra XR",
+   "Roweepra",
+   "Spritam"
+  ],
+  "generic": "levetiracetam",
+  "rxcui": [
+   "311289"
+  ],
+  "variants": [
+   "LEVETIRACETAM",
+   "LEVETIRACETAM INJECTION"
+  ]
+ },
+ "levothyroxine": {
+  "brands": [
+   "LEVOXYL",
+   "Synthroid",
+   "THYQUIDITY",
+   "Tirosint",
+   "Tirosint SOL",
+   "Unithroid"
+  ],
+  "generic": "levothyroxine",
+  "rxcui": [
+   "966220"
+  ],
+  "variants": [
+   "LEVOTHYROXINE SODIUM"
+  ]
+ },
+ "liraglutide": {
+  "brands": [
+   "Saxenda",
+   "Victoza"
+  ],
+  "generic": "liraglutide",
+  "rxcui": [
+   "897122"
+  ],
+  "variants": [
+   "LIRAGLUTIDE"
+  ]
+ },
+ "lisinopril": {
+  "brands": [
+   "Qbrelis",
+   "Zestril"
+  ],
+  "generic": "lisinopril",
+  "rxcui": [
+   "314076"
+  ],
+  "variants": [
+   "LISINOPRIL"
+  ]
+ },
+ "lithium": {
+  "brands": [
+   "LITHOBID"
+  ],
+  "generic": "lithium",
+  "rxcui": [
+   "756059"
+  ],
+  "variants": [
+   "LITHIUM CARBONATE",
+   "LITHIUM",
+   "LITHIUM CITRATE"
+  ]
+ },
+ "metformin": {
+  "brands": [],
+  "generic": "metformin",
+  "rxcui": [
+   "1807894"
+  ],
+  "variants": [
+   "METFORMIN HYDROCHLORIDE",
+   "METFORMIN HCL",
+   "METFORMIN",
+   "METFORMIN HYDROCHLORIDE TABLET",
+   "METFORMIN HYDROCHLORIDE TABLETS"
+  ]
+ },
+ "methotrexate": {
+  "brands": [
+   "JYLAMVO",
+   "Otrexup",
+   "Rasuvo",
+   "Trexall",
+   "Xatmep"
+  ],
+  "generic": "methotrexate",
+  "rxcui": [
+   "1655956",
+   "1655959",
+   "1655960"
+  ],
+  "variants": [
+   "METHOTREXATE",
+   "METHOTREXATE SODIUM"
+  ]
+ },
+ "metoprolol": {
+  "brands": [
+   "KAPSPARGO",
+   "LOPRESSOR",
+   "TOPROL XL"
+  ],
+  "generic": "metoprolol",
+  "rxcui": [
+   "866412"
+  ],
+  "variants": [
+   "METOPROLOL TARTRATE",
+   "METOPROLOL SUCCINATE",
+   "METOPROLOL",
+   "METOPROLOL TARTRATE INJECTION"
+  ]
+ },
+ "nivolumab": {
+  "brands": [
+   "OPDIVO"
+  ],
+  "generic": "nivolumab",
+  "rxcui": [
+   "1657190",
+   "1657192",
+   "1657195",
+   "1657196",
+   "1991412",
+   "1991413",
+   "2569080",
+   "2569081"
+  ],
+  "variants": [
+   "NIVOLUMAB"
+  ]
+ },
+ "olaparib": {
+  "brands": [
+   "Lynparza"
+  ],
+  "generic": "olaparib",
+  "rxcui": [
+   "1942482",
+   "1942485",
+   "1942487",
+   "1942489"
+  ],
+  "variants": [
+   "OLAPARIB"
+  ]
+ },
+ "omeprazole": {
+  "brands": [
+   "Prilosec"
+  ],
+  "generic": "omeprazole",
+  "rxcui": [
+   "198051"
+  ],
+  "variants": [
+   "OMEPRAZOLE",
+   "OMEPRAZOLE MAGNESIUM"
+  ]
+ },
+ "osimertinib": {
+  "brands": [
+   "Tagrisso"
+  ],
+  "generic": "osimertinib",
+  "rxcui": [],
+  "variants": []
+ },
+ "palbociclib": {
+  "brands": [
+   "Ibrance"
+  ],
+  "generic": "palbociclib",
+  "rxcui": [
+   "2284102",
+   "2284104",
+   "2284105",
+   "2284106",
+   "2284107",
+   "2284108"
+  ],
+  "variants": [
+   "PALBOCICLIB"
+  ]
+ },
+ "pembrolizumab": {
+  "brands": [
+   "KEYTRUDA"
+  ],
+  "generic": "pembrolizumab",
+  "rxcui": [
+   "1657746",
+   "1657749",
+   "1657750",
+   "1657751"
+  ],
+  "variants": [
+   "PEMBROLIZUMAB"
+  ]
+ },
+ "prednisone": {
+  "brands": [],
+  "generic": "prednisone",
+  "rxcui": [
+   "198144"
+  ],
+  "variants": [
+   "PREDNISONE"
+  ]
+ },
+ "quetiapine": {
+  "brands": [
+   "SEROQUEL",
+   "SEROQUEL XR"
+  ],
+  "generic": "quetiapine",
+  "rxcui": [
+   "312743",
+   "317174"
+  ],
+  "variants": [
+   "QUETIAPINE FUMARATE",
+   "QUETIAPINE"
+  ]
+ },
+ "rituximab": {
+  "brands": [
+   "Rituxan",
+   "Truxima"
+  ],
+  "generic": "rituximab",
+  "rxcui": [
+   "2105826",
+   "2105831",
+   "2105834",
+   "2105835"
+  ],
+  "variants": [
+   "RITUXIMAB",
+   "RITUXIMAB-ABBS"
+  ]
+ },
+ "rivaroxaban": {
+  "brands": [
+   "XARELTO"
+  ],
+  "generic": "rivaroxaban",
+  "rxcui": [
+   "1114198",
+   "1114202",
+   "1232082",
+   "1232084",
+   "1232086",
+   "1232088",
+   "1549682",
+   "1549683",
+   "2059015",
+   "2059017",
+   "2588062",
+   "2588066"
+  ],
+  "variants": [
+   "RIVAROXABAN"
+  ]
+ },
+ "rosuvastatin": {
+  "brands": [],
+  "generic": "rosuvastatin",
+  "rxcui": [
+   "859747"
+  ],
+  "variants": [
+   "ROSUVASTATIN CALCIUM",
+   "ROSUVASTATIN"
+  ]
+ },
+ "semaglutide": {
+  "brands": [
+   "OZEMPIC",
+   "WEGOVY"
+  ],
+  "generic": "semaglutide",
+  "rxcui": [
+   "2619152",
+   "2619154"
+  ],
+  "variants": [
+   "SEMAGLUTIDE"
+  ]
+ },
+ "sertraline": {
+  "brands": [
+   "Zoloft"
+  ],
+  "generic": "sertraline",
+  "rxcui": [
+   "312940"
+  ],
+  "variants": [
+   "SERTRALINE HYDROCHLORIDE",
+   "SERTRALINE",
+   "SERTRALINE HCL"
+  ]
+ },
+ "sitagliptin": {
+  "brands": [
+   "JANUVIA",
+   "ZITUVIO"
+  ],
+  "generic": "sitagliptin",
+  "rxcui": [
+   "665044",
+   "2709608"
+  ],
+  "variants": [
+   "SITAGLIPTIN",
+   "SITAGLIPTIN PHOSPHATE"
+  ]
+ },
+ "tirzepatide": {
+  "brands": [
+   "MOUNJARO",
+   "Mounjaro KwikPen",
+   "ZEPBOUND",
+   "Zepbound KwikPen"
+  ],
+  "generic": "tirzepatide",
+  "rxcui": [
+   "2601743",
+   "2601755",
+   "2601761",
+   "2601767",
+   "2601773",
+   "2601784",
+   "2644396",
+   "2644401",
+   "2644405",
+   "2644409",
+   "2644413",
+   "2644417",
+   "2669706",
+   "2669709",
+   "2669712",
+   "2669715",
+   "2669718",
+   "2669721",
+   "2679317",
+   "2679319",
+   "2679321",
+   "2679323",
+   "2679325",
+   "2679327",
+   "2732437",
+   "2732440",
+   "2732442",
+   "2732444",
+   "2732446",
+   "2732448",
+   "2732449",
+   "2732450",
+   "2732452",
+   "2732454",
+   "2732456",
+   "2732458",
+   "2734623",
+   "2734626",
+   "2734628",
+   "2734630",
+   "2734632",
+   "2734634",
+   "2734636",
+   "2734638",
+   "2734640",
+   "2734642",
+   "2734644",
+   "2734646"
+  ],
+  "variants": [
+   "TIRZEPATIDE"
+  ]
+ },
+ "tofacitinib": {
+  "brands": [],
+  "generic": "tofacitinib",
+  "rxcui": [
+   "1357541",
+   "2048566"
+  ],
+  "variants": [
+   "TOFACITINIB",
+   "TOFACITINIB CITRATE"
+  ]
+ },
+ "trastuzumab": {
+  "brands": [
+   "HERZUMA",
+   "Herceptin",
+   "Kanjinti",
+   "OGIVRI",
+   "Ontruzant",
+   "Trazimera"
+  ],
+  "generic": "trastuzumab",
+  "rxcui": [
+   "2179753",
+   "2179758",
+   "2179760",
+   "2179763"
+  ],
+  "variants": [
+   "TRASTUZUMAB",
+   "TRASTUZUMAB-ANNS",
+   "TRASTUZUMAB-DKST",
+   "TRASTUZUMAB-QYYP"
+  ]
+ },
+ "upadacitinib": {
+  "brands": [
+   "Rinvoq"
+  ],
+  "generic": "upadacitinib",
+  "rxcui": [
+   "2196894",
+   "2196900",
+   "2590051",
+   "2590054",
+   "2596957",
+   "2596960",
+   "2681015",
+   "2681019"
+  ],
+  "variants": [
+   "UPADACITINIB"
+  ]
+ },
+ "ustekinumab": {
+  "brands": [
+   "IMULDOSA",
+   "PYZCHIVA",
+   "SELARSDI",
+   "STELARA",
+   "STEQEYMA",
+   "Starjemza",
+   "WEZLANA"
+  ],
+  "generic": "ustekinumab",
+  "rxcui": [
+   "2705393",
+   "2705400"
+  ],
+  "variants": [
+   "USTEKINUMAB-AEKN",
+   "USTEKINUMAB-TTWE",
+   "USTEKINUMAB",
+   "USTEKINUMAB-AUUB",
+   "USTEKINUMAB-HMNY",
+   "USTEKINUMAB-SRLF",
+   "USTEKINUMAB-STBA"
+  ]
+ },
+ "valproic acid": {
+  "brands": [],
+  "generic": "valproic acid",
+  "rxcui": [
+   "1099687"
+  ],
+  "variants": [
+   "VALPROIC ACID"
+  ]
+ },
+ "warfarin": {
+  "brands": [
+   "Jantoven"
+  ],
+  "generic": "warfarin",
+  "rxcui": [
+   "855312"
+  ],
+  "variants": [
+   "WARFARIN SODIUM",
+   "WARFARIN"
+  ]
+ }
+}

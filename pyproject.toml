@@ -1,0 +1,37 @@
+[project]
+name = "pharma-qa"
+version = "0.1.0"
+description = "Cited question answering over ClinicalTrials.gov and openFDA drug labels, with an eval scorecard"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "anthropic>=2.3.0",
+    "fastapi>=0.162.0",
+    "httpx>=0.28.1",
+    "numpy>=2.5.4",
+    "pydantic>=2.14.1",
+    "python-dotenv>=1.2.4",
+    "rank-bm25>=0.2.2",
+    "sentence-transformers>=6.2.0",
+    "torch>=2.14.1",
+    "uvicorn[standard]>=0.54.0",
+]
+
+[tool.uv]
+package = false
+
+[tool.uv.sources]
+torch = [{ index = "pytorch-cpu", marker = "sys_platform == 'linux'" }]
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+]

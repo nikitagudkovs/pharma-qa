@@ -1,0 +1,66 @@
+{
+ "trace_id": "906bfda7aaa8",
+ "at": "2026-10-25T17:49:13.332291+00:00",
+ "question": "What is the boxed warning for warfarin?",
+ "entities": [
+  {
+   "mention": "warfarin",
+   "generic_name": "warfarin",
+   "rxcui": [
+    "855312"
+   ],
+   "resolved": true,
+   "source": "synonym_map"
+  }
+ ],
+ "route": {
+  "kind": "label",
+  "reason": "The boxed warning for warfarin is found in its FDA drug label, not in trial registry records.",
+  "label_query": "warfarin boxed warning"
+ },
+ "tool_calls": [],
+ "retrieved": [
+  "label:warfarin:boxed_warning:0",
+  "label:warfarin:adverse_reactions:0",
+  "label:warfarin:contraindications:0",
+  "label:warfarin:warnings_and_cautions:0",
+  "label:warfarin:use_in_specific_populations:2"
+ ],
+ "draft": {
+  "text": "The boxed warning for warfarin is \"WARNING: BLEEDING RISK.\" Warfarin sodium can cause major or fatal bleeding [label:warfarin:boxed_warning:0]. Regular INR monitoring should be performed in all treated patients [label:warfarin:boxed_warning:0]. Drugs, dietary changes, and other factors affect INR levels achieved with warfarin therapy [label:warfarin:boxed_warning:0]. Patients should be instructed about prevention measures to minimize bleeding risk and to report signs and symptoms of bleeding [label:warfarin:boxed_warning:0].",
+  "citations": [
+   "label:warfarin:boxed_warning:0"
+  ],
+  "abstained": false,
+  "abstain_reason": null
+ },
+ "answer": {
+  "text": "The boxed warning for warfarin is \"WARNING: BLEEDING RISK.\" Warfarin sodium can cause major or fatal bleeding [label:warfarin:boxed_warning:0]. Regular INR monitoring should be performed in all treated patients [label:warfarin:boxed_warning:0]. Drugs, dietary changes, and other factors affect INR levels achieved with warfarin therapy [label:warfarin:boxed_warning:0]. Patients should be instructed about prevention measures to minimize bleeding risk and to report signs and symptoms of bleeding [label:warfarin:boxed_warning:0].",
+  "abstained": false,
+  "abstain_reason": null,
+  "citations": [
+   "label:warfarin:boxed_warning:0"
+  ],
+  "invented": []
+ },
+ "llm_calls": [
+  {
+   "step": "router",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 979,
+   "output_tokens": 62,
+   "cost_usd": 0.00012890000000000002,
+   "latency_ms": 1493
+  },
+  {
+   "step": "generator",
+   "model": "claude-sonnet-5-5",
+   "input_tokens": 3328,
+   "output_tokens": 258,
+   "cost_usd": 0.009236,
+   "latency_ms": 2200
+  }
+ ],
+ "latency_ms": 13928,
+ "cost_usd": 0.009365
+}

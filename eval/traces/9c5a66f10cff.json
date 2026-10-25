@@ -1,0 +1,114 @@
+{
+ "trace_id": "9c5a66f10cff",
+ "at": "2026-10-25T17:48:48.263054+00:00",
+ "question": "Are there any recruiting trials of dupilumab for eosinophilic esophagitis?",
+ "entities": [
+  {
+   "mention": "dupilumab",
+   "generic_name": "dupilumab",
+   "rxcui": [
+    "1876401",
+    "1876406",
+    "2099300",
+    "2099302",
+    "2375327",
+    "2375329",
+    "2559706",
+    "2559707"
+   ],
+   "resolved": true,
+   "source": "synonym_map"
+  }
+ ],
+ "route": {
+  "kind": "trials",
+  "reason": "The question asks whether recruiting trials exist for dupilumab in eosinophilic esophagitis, which is answered by ClinicalTrials.gov registry records.",
+  "label_query": null
+ },
+ "tool_calls": [
+  {
+   "name": "search_trials",
+   "input": {
+    "drug": "dupilumab",
+    "condition": "eosinophilic esophagitis",
+    "status": [
+     "RECRUITING"
+    ],
+    "limit": 10
+   },
+   "ok": true,
+   "error": null,
+   "result_ids": [
+    "trial:NCT06695897",
+    "trial:NCT07112378",
+    "trial:NCT06705387",
+    "trial:NCT07012928",
+    "trial:NCT07257835",
+    "trial:NCT06665971"
+   ]
+  }
+ ],
+ "retrieved": [
+  "trial:NCT06695897",
+  "trial:NCT07112378",
+  "trial:NCT06705387",
+  "trial:NCT07012928",
+  "trial:NCT07257835",
+  "trial:NCT06665971"
+ ],
+ "draft": {
+  "text": "Yes. The evidence lists recruiting dupilumab trials for eosinophilic esophagitis (EoE):\n- NCT06695897: Non-interventional observational study of long-term efficacy and safety of dupilumab in patients >=12 years with EoE in Germany; phase n/a; RECRUITING [trial:NCT06695897].\n- NCT07112378: A Study of Dupilumab in Small Children With an Allergic Condition of the Esophagus (EoE); Phase 3; RECRUITING [trial:NCT07112378].\n- NCT06705387: Dupilumab Versus Topical Corticosteroid Effectiveness - Comparison in the Treatment of Stenotic EoE; Phase 2; RECRUITING [trial:NCT06705387].\n- NCT06665971: Effect of Dupilumab on the Muscle Function of the Esophagus in Participants with EoE; Phase 4; RECRUITING [trial:NCT06665971].\nRelated but not strictly EoE-specific: NCT07257835, Dupilumab Therapy for EGIDs (eosinophilic gastrointestinal disorders); phase n/a; RECRUITING [trial:NCT07257835].\nNCT07012928 is a recruiting EoE study, but no dupilumab intervention is listed for it [trial:NCT07012928].",
+  "citations": [
+   "trial:NCT06695897",
+   "trial:NCT07112378",
+   "trial:NCT06705387",
+   "trial:NCT06665971",
+   "trial:NCT07257835",
+   "trial:NCT07012928"
+  ],
+  "abstained": false,
+  "abstain_reason": null
+ },
+ "answer": {
+  "text": "Yes. The evidence lists recruiting dupilumab trials for eosinophilic esophagitis (EoE):\n- NCT06695897: Non-interventional observational study of long-term efficacy and safety of dupilumab in patients >=12 years with EoE in Germany; phase n/a; RECRUITING [trial:NCT06695897].\n- NCT07112378: A Study of Dupilumab in Small Children With an Allergic Condition of the Esophagus (EoE); Phase 3; RECRUITING [trial:NCT07112378].\n- NCT06705387: Dupilumab Versus Topical Corticosteroid Effectiveness - Comparison in the Treatment of Stenotic EoE; Phase 2; RECRUITING [trial:NCT06705387].\n- NCT06665971: Effect of Dupilumab on the Muscle Function of the Esophagus in Participants with EoE; Phase 4; RECRUITING [trial:NCT06665971].\nRelated but not strictly EoE-specific: NCT07257835, Dupilumab Therapy for EGIDs (eosinophilic gastrointestinal disorders); phase n/a; RECRUITING [trial:NCT07257835].\nNCT07012928 is a recruiting EoE study, but no dupilumab intervention is listed for it [trial:NCT07012928].",
+  "abstained": false,
+  "abstain_reason": null,
+  "citations": [
+   "trial:NCT06695897",
+   "trial:NCT07112378",
+   "trial:NCT06705387",
+   "trial:NCT06665971",
+   "trial:NCT07257835",
+   "trial:NCT07012928"
+  ],
+  "invented": []
+ },
+ "llm_calls": [
+  {
+   "step": "router",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 996,
+   "output_tokens": 76,
+   "cost_usd": 0.0001376,
+   "latency_ms": 1468
+  },
+  {
+   "step": "trial_planner",
+   "model": "claude-sonnet-5-5",
+   "input_tokens": 1818,
+   "output_tokens": 114,
+   "cost_usd": 0.004776,
+   "latency_ms": 2071
+  },
+  {
+   "step": "generator",
+   "model": "claude-sonnet-5-5",
+   "input_tokens": 1855,
+   "output_tokens": 546,
+   "cost_usd": 0.00917,
+   "latency_ms": 3441
+  }
+ ],
+ "latency_ms": 6992,
+ "cost_usd": 0.014084
+}

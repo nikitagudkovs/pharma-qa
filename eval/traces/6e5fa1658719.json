@@ -1,0 +1,99 @@
+{
+ "trace_id": "6e5fa1658719",
+ "at": "2026-10-25T17:48:46.570214+00:00",
+ "question": "Recruiting Phase 3 trials of semaglutide for heart failure?",
+ "entities": [
+  {
+   "mention": "semaglutide",
+   "generic_name": "semaglutide",
+   "rxcui": [
+    "2619152",
+    "2619154"
+   ],
+   "resolved": true,
+   "source": "synonym_map"
+  }
+ ],
+ "route": {
+  "kind": "trials",
+  "reason": "The question asks which Phase 3 trials of semaglutide for heart failure are recruiting, which is answered by ClinicalTrials.gov registry records.",
+  "label_query": null
+ },
+ "tool_calls": [
+  {
+   "name": "search_trials",
+   "input": {
+    "drug": "semaglutide",
+    "condition": "heart failure",
+    "phase": [
+     "PHASE3"
+    ],
+    "status": [
+     "RECRUITING"
+    ],
+    "limit": 10
+   },
+   "ok": true,
+   "error": null,
+   "result_ids": [
+    "trial:NCT06082063",
+    "trial:NCT06423599",
+    "trial:NCT07223242"
+   ]
+  }
+ ],
+ "retrieved": [
+  "trial:NCT06082063",
+  "trial:NCT06423599",
+  "trial:NCT07223242"
+ ],
+ "draft": {
+  "text": "Two recruiting trials of semaglutide list heart failure and include a Phase 3 component, and a third recruiting trial does not list semaglutide. 1) NCT06082063, Multifactorial Intervention to Reduce Cardiovascular Disease in Type 1 Diabetes: Phase 3, Recruiting; interventions include semaglutide, and heart failure is a listed condition [trial:NCT06082063]. 2) NCT06423599, Effect of Weight Loss on Physical and Cardiac Performance in People With Obesity and Heart Failure: Phase 2/Phase 3, Recruiting; it tests semaglutide injectable product versus a calorie-restricted diet [trial:NCT06423599]. NCT07223242 (Tailored Exercise Training Study Among Adults With HFpEF) is Phase 2/3 and recruiting, but its listed interventions are exercise training and weight loss, not semaglutide [trial:NCT07223242]. Only NCT06082063 is a pure Phase 3 trial.",
+  "citations": [
+   "trial:NCT06082063",
+   "trial:NCT06423599",
+   "trial:NCT07223242"
+  ],
+  "abstained": false,
+  "abstain_reason": null
+ },
+ "answer": {
+  "text": "Two recruiting trials of semaglutide list heart failure and include a Phase 3 component, and a third recruiting trial does not list semaglutide. 1) NCT06082063, Multifactorial Intervention to Reduce Cardiovascular Disease in Type 1 Diabetes: Phase 3, Recruiting; interventions include semaglutide, and heart failure is a listed condition [trial:NCT06082063]. 2) NCT06423599, Effect of Weight Loss on Physical and Cardiac Performance in People With Obesity and Heart Failure: Phase 2/Phase 3, Recruiting; it tests semaglutide injectable product versus a calorie-restricted diet [trial:NCT06423599]. NCT07223242 (Tailored Exercise Training Study Among Adults With HFpEF) is Phase 2/3 and recruiting, but its listed interventions are exercise training and weight loss, not semaglutide [trial:NCT07223242]. Only NCT06082063 is a pure Phase 3 trial.",
+  "abstained": false,
+  "abstain_reason": null,
+  "citations": [
+   "trial:NCT06082063",
+   "trial:NCT06423599",
+   "trial:NCT07223242"
+  ],
+  "invented": []
+ },
+ "llm_calls": [
+  {
+   "step": "router",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 992,
+   "output_tokens": 73,
+   "cost_usd": 0.0001357,
+   "latency_ms": 1167
+  },
+  {
+   "step": "trial_planner",
+   "model": "claude-sonnet-5-5",
+   "input_tokens": 1814,
+   "output_tokens": 136,
+   "cost_usd": 0.004988,
+   "latency_ms": 1393
+  },
+  {
+   "step": "generator",
+   "model": "claude-sonnet-5-5",
+   "input_tokens": 1408,
+   "output_tokens": 407,
+   "cost_usd": 0.006886,
+   "latency_ms": 2727
+  }
+ ],
+ "latency_ms": 5300,
+ "cost_usd": 0.01201
+}

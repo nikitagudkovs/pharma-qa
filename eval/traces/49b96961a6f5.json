@@ -1,0 +1,123 @@
+{
+ "trace_id": "49b96961a6f5",
+ "at": "2026-10-25T17:45:26.068830+00:00",
+ "question": "Which Phase 3 trials is Keytruda being tested in for lung cancer?",
+ "entities": [
+  {
+   "mention": "Keytruda",
+   "generic_name": "pembrolizumab",
+   "rxcui": [
+    "1657746",
+    "1657749",
+    "1657750",
+    "1657751"
+   ],
+   "resolved": true,
+   "source": "synonym_map"
+  }
+ ],
+ "route": {
+  "kind": "trials",
+  "reason": "The question asks which Phase 3 lung cancer trials are testing Keytruda (pembrolizumab), which is answerable from ClinicalTrials.gov registry records."
+ },
+ "tool_calls": [
+  {
+   "name": "search_trials",
+   "input": {
+    "drug": "pembrolizumab",
+    "condition": "lung cancer",
+    "phase": [
+     "PHASE3"
+    ],
+    "limit": 10
+   },
+   "ok": true,
+   "error": null,
+   "result_ids": [
+    "trial:NCT01905657",
+    "trial:NCT03302234",
+    "trial:NCT04322617",
+    "trial:NCT06561386",
+    "trial:NCT07063745",
+    "trial:NCT05502237",
+    "trial:NCT05791097",
+    "trial:NCT05226598",
+    "trial:NCT05722015",
+    "trial:NCT02142738"
+   ]
+  }
+ ],
+ "retrieved": [
+  "trial:NCT01905657",
+  "trial:NCT03302234",
+  "trial:NCT04322617",
+  "trial:NCT06561386",
+  "trial:NCT07063745",
+  "trial:NCT05502237",
+  "trial:NCT05791097",
+  "trial:NCT05226598",
+  "trial:NCT05722015",
+  "trial:NCT02142738"
+ ],
+ "draft": {
+  "text": "Phase 3 trials (including Phase 2/3) in lung cancer that involve pembrolizumab (Keytruda) include the following. Pembrolizumab is the investigational drug in some and a comparator or background therapy in others.\n\nMerck-sponsored trials of pembrolizumab:\n- NCT01905657: Two doses of pembrolizumab vs docetaxel in previously treated NSCLC (KEYNOTE-010); Phase 2/3; Completed [trial:NCT01905657].\n- NCT03302234: Pembrolizumab with ipilimumab or placebo in untreated metastatic NSCLC (KEYNOTE-598); Phase 3; Completed [trial:NCT03302234].\n- NCT02142738: Pembrolizumab vs platinum-based chemotherapies in metastatic NSCLC (KEYNOTE-024); Phase 3; Completed [trial:NCT02142738].\n- NCT05226598: Pembrolizumab/vibostolimab coformulation plus chemotherapy vs pembrolizumab plus chemotherapy in metastatic NSCLC (KEYVIBE-007); Phase 3; Terminated [trial:NCT05226598].\n- NCT05722015: Subcutaneous pembrolizumab with berahyaluronidase alfa vs intravenous pembrolizumab in metastatic NSCLC (MK-3475A-D77); Phase 3; Active, not recruiting [trial:NCT05722015].\n\nTrials where pembrolizumab is a comparator or combination partner:\n- NCT06561386: Nivolumab and relatlimab plus chemotherapy vs pembrolizumab plus chemotherapy in stage IV/recurrent non-squamous NSCLC with PD-L1 \u22651%; Phase 3; Recruiting [trial:NCT06561386].\n- NCT07063745: Navlimetostat (BMS-986504) with pembrolizumab and chemotherapy vs placebo plus pembrolizumab and chemotherapy in first-line metastatic NSCLC with MTAP deletion; Phase 2/3; Recruiting [trial:NCT07063745].\n- NCT05502237: Zimberelimab and domvanalimab plus chemotherapy vs pembrolizumab plus chemotherapy in untreated metastatic NSCLC; Phase 3; Active, not recruiting [trial:NCT05502237].\n- NCT05791097: Ociperlimab with tislelizumab and platinum-based chemotherapy as first-line treatment for NSCLC (pembrolizumab listed as an intervention); Phase 3; Withdrawn [trial:NCT05791097].",
+  "citations": [
+   "trial:NCT01905657",
+   "trial:NCT03302234",
+   "trial:NCT02142738",
+   "trial:NCT05226598",
+   "trial:NCT05722015",
+   "trial:NCT06561386",
+   "trial:NCT07063745",
+   "trial:NCT05502237",
+   "trial:NCT05791097"
+  ],
+  "abstained": false,
+  "abstain_reason": null
+ },
+ "answer": {
+  "text": "Phase 3 trials (including Phase 2/3) in lung cancer that involve pembrolizumab (Keytruda) include the following. Pembrolizumab is the investigational drug in some and a comparator or background therapy in others.\n\nMerck-sponsored trials of pembrolizumab:\n- NCT01905657: Two doses of pembrolizumab vs docetaxel in previously treated NSCLC (KEYNOTE-010); Phase 2/3; Completed [trial:NCT01905657].\n- NCT03302234: Pembrolizumab with ipilimumab or placebo in untreated metastatic NSCLC (KEYNOTE-598); Phase 3; Completed [trial:NCT03302234].\n- NCT02142738: Pembrolizumab vs platinum-based chemotherapies in metastatic NSCLC (KEYNOTE-024); Phase 3; Completed [trial:NCT02142738].\n- NCT05226598: Pembrolizumab/vibostolimab coformulation plus chemotherapy vs pembrolizumab plus chemotherapy in metastatic NSCLC (KEYVIBE-007); Phase 3; Terminated [trial:NCT05226598].\n- NCT05722015: Subcutaneous pembrolizumab with berahyaluronidase alfa vs intravenous pembrolizumab in metastatic NSCLC (MK-3475A-D77); Phase 3; Active, not recruiting [trial:NCT05722015].\n\nTrials where pembrolizumab is a comparator or combination partner:\n- NCT06561386: Nivolumab and relatlimab plus chemotherapy vs pembrolizumab plus chemotherapy in stage IV/recurrent non-squamous NSCLC with PD-L1 \u22651%; Phase 3; Recruiting [trial:NCT06561386].\n- NCT07063745: Navlimetostat (BMS-986504) with pembrolizumab and chemotherapy vs placebo plus pembrolizumab and chemotherapy in first-line metastatic NSCLC with MTAP deletion; Phase 2/3; Recruiting [trial:NCT07063745].\n- NCT05502237: Zimberelimab and domvanalimab plus chemotherapy vs pembrolizumab plus chemotherapy in untreated metastatic NSCLC; Phase 3; Active, not recruiting [trial:NCT05502237].\n- NCT05791097: Ociperlimab with tislelizumab and platinum-based chemotherapy as first-line treatment for NSCLC (pembrolizumab listed as an intervention); Phase 3; Withdrawn [trial:NCT05791097].",
+  "abstained": false,
+  "abstain_reason": null,
+  "citations": [
+   "trial:NCT01905657",
+   "trial:NCT03302234",
+   "trial:NCT02142738",
+   "trial:NCT05226598",
+   "trial:NCT05722015",
+   "trial:NCT06561386",
+   "trial:NCT07063745",
+   "trial:NCT05502237",
+   "trial:NCT05791097"
+  ],
+  "invented": []
+ },
+ "llm_calls": [
+  {
+   "step": "router",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 821,
+   "output_tokens": 72,
+   "cost_usd": 0.00011810000000000001,
+   "latency_ms": 1570
+  },
+  {
+   "step": "trial_planner",
+   "model": "claude-sonnet-5-5",
+   "input_tokens": 1818,
+   "output_tokens": 110,
+   "cost_usd": 0.004736,
+   "latency_ms": 1510
+  },
+  {
+   "step": "generator",
+   "model": "claude-sonnet-5-5",
+   "input_tokens": 3258,
+   "output_tokens": 1037,
+   "cost_usd": 0.016886,
+   "latency_ms": 5859
+  }
+ ],
+ "latency_ms": 8945,
+ "cost_usd": 0.02174
+}

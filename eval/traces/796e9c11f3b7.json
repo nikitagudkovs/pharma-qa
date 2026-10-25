@@ -1,0 +1,127 @@
+{
+ "trace_id": "796e9c11f3b7",
+ "at": "2026-10-25T17:49:30.438902+00:00",
+ "question": "Is pembrolizumab in any Phase 3 lung cancer trials, and what are its common adverse reactions?",
+ "entities": [
+  {
+   "mention": "pembrolizumab",
+   "generic_name": "pembrolizumab",
+   "rxcui": [
+    "1657746",
+    "1657749",
+    "1657750",
+    "1657751"
+   ],
+   "resolved": true,
+   "source": "synonym_map"
+  }
+ ],
+ "route": {
+  "kind": "both",
+  "reason": "The question asks whether pembrolizumab appears in Phase 3 lung cancer trials (registry data) and also asks for its common adverse reactions (drug label data).",
+  "label_query": "pembrolizumab adverse reactions"
+ },
+ "tool_calls": [
+  {
+   "name": "count_trials",
+   "input": {
+    "drug": "pembrolizumab",
+    "condition": "lung cancer",
+    "phase": [
+     "PHASE3"
+    ]
+   },
+   "ok": true,
+   "error": null,
+   "result_ids": [
+    "count:1"
+   ]
+  },
+  {
+   "name": "search_trials",
+   "input": {
+    "drug": "pembrolizumab",
+    "condition": "lung cancer",
+    "phase": [
+     "PHASE3"
+    ],
+    "limit": 5
+   },
+   "ok": true,
+   "error": null,
+   "result_ids": [
+    "trial:NCT01905657",
+    "trial:NCT03302234",
+    "trial:NCT04322617",
+    "trial:NCT06561386",
+    "trial:NCT07063745"
+   ]
+  }
+ ],
+ "retrieved": [
+  "count:1",
+  "trial:NCT01905657",
+  "trial:NCT03302234",
+  "trial:NCT04322617",
+  "trial:NCT06561386",
+  "trial:NCT07063745",
+  "label:pembrolizumab:adverse_reactions:152",
+  "label:pembrolizumab:adverse_reactions:0",
+  "label:pembrolizumab:adverse_reactions:31",
+  "label:pembrolizumab:adverse_reactions:41",
+  "label:pembrolizumab:adverse_reactions:62"
+ ],
+ "draft": {
+  "text": "Yes. ClinicalTrials.gov lists 144 Phase 3 studies matching pembrolizumab and lung cancer [count:1]. Examples: NCT01905657, Pembrolizumab (MK-3475) two doses vs docetaxel in previously treated NSCLC (KEYNOTE-010), Phase 2/3, Completed [trial:NCT01905657]; NCT03302234, Pembrolizumab with ipilimumab or placebo in untreated metastatic NSCLC (KEYNOTE-598), Phase 3, Completed [trial:NCT03302234]; NCT06561386, Nivolumab and relatlimab plus chemotherapy vs pembrolizumab plus chemotherapy in stage IV/recurrent non-squamous NSCLC, Phase 3, Recruiting [trial:NCT06561386]. Common adverse reactions (reported in \u226520% of patients) with KEYTRUDA as a single agent were fatigue, musculoskeletal pain, rash, diarrhea, pyrexia, cough, decreased appetite, pruritus, dyspnea, constipation, pain, abdominal pain, nausea, and hypothyroidism [label:pembrolizumab:adverse_reactions:0]. With chemotherapy or chemoradiotherapy, common reactions included fatigue/asthenia, nausea, constipation, diarrhea, decreased appetite, rash, vomiting, cough, dyspnea, pyrexia, alopecia, and peripheral neuropathy, among others [label:pembrolizumab:adverse_reactions:0]. The label also describes severe and fatal immune-mediated adverse reactions and infusion-related reactions [label:pembrolizumab:adverse_reactions:0].",
+  "citations": [
+   "count:1",
+   "trial:NCT01905657",
+   "trial:NCT03302234",
+   "trial:NCT06561386",
+   "label:pembrolizumab:adverse_reactions:0"
+  ],
+  "abstained": false,
+  "abstain_reason": null
+ },
+ "answer": {
+  "text": "Yes. ClinicalTrials.gov lists 144 Phase 3 studies matching pembrolizumab and lung cancer [count:1]. Examples: NCT01905657, Pembrolizumab (MK-3475) two doses vs docetaxel in previously treated NSCLC (KEYNOTE-010), Phase 2/3, Completed [trial:NCT01905657]; NCT03302234, Pembrolizumab with ipilimumab or placebo in untreated metastatic NSCLC (KEYNOTE-598), Phase 3, Completed [trial:NCT03302234]; NCT06561386, Nivolumab and relatlimab plus chemotherapy vs pembrolizumab plus chemotherapy in stage IV/recurrent non-squamous NSCLC, Phase 3, Recruiting [trial:NCT06561386]. Common adverse reactions (reported in \u226520% of patients) with KEYTRUDA as a single agent were fatigue, musculoskeletal pain, rash, diarrhea, pyrexia, cough, decreased appetite, pruritus, dyspnea, constipation, pain, abdominal pain, nausea, and hypothyroidism [label:pembrolizumab:adverse_reactions:0]. With chemotherapy or chemoradiotherapy, common reactions included fatigue/asthenia, nausea, constipation, diarrhea, decreased appetite, rash, vomiting, cough, dyspnea, pyrexia, alopecia, and peripheral neuropathy, among others [label:pembrolizumab:adverse_reactions:0]. The label also describes severe and fatal immune-mediated adverse reactions and infusion-related reactions [label:pembrolizumab:adverse_reactions:0].",
+  "abstained": false,
+  "abstain_reason": null,
+  "citations": [
+   "count:1",
+   "trial:NCT01905657",
+   "trial:NCT03302234",
+   "trial:NCT06561386",
+   "label:pembrolizumab:adverse_reactions:0"
+  ],
+  "invented": []
+ },
+ "llm_calls": [
+  {
+   "step": "router",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 1008,
+   "output_tokens": 89,
+   "cost_usd": 0.0001453,
+   "latency_ms": 1993
+  },
+  {
+   "step": "trial_planner",
+   "model": "claude-sonnet-5-5",
+   "input_tokens": 1830,
+   "output_tokens": 239,
+   "cost_usd": 0.00605,
+   "latency_ms": 2328
+  },
+  {
+   "step": "generator",
+   "model": "claude-sonnet-5-5",
+   "input_tokens": 4855,
+   "output_tokens": 677,
+   "cost_usd": 0.01648,
+   "latency_ms": 4236
+  }
+ ],
+ "latency_ms": 8879,
+ "cost_usd": 0.022675
+}

@@ -1,0 +1,87 @@
+{
+ "trace_id": "659441f64b3b",
+ "at": "2026-10-25T17:45:37.564094+00:00",
+ "question": "How many Phase 3 trials have studied adalimumab in rheumatoid arthritis?",
+ "entities": [
+  {
+   "mention": "adalimumab",
+   "generic_name": "adalimumab",
+   "rxcui": [
+    "797544",
+    "2668074",
+    "2668078"
+   ],
+   "resolved": true,
+   "source": "synonym_map"
+  }
+ ],
+ "route": {
+  "kind": "trials",
+  "reason": "The question asks how many Phase 3 trials have studied adalimumab in rheumatoid arthritis, which is answered by ClinicalTrials.gov registry records."
+ },
+ "tool_calls": [
+  {
+   "name": "count_trials",
+   "input": {
+    "drug": "adalimumab",
+    "condition": "rheumatoid arthritis",
+    "phase": [
+     "PHASE3"
+    ]
+   },
+   "ok": true,
+   "error": null,
+   "result_ids": [
+    "count:1"
+   ]
+  }
+ ],
+ "retrieved": [
+  "count:1"
+ ],
+ "draft": {
+  "text": "58 Phase 3 trials of adalimumab in rheumatoid arthritis are registered on ClinicalTrials.gov [count:1].",
+  "citations": [
+   "count:1"
+  ],
+  "abstained": false,
+  "abstain_reason": null
+ },
+ "answer": {
+  "text": "58 Phase 3 trials of adalimumab in rheumatoid arthritis are registered on ClinicalTrials.gov [count:1].",
+  "abstained": false,
+  "abstain_reason": null,
+  "citations": [
+   "count:1"
+  ],
+  "invented": []
+ },
+ "llm_calls": [
+  {
+   "step": "router",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 822,
+   "output_tokens": 70,
+   "cost_usd": 0.0001172,
+   "latency_ms": 1231
+  },
+  {
+   "step": "trial_planner",
+   "model": "claude-sonnet-5-5",
+   "input_tokens": 1819,
+   "output_tokens": 113,
+   "cost_usd": 0.004768,
+   "latency_ms": 1319
+  },
+  {
+   "step": "generator",
+   "model": "claude-sonnet-5-5",
+   "input_tokens": 952,
+   "output_tokens": 81,
+   "cost_usd": 0.002714,
+   "latency_ms": 2139
+  }
+ ],
+ "latency_ms": 4692,
+ "cost_usd": 0.007599
+}

@@ -1,0 +1,119 @@
+{
+ "trace_id": "ad3d9e49dc4f",
+ "at": "2026-10-25T17:45:25.982194+00:00",
+ "question": "Recruiting Phase 3 trials of semaglutide for heart failure?",
+ "entities": [
+  {
+   "mention": "semaglutide",
+   "generic_name": "semaglutide",
+   "rxcui": [
+    "2619152",
+    "2619154"
+   ],
+   "resolved": true,
+   "source": "synonym_map"
+  }
+ ],
+ "route": {
+  "kind": "trials",
+  "reason": "The question asks for recruiting Phase 3 trials of semaglutide in heart failure, which is answerable from ClinicalTrials.gov registry records (phase, status, condition)."
+ },
+ "tool_calls": [
+  {
+   "name": "search_trials",
+   "input": {
+    "drug": "semaglutide",
+    "condition": "heart failure",
+    "phase": [
+     "PHASE3"
+    ],
+    "status": [
+     "RECRUITING"
+    ],
+    "limit": 10
+   },
+   "ok": true,
+   "error": null,
+   "result_ids": [
+    "trial:NCT06082063",
+    "trial:NCT06423599",
+    "trial:NCT07223242"
+   ]
+  },
+  {
+   "name": "count_trials",
+   "input": {
+    "drug": "semaglutide",
+    "condition": "heart failure",
+    "phase": [
+     "PHASE3"
+    ],
+    "status": [
+     "RECRUITING"
+    ]
+   },
+   "ok": true,
+   "error": null,
+   "result_ids": [
+    "count:2"
+   ]
+  }
+ ],
+ "retrieved": [
+  "trial:NCT06082063",
+  "trial:NCT06423599",
+  "trial:NCT07223242",
+  "count:2"
+ ],
+ "draft": {
+  "text": "The registry count for recruiting Phase 3 semaglutide trials in heart failure is 3 [count:2]. Of the trials listed, two include semaglutide as an intervention: NCT06082063, \"Multifactorial Intervention to Reduce Cardiovascular Disease in Type 1 Diabetes\", Phase 3, Recruiting [trial:NCT06082063]; and NCT06423599, \"Effect of Weight Loss on Physical and Cardiac Performance in People With Obesity and Heart Failure\", Phase 2/Phase 3, Recruiting [trial:NCT06423599]. NCT07223242, \"Tailored Exercise Training Study Among Adults With HFpEF\", Phase 2/Phase 3, Recruiting, was also returned, but its listed interventions are exercise training and weight loss and do not name semaglutide [trial:NCT07223242]. The evidence does not say which trials the count of 3 comprises, so the list may not match it exactly.",
+  "citations": [
+   "count:2",
+   "trial:NCT06082063",
+   "trial:NCT06423599",
+   "trial:NCT07223242"
+  ],
+  "abstained": false,
+  "abstain_reason": null
+ },
+ "answer": {
+  "text": "The registry count for recruiting Phase 3 semaglutide trials in heart failure is 3 [count:2]. Of the trials listed, two include semaglutide as an intervention: NCT06082063, \"Multifactorial Intervention to Reduce Cardiovascular Disease in Type 1 Diabetes\", Phase 3, Recruiting [trial:NCT06082063]; and NCT06423599, \"Effect of Weight Loss on Physical and Cardiac Performance in People With Obesity and Heart Failure\", Phase 2/Phase 3, Recruiting [trial:NCT06423599]. NCT07223242, \"Tailored Exercise Training Study Among Adults With HFpEF\", Phase 2/Phase 3, Recruiting, was also returned, but its listed interventions are exercise training and weight loss and do not name semaglutide [trial:NCT07223242]. The evidence does not say which trials the count of 3 comprises, so the list may not match it exactly.",
+  "abstained": false,
+  "abstain_reason": null,
+  "citations": [
+   "count:2",
+   "trial:NCT06082063",
+   "trial:NCT06423599",
+   "trial:NCT07223242"
+  ],
+  "invented": []
+ },
+ "llm_calls": [
+  {
+   "step": "router",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 817,
+   "output_tokens": 75,
+   "cost_usd": 0.0001192,
+   "latency_ms": 2599
+  },
+  {
+   "step": "trial_planner",
+   "model": "claude-sonnet-5-5",
+   "input_tokens": 1814,
+   "output_tokens": 269,
+   "cost_usd": 0.006318,
+   "latency_ms": 2099
+  },
+  {
+   "step": "generator",
+   "model": "claude-sonnet-5-5",
+   "input_tokens": 1539,
+   "output_tokens": 396,
+   "cost_usd": 0.007038,
+   "latency_ms": 3944
+  }
+ ],
+ "latency_ms": 8858,
+ "cost_usd": 0.013475
+}

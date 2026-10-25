@@ -1,0 +1,77 @@
+{
+ "trace_id": "f8aee8ad4082",
+ "at": "2026-10-25T17:49:20.699488+00:00",
+ "question": "What is dupilumab indicated for?",
+ "entities": [
+  {
+   "mention": "dupilumab",
+   "generic_name": "dupilumab",
+   "rxcui": [
+    "1876401",
+    "1876406",
+    "2099300",
+    "2099302",
+    "2375327",
+    "2375329",
+    "2559706",
+    "2559707"
+   ],
+   "resolved": true,
+   "source": "synonym_map"
+  }
+ ],
+ "route": {
+  "kind": "label",
+  "reason": "Indications for dupilumab come from its FDA drug label.",
+  "label_query": "dupilumab indications"
+ },
+ "tool_calls": [],
+ "retrieved": [
+  "label:dupilumab:indications_and_usage:3",
+  "label:dupilumab:contraindications:0",
+  "label:dupilumab:indications_and_usage:0",
+  "label:dupilumab:mechanism_of_action:0",
+  "label:dupilumab:indications_and_usage:2"
+ ],
+ "draft": {
+  "text": "Dupilumab (DUPIXENT), an interleukin-4 receptor alpha antagonist, is indicated for several conditions [label:dupilumab:indications_and_usage:0]. Atopic dermatitis: moderate-to-severe AD in patients aged 6 months and older not adequately controlled with topical prescription therapies or when those therapies are not advisable [label:dupilumab:indications_and_usage:0]. Asthma: add-on maintenance treatment in patients aged 6 years and older with moderate-to-severe eosinophilic-phenotype or oral corticosteroid-dependent asthma, not for acute bronchospasm or status asthmaticus [label:dupilumab:indications_and_usage:0]. Chronic rhinosinusitis with nasal polyps: add-on maintenance treatment in patients aged 12 years and older with inadequately controlled CRSwNP [label:dupilumab:indications_and_usage:2]. Eosinophilic esophagitis: patients aged 1 year and older weighing at least 15 kg [label:dupilumab:indications_and_usage:2]. Prurigo nodularis: adults [label:dupilumab:indications_and_usage:2]. COPD: add-on maintenance treatment in adults with inadequately controlled COPD and an eosinophilic phenotype, not for acute bronchospasm [label:dupilumab:indications_and_usage:2]. Chronic spontaneous urticaria: patients aged 2 years and older who remain symptomatic despite H1 antihistamine treatment, not for other forms of urticaria [label:dupilumab:indications_and_usage:2]. Bullous pemphigoid: adults [label:dupilumab:indications_and_usage:3]. Allergic fungal rhinosinusitis: patients aged 6 years and older with a history of sino-nasal surgery [label:dupilumab:indications_and_usage:3].",
+  "citations": [
+   "label:dupilumab:indications_and_usage:0",
+   "label:dupilumab:indications_and_usage:2",
+   "label:dupilumab:indications_and_usage:3"
+  ],
+  "abstained": false,
+  "abstain_reason": null
+ },
+ "answer": {
+  "text": "Dupilumab (DUPIXENT), an interleukin-4 receptor alpha antagonist, is indicated for several conditions [label:dupilumab:indications_and_usage:0]. Atopic dermatitis: moderate-to-severe AD in patients aged 6 months and older not adequately controlled with topical prescription therapies or when those therapies are not advisable [label:dupilumab:indications_and_usage:0]. Asthma: add-on maintenance treatment in patients aged 6 years and older with moderate-to-severe eosinophilic-phenotype or oral corticosteroid-dependent asthma, not for acute bronchospasm or status asthmaticus [label:dupilumab:indications_and_usage:0]. Chronic rhinosinusitis with nasal polyps: add-on maintenance treatment in patients aged 12 years and older with inadequately controlled CRSwNP [label:dupilumab:indications_and_usage:2]. Eosinophilic esophagitis: patients aged 1 year and older weighing at least 15 kg [label:dupilumab:indications_and_usage:2]. Prurigo nodularis: adults [label:dupilumab:indications_and_usage:2]. COPD: add-on maintenance treatment in adults with inadequately controlled COPD and an eosinophilic phenotype, not for acute bronchospasm [label:dupilumab:indications_and_usage:2]. Chronic spontaneous urticaria: patients aged 2 years and older who remain symptomatic despite H1 antihistamine treatment, not for other forms of urticaria [label:dupilumab:indications_and_usage:2]. Bullous pemphigoid: adults [label:dupilumab:indications_and_usage:3]. Allergic fungal rhinosinusitis: patients aged 6 years and older with a history of sino-nasal surgery [label:dupilumab:indications_and_usage:3].",
+  "abstained": false,
+  "abstain_reason": null,
+  "citations": [
+   "label:dupilumab:indications_and_usage:0",
+   "label:dupilumab:indications_and_usage:2",
+   "label:dupilumab:indications_and_usage:3"
+  ],
+  "invented": []
+ },
+ "llm_calls": [
+  {
+   "step": "router",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 979,
+   "output_tokens": 49,
+   "cost_usd": 0.0001224,
+   "latency_ms": 1464
+  },
+  {
+   "step": "generator",
+   "model": "claude-sonnet-5-5",
+   "input_tokens": 3056,
+   "output_tokens": 724,
+   "cost_usd": 0.013352,
+   "latency_ms": 4544
+  }
+ ],
+ "latency_ms": 6083,
+ "cost_usd": 0.013474
+}

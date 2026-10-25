@@ -1,0 +1,45 @@
+{
+ "trace_id": "90780e5c8c72",
+ "at": "2026-10-25T17:46:05.663884+00:00",
+ "question": "What will Keytruda earn in 2030?",
+ "entities": [
+  {
+   "mention": "Keytruda",
+   "generic_name": "pembrolizumab",
+   "rxcui": [
+    "1657746",
+    "1657749",
+    "1657750",
+    "1657751"
+   ],
+   "resolved": true,
+   "source": "synonym_map"
+  }
+ ],
+ "route": {
+  "kind": "out_of_scope",
+  "reason": "Forecasting future earnings for Keytruda is a financial projection, which neither the ClinicalTrials.gov registry nor FDA drug labels can answer."
+ },
+ "tool_calls": [],
+ "retrieved": [],
+ "draft": null,
+ "answer": {
+  "text": "I can't answer that from trial or label data.",
+  "abstained": true,
+  "abstain_reason": "out of scope: Forecasting future earnings for Keytruda is a financial projection, which neither the ClinicalTrials.gov registry nor FDA drug labels can answer.",
+  "citations": [],
+  "invented": []
+ },
+ "llm_calls": [
+  {
+   "step": "router",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 808,
+   "output_tokens": 72,
+   "cost_usd": 0.0001168,
+   "latency_ms": 1009
+  }
+ ],
+ "latency_ms": 1009,
+ "cost_usd": 0.000117
+}

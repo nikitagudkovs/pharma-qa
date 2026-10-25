@@ -1,0 +1,75 @@
+{
+ "trace_id": "af229abb904c",
+ "at": "2026-10-25T17:48:08.232791+00:00",
+ "question": "What does the isotretinoin label say about use in pregnancy?",
+ "entities": [
+  {
+   "mention": "isotretinoin",
+   "generic_name": "isotretinoin",
+   "rxcui": [
+    "197843",
+    "197844",
+    "197845",
+    "403930"
+   ],
+   "resolved": true,
+   "source": "synonym_map"
+  }
+ ],
+ "route": {
+  "kind": "label",
+  "reason": "The question asks what the drug label says about pregnancy use, which is label content only (pregnancy is a listed label topic), not trial registry information.",
+  "label_query": "isotretinoin pregnancy"
+ },
+ "tool_calls": [],
+ "retrieved": [
+  "label:isotretinoin:pregnancy:0",
+  "label:isotretinoin:use_in_specific_populations:0",
+  "label:isotretinoin:warnings_and_cautions:1",
+  "label:isotretinoin:use_in_specific_populations:2",
+  "label:isotretinoin:boxed_warning:0"
+ ],
+ "draft": {
+  "text": "The isotretinoin label says it is contraindicated in pregnancy because it can cause fetal harm [label:isotretinoin:pregnancy:0]. The boxed warning states it can cause life-threatening birth defects, with an extremely high risk if pregnancy occurs while taking any amount, even for short periods [label:isotretinoin:boxed_warning:0]. Potentially any exposed fetus can be affected, and there is no accurate way to determine prenatally whether an exposed fetus has been affected [label:isotretinoin:boxed_warning:0].\n\nDetails:\n- Human exposure is associated with an increased risk of major congenital malformations, spontaneous abortions, and premature births [label:isotretinoin:pregnancy:0]. Documented malformations involve the face, eyes, ears, skull, CNS, cardiovascular system, and thymus and parathyroid glands [label:isotretinoin:pregnancy:0].\n- If pregnancy occurs during treatment, discontinue isotretinoin immediately and refer the patient to an obstetrician-gynecologist experienced in reproductive toxicity for evaluation and counseling [label:isotretinoin:boxed_warning:0].\n- Suspected fetal exposure during or 1 month after treatment should be reported immediately to the FDA via MedWatch and to the iPLEDGE pregnancy registry [label:isotretinoin:warnings_and_cautions:1].\n- Because of the embryo-fetal toxicity risk, isotretinoin is available only through the iPLEDGE REMS restricted program [label:isotretinoin:boxed_warning:0].\n- In patients who can get pregnant, pregnancy testing is required before, during, and after treatment [label:isotretinoin:use_in_specific_populations:2].",
+  "citations": [
+   "label:isotretinoin:pregnancy:0",
+   "label:isotretinoin:boxed_warning:0",
+   "label:isotretinoin:warnings_and_cautions:1",
+   "label:isotretinoin:use_in_specific_populations:2"
+  ],
+  "abstained": false,
+  "abstain_reason": null
+ },
+ "answer": {
+  "text": "The isotretinoin label says it is contraindicated in pregnancy because it can cause fetal harm [label:isotretinoin:pregnancy:0]. The boxed warning states it can cause life-threatening birth defects, with an extremely high risk if pregnancy occurs while taking any amount, even for short periods [label:isotretinoin:boxed_warning:0]. Potentially any exposed fetus can be affected, and there is no accurate way to determine prenatally whether an exposed fetus has been affected [label:isotretinoin:boxed_warning:0].\n\nDetails:\n- Human exposure is associated with an increased risk of major congenital malformations, spontaneous abortions, and premature births [label:isotretinoin:pregnancy:0]. Documented malformations involve the face, eyes, ears, skull, CNS, cardiovascular system, and thymus and parathyroid glands [label:isotretinoin:pregnancy:0].\n- If pregnancy occurs during treatment, discontinue isotretinoin immediately and refer the patient to an obstetrician-gynecologist experienced in reproductive toxicity for evaluation and counseling [label:isotretinoin:boxed_warning:0].\n- Suspected fetal exposure during or 1 month after treatment should be reported immediately to the FDA via MedWatch and to the iPLEDGE pregnancy registry [label:isotretinoin:warnings_and_cautions:1].\n- Because of the embryo-fetal toxicity risk, isotretinoin is available only through the iPLEDGE REMS restricted program [label:isotretinoin:boxed_warning:0].\n- In patients who can get pregnant, pregnancy testing is required before, during, and after treatment [label:isotretinoin:use_in_specific_populations:2].",
+  "abstained": false,
+  "abstain_reason": null,
+  "citations": [
+   "label:isotretinoin:pregnancy:0",
+   "label:isotretinoin:boxed_warning:0",
+   "label:isotretinoin:warnings_and_cautions:1",
+   "label:isotretinoin:use_in_specific_populations:2"
+  ],
+  "invented": []
+ },
+ "llm_calls": [
+  {
+   "step": "router",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 989,
+   "output_tokens": 78,
+   "cost_usd": 0.00013790000000000002,
+   "latency_ms": 1549
+  },
+  {
+   "step": "generator",
+   "model": "claude-sonnet-5-5",
+   "input_tokens": 3578,
+   "output_tokens": 708,
+   "cost_usd": 0.014236,
+   "latency_ms": 8245
+  }
+ ],
+ "latency_ms": 15435,
+ "cost_usd": 0.014374
+}

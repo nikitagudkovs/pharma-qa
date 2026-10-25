@@ -1,0 +1,68 @@
+{
+ "trace_id": "d7bb7b165962",
+ "at": "2026-10-25T17:45:49.349928+00:00",
+ "question": "What are the contraindications for apixaban?",
+ "entities": [
+  {
+   "mention": "apixaban",
+   "generic_name": "apixaban",
+   "rxcui": [
+    "1364435",
+    "1364441",
+    "1364445",
+    "1364447"
+   ],
+   "resolved": true,
+   "source": "synonym_map"
+  }
+ ],
+ "route": {
+  "kind": "label",
+  "reason": "Contraindications for apixaban are listed in its FDA drug label, not in trial registry records."
+ },
+ "tool_calls": [],
+ "retrieved": [
+  "label:apixaban:contraindications:0",
+  "label:apixaban:warnings_and_cautions:2",
+  "label:apixaban:pregnancy:1",
+  "label:apixaban:warnings_and_cautions:6",
+  "label:apixaban:warnings_and_cautions:1"
+ ],
+ "draft": {
+  "text": "Apixaban (ELIQUIS) is contraindicated in patients with active pathological bleeding and in patients with severe hypersensitivity reaction to ELIQUIS, such as anaphylactic reactions [label:apixaban:contraindications:0].",
+  "citations": [
+   "label:apixaban:contraindications:0"
+  ],
+  "abstained": false,
+  "abstain_reason": null
+ },
+ "answer": {
+  "text": "Apixaban (ELIQUIS) is contraindicated in patients with active pathological bleeding and in patients with severe hypersensitivity reaction to ELIQUIS, such as anaphylactic reactions [label:apixaban:contraindications:0].",
+  "abstained": false,
+  "abstain_reason": null,
+  "citations": [
+   "label:apixaban:contraindications:0"
+  ],
+  "invented": []
+ },
+ "llm_calls": [
+  {
+   "step": "router",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 803,
+   "output_tokens": 45,
+   "cost_usd": 0.0001028,
+   "latency_ms": 4044
+  },
+  {
+   "step": "generator",
+   "model": "claude-sonnet-5-5",
+   "input_tokens": 3410,
+   "output_tokens": 128,
+   "cost_usd": 0.0081,
+   "latency_ms": 1538
+  }
+ ],
+ "latency_ms": 12366,
+ "cost_usd": 0.008203
+}

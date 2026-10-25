@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pharma Q&amp;A</title>
+<style>
+  :root {
+    --bg: #f6f7f5; --panel: #ffffff; --ink: #18201d; --muted: #5d6964; --line: #dde3df;
+    --accent: #0f6b5a; --accent-soft: #e3f1ed; --warn: #9a5b00; --warn-soft: #fbf0dc;
+    --bad: #a3322a; --good: #1d7a3e; --trial: #2c5ea8; --label: #7a4a9e;
+    --mono: ui-monospace, "SF Mono", Menlo, monospace;
+    --sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #101513; --panel: #171d1b; --ink: #e6ece9; --muted: #95a39d; --line: #2a3330;
+      --accent: #4fc3a7; --accent-soft: #17302a; --warn: #e3a64a; --warn-soft: #33281a;
+      --bad: #ef7d74; --good: #6fd08f; --trial: #7fa8ea; --label: #c39be3;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.55 var(--sans); }
+  .wrap { max-width: 920px; margin: 0 auto; padding: 28px 16px 64px; }
+  header { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; margin-bottom: 6px; }
+  h1 { font-size: 22px; margin: 0; letter-spacing: -0.01em; }
+  .sub { color: var(--muted); margin: 0 0 22px; }
+  nav { display: flex; gap: 4px; margin-left: auto; }
+  nav button { border: 1px solid var(--line); background: transparent; color: var(--muted); padding: 6px 12px;
+    border-radius: 6px; font: inherit; cursor: pointer; }
+  nav button[aria-selected="true"] { background: var(--panel); color: var(--ink); border-color: var(--ink); }
+  .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 18px; }
+  form { display: flex; gap: 8px; }
+  input[type=text] { flex: 1; min-width: 0; padding: 11px 12px; border: 1px solid var(--line); border-radius: 8px;
+    background: var(--bg); color: var(--ink); font: inherit; }
+  input[type=text]:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
+  .primary { padding: 0 18px; border: 0; border-radius: 8px; background: var(--accent); color: #fff; font: inherit;
+    font-weight: 600; cursor: pointer; }
+  .primary:disabled { opacity: .5; cursor: wait; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+  .chip { border: 1px solid var(--line); background: transparent; color: var(--muted); border-radius: 999px;
+    padding: 4px 10px; font: 13px var(--sans); cursor: pointer; text-align: left; }
+  .chip:hover { color: var(--ink); border-color: var(--muted); }
+  #result { margin-top: 16px; }
+  .answer { white-space: pre-wrap; font-size: 16px; }
+  .answer sup a { color: var(--accent); text-decoration: none; font-weight: 600; font-size: 11px; padding: 0 1px; }
+  .abstain { border-left: 3px solid var(--warn); background: var(--warn-soft); padding: 12px 14px; border-radius: 6px; }
+  .abstain .why { color: var(--muted); font-size: 13px; margin-top: 4px; }
+  .meta { display: flex; flex-wrap: wrap; gap: 6px 16px; color: var(--muted); font-size: 13px; margin: 14px 0 4px;
+    padding-top: 12px; border-top: 1px solid var(--line); }
+  .meta b { color: var(--ink); font-weight: 600; }
+  .tag { font: 12px var(--mono); padding: 1px 6px; border-radius: 4px; background: var(--accent-soft); color: var(--accent); }
+  .tag.unresolved { background: var(--warn-soft); color: var(--warn); }
+  ol.cites { margin: 12px 0 0; padding-left: 22px; font-size: 14px; }
+  ol.cites li { margin: 4px 0; }
+  ol.cites a { color: var(--ink); }
+  .src { font: 11px var(--mono); text-transform: uppercase; letter-spacing: .04em; margin-right: 6px; }
+  .src.trials { color: var(--trial); } .src.label { color: var(--label); }
+  details { margin-top: 10px; font-size: 13px; color: var(--muted); }
+  details pre { font: 12px/1.5 var(--mono); white-space: pre-wrap; background: var(--bg); padding: 10px; border-radius: 6px;
+    overflow-x: auto; }
+  .err { color: var(--bad); }
+  .spinner { color: var(--muted); }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th, td { text-align: left; padding: 7px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { color: var(--muted); font-weight: 500; font-size: 12px; text-transform: uppercase; letter-spacing: .04em; }
+  td.num { font-variant-numeric: tabular-nums; text-align: right; white-space: nowrap; }
+  th.num { text-align: right; }
+  .delta.up { color: var(--good); } .delta.down { color: var(--bad); }
+  .miss { color: var(--bad); }
+  .scroll { overflow-x: auto; }
+  h2 { font-size: 15px; margin: 24px 0 8px; }
+  .note { color: var(--muted); font-size: 13px; }
+  footer { margin-top: 28px; color: var(--muted); font-size: 12px; }
+  footer a { color: var(--muted); }
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Pharma Q&amp;A</h1>
+    <nav role="tablist">
+      <button role="tab" aria-selected="true" data-tab="ask">Ask</button>
+      <button role="tab" aria-selected="false" data-tab="scores">Eval scorecards</button>
+    </nav>
+  </header>
+  <p class="sub">Cited answers from ClinicalTrials.gov and FDA drug labels. It refuses when the evidence doesn't answer the question.</p>
+
+  <section id="tab-ask">
+    <div class="panel">
+      <form id="ask">
+        <input type="text" id="q" placeholder="e.g. Contraindications for Ozempic?" autocomplete="off" maxlength="500">
+        <button class="primary" id="go">Ask</button>
+      </form>
+      <div class="chips" id="examples"></div>
+    </div>
+    <div id="result"></div>
+  </section>
+
+  <section id="tab-scores" hidden>
+    <div class="panel" id="scores"><span class="spinner">Loading…</span></div>
+  </section>
+
+  <footer>Public data from <a href="https://clinicaltrials.gov">ClinicalTrials.gov</a> and
+    <a href="https://open.fda.gov/apis/drug/label/">openFDA</a>. Not medical advice.</footer>
+</div>
+<script>
+const $ = (s) => document.querySelector(s);
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const pct = (v) => v == null ? "n/a" : (v * 100).toFixed(0) + "%";
+
+document.querySelectorAll("nav button").forEach(b => b.onclick = () => {
+  document.querySelectorAll("nav button").forEach(x => x.setAttribute("aria-selected", x === b));
+  $("#tab-ask").hidden = b.dataset.tab !== "ask";
+  $("#tab-scores").hidden = b.dataset.tab !== "scores";
+  if (b.dataset.tab === "scores") loadScores();
+});
+
+fetch("/api/examples").then(r => r.json()).then(xs => {
+  $("#examples").innerHTML = xs.map(x => `<button class="chip" type="button">${esc(x)}</button>`).join("");
+  $("#examples").querySelectorAll(".chip").forEach(c => c.onclick = () => { $("#q").value = c.textContent; ask(); });
+});
+
+$("#ask").onsubmit = (e) => { e.preventDefault(); ask(); };
+
+async function ask() {
+  const q = $("#q").value.trim();
+  if (q.length < 3) return;
+  $("#go").disabled = true;
+  $("#result").innerHTML = `<div class="panel spinner">Resolving drugs, routing, retrieving evidence…</div>`;
+  try {
+    const r = await fetch("/ask", {method: "POST", headers: {"Content-Type": "application/json"},
+                                   body: JSON.stringify({question: q})});
+    if (!r.ok) throw new Error((await r.json().catch(() => ({}))).detail || r.statusText);
+    render(await r.json());
+  } catch (err) {
+    $("#result").innerHTML = `<div class="panel err">${esc(err.message)}</div>`;
+  } finally {
+    $("#go").disabled = false;
+  }
+}
+
+function render(d) {
+  const num = Object.fromEntries(d.citations.map((c, i) => [c.id, i + 1]));
+  let body;
+  if (d.abstained) {
+    body = `<div class="abstain"><div class="answer">${esc(d.answer)}</div>
+            <div class="why">Why: ${esc(d.abstain_reason)}</div></div>`;
+  } else {
+    // Inline [id] markers become numbered links to the cited source
+    const html = esc(d.answer).replace(/\[((?:trial|label|count):[^\]\s]+)\]/g, (m, id) =>
+      num[id] ? `<sup><a href="${esc(d.citations[num[id] - 1].url)}" target="_blank" rel="noopener" title="${esc(id)}">[${num[id]}]</a></sup>` : "");
+    body = `<div class="answer">${html}</div>
+      <ol class="cites">${d.citations.map(c => `<li><span class="src ${c.source}">${c.source === "trials" ? "Trial" : "Label"}</span>
+        <a href="${esc(c.url)}" target="_blank" rel="noopener">${esc(c.title)}</a>
+        <span class="note">${esc(c.id)}</span></li>`).join("")}</ol>`;
+  }
+  const ents = d.entities.length ? d.entities.map(e =>
+    `<span class="tag ${e.resolved ? "" : "unresolved"}" title="${e.resolved ? "resolved via " + e.source : "not in label corpus"}">${esc(e.mention)}${e.mention.toLowerCase() === e.generic_name ? "" : " → " + esc(e.generic_name)}</span>`).join(" ") : "none";
+  $("#result").innerHTML = `<div class="panel">${body}
+    <div class="meta">
+      <span>Route <span class="tag">${esc(d.route)}</span></span>
+      <span>Drugs ${ents}</span>
+      <span><b>${(d.latency_ms / 1000).toFixed(1)}s</b></span>
+      <span><b>$${d.cost_usd.toFixed(4)}</b></span>
+      <span>trace <code>${esc(d.trace_id)}</code></span>
+    </div>
+    <details><summary>Pipeline details</summary><pre>${esc(JSON.stringify({
+      route_reason: d.route_reason, tool_calls: d.tool_runs, retrieved: d.evidence_ids,
+      invented_citations: d.invented_citations}, null, 2))}</pre></details></div>`;
+}
+
+const METRICS = [
+  ["routing", "Routing accuracy", "≥ 90%"], ["entities", "Entity accuracy", "≥ 95%"],
+  ["recall@5", "Retrieval recall@5", "≥ 85%"], ["citation_validity_raw", "Citation validity (model draft)", ""],
+  ["citation_validity", "Citation validity (after check)", "100%"], ["correctness", "Answer correctness", "≥ 80%"],
+  ["abstain_precision", "Abstain precision", ""], ["abstain_recall", "Abstain recall", "100%"],
+];
+let scoresLoaded = false;
+async function loadScores() {
+  if (scoresLoaded) return;
+  const runs = await fetch("/api/scorecards").then(r => r.json());
+  scoresLoaded = true;
+  if (!runs.length) { $("#scores").innerHTML = `<p class="note">No eval runs saved yet. Run <code>python -m eval.run</code>.</p>`; return; }
+  const shown = runs.slice(-3);
+  const head = shown.map(r => `<th class="num">${esc(r.tag)}<br><span class="note">${esc(r.started_at.slice(0, 16).replace("T", " "))}</span></th>`).join("");
+  const rows = METRICS.map(([k, label, target]) => {
+    const cells = shown.map((r, i) => {
+      const v = r.metrics[k], prev = i ? shown[i - 1].metrics[k] : null;
+      const dl = (i && v != null && prev != null && Math.abs(v - prev) > 1e-9)
+        ? ` <span class="delta ${v > prev ? "up" : "down"}">${v > prev ? "+" : ""}${((v - prev) * 100).toFixed(0)}</span>` : "";
+      return `<td class="num">${pct(v)}${dl}</td>`;
+    }).join("");
+    return `<tr><td>${label}</td>${cells}<td class="note">${target}</td></tr>`;
+  }).join("");
+  const ops = shown.map(r => `<td class="num">${(r.metrics.p50_latency_ms / 1000).toFixed(1)}s · $${r.metrics.mean_cost_usd.toFixed(4)}</td>`).join("");
+  const last = shown[shown.length - 1];
+  const types = Object.entries(last.by_type).map(([t, s]) =>
+    `<tr><td>${esc(t)}</td><td class="num">${s.n}</td><td class="num">${pct(s.correct)}</td><td class="num">${pct(s.routing)}</td>
+     <td class="num">${pct(s.entities)}</td><td class="num">${pct(s["recall@5"])}</td></tr>`).join("");
+  $("#scores").innerHTML = `
+    <p class="note">30 questions with expected answers labelled against the real label and trial records. All metrics are computed in code. Targets are this project's own bar, not an industry standard.</p>
+    <div class="scroll"><table><thead><tr><th>Metric</th>${head}<th>Target</th></tr></thead>
+      <tbody>${rows}<tr><td>p50 latency · mean cost</td>${ops}<td></td></tr></tbody></table></div>
+    <h2>By question type: ${esc(last.tag)}</h2>
+    <div class="scroll"><table><thead><tr><th>Type</th><th class="num">n</th><th class="num">Correct</th><th class="num">Routing</th>
+      <th class="num">Entities</th><th class="num">Recall@5</th></tr></thead><tbody>${types}</tbody></table></div>`;
+}
+
+// Shareable links: ?q=<question> asks it on load, #scores opens the scorecards
+const preset = new URLSearchParams(location.search).get("q");
+if (preset) { $("#q").value = preset; ask(); }
+if (location.hash === "#scores") document.querySelector('nav button[data-tab="scores"]').click();
+</script>
+</body>
+</html>

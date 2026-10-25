@@ -1,0 +1,120 @@
+{
+ "trace_id": "bba041dd59a7",
+ "at": "2026-10-25T17:47:33.712206+00:00",
+ "question": "Recruiting Phase 3 trials of semaglutide for heart failure?",
+ "entities": [
+  {
+   "mention": "semaglutide",
+   "generic_name": "semaglutide",
+   "rxcui": [
+    "2619152",
+    "2619154"
+   ],
+   "resolved": true,
+   "source": "synonym_map"
+  }
+ ],
+ "route": {
+  "kind": "trials",
+  "reason": "The question asks which Phase 3 semaglutide trials for heart failure are recruiting, which is answered by ClinicalTrials.gov registry records.",
+  "label_query": null
+ },
+ "tool_calls": [
+  {
+   "name": "search_trials",
+   "input": {
+    "drug": "semaglutide",
+    "condition": "heart failure",
+    "phase": [
+     "PHASE3"
+    ],
+    "status": [
+     "RECRUITING"
+    ],
+    "limit": 10
+   },
+   "ok": true,
+   "error": null,
+   "result_ids": [
+    "trial:NCT06082063",
+    "trial:NCT06423599",
+    "trial:NCT07223242"
+   ]
+  },
+  {
+   "name": "count_trials",
+   "input": {
+    "drug": "semaglutide",
+    "condition": "heart failure",
+    "phase": [
+     "PHASE3"
+    ],
+    "status": [
+     "RECRUITING"
+    ]
+   },
+   "ok": true,
+   "error": null,
+   "result_ids": [
+    "count:2"
+   ]
+  }
+ ],
+ "retrieved": [
+  "trial:NCT06082063",
+  "trial:NCT06423599",
+  "trial:NCT07223242",
+  "count:2"
+ ],
+ "draft": {
+  "text": "The registry count for recruiting Phase 3 semaglutide trials in heart failure is 3 [count:2]. However, the listed evidence shows only one pure Phase 3 trial with semaglutide: NCT06082063, \"Multifactorial Intervention to Reduce Cardiovascular Disease in Type 1 Diabetes\", Phase 3, Recruiting; conditions include heart failure, and interventions include semaglutide [trial:NCT06082063]. Also listed are NCT06423599, \"Effect of Weight Loss on Physical and Cardiac Performance in People With Obesity and Heart Failure\", Phase 2/3, Recruiting, with semaglutide as an intervention [trial:NCT06423599]. NCT07223242, \"Tailored Exercise Training Study Among Adults With HFpEF\", Phase 2/3, Recruiting, lists exercise training and weight loss interventions, with no semaglutide listed [trial:NCT07223242]. The evidence does not explain how the count of 3 maps to these listed trials.",
+  "citations": [
+   "count:2",
+   "trial:NCT06082063",
+   "trial:NCT06423599",
+   "trial:NCT07223242"
+  ],
+  "abstained": false,
+  "abstain_reason": null
+ },
+ "answer": {
+  "text": "The registry count for recruiting Phase 3 semaglutide trials in heart failure is 3 [count:2]. However, the listed evidence shows only one pure Phase 3 trial with semaglutide: NCT06082063, \"Multifactorial Intervention to Reduce Cardiovascular Disease in Type 1 Diabetes\", Phase 3, Recruiting; conditions include heart failure, and interventions include semaglutide [trial:NCT06082063]. Also listed are NCT06423599, \"Effect of Weight Loss on Physical and Cardiac Performance in People With Obesity and Heart Failure\", Phase 2/3, Recruiting, with semaglutide as an intervention [trial:NCT06423599]. NCT07223242, \"Tailored Exercise Training Study Among Adults With HFpEF\", Phase 2/3, Recruiting, lists exercise training and weight loss interventions, with no semaglutide listed [trial:NCT07223242]. The evidence does not explain how the count of 3 maps to these listed trials.",
+  "abstained": false,
+  "abstain_reason": null,
+  "citations": [
+   "count:2",
+   "trial:NCT06082063",
+   "trial:NCT06423599",
+   "trial:NCT07223242"
+  ],
+  "invented": []
+ },
+ "llm_calls": [
+  {
+   "step": "router",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 992,
+   "output_tokens": 72,
+   "cost_usd": 0.00013519999999999998,
+   "latency_ms": 1716
+  },
+  {
+   "step": "trial_planner",
+   "model": "claude-sonnet-5-5",
+   "input_tokens": 1814,
+   "output_tokens": 269,
+   "cost_usd": 0.006318,
+   "latency_ms": 2024
+  },
+  {
+   "step": "generator",
+   "model": "claude-sonnet-5-5",
+   "input_tokens": 1539,
+   "output_tokens": 418,
+   "cost_usd": 0.007258,
+   "latency_ms": 3277
+  }
+ ],
+ "latency_ms": 7028,
+ "cost_usd": 0.013711
+}

@@ -1,0 +1,1 @@
+{"url": "https://clinicaltrials.gov/api/v2/studies", "params": {"query.intr": "nivolumab", "query.cond": "melanoma", "aggFilters": "phase:2", "pageSize": 1, "countTotal": "true", "fields": "NCTId"}, "response": {"totalCount": 207, "studies": [{"protocolSection": {"identificationModule": {"nctId": "NCT04631731"}}}], "nextPageToken": "ZVNj7o2Elu8o3lpzV8ikv62tmpOQJJxpYPep"}}

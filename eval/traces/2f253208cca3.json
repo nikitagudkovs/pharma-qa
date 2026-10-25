@@ -1,0 +1,65 @@
+{
+ "trace_id": "2f253208cca3",
+ "at": "2026-10-25T17:45:51.005566+00:00",
+ "question": "What is the boxed warning for warfarin?",
+ "entities": [
+  {
+   "mention": "warfarin",
+   "generic_name": "warfarin",
+   "rxcui": [
+    "855312"
+   ],
+   "resolved": true,
+   "source": "synonym_map"
+  }
+ ],
+ "route": {
+  "kind": "label",
+  "reason": "A boxed warning is a drug label section, so the answer comes from the FDA label for warfarin."
+ },
+ "tool_calls": [],
+ "retrieved": [
+  "label:warfarin:boxed_warning:0",
+  "label:warfarin:adverse_reactions:0",
+  "label:warfarin:pregnancy:0",
+  "label:warfarin:dosage_and_administration:2",
+  "label:warfarin:use_in_specific_populations:0"
+ ],
+ "draft": {
+  "text": "Warfarin's boxed warning is \"WARNING: BLEEDING RISK.\" Warfarin sodium can cause major or fatal bleeding [label:warfarin:boxed_warning:0]. Regular INR monitoring is required in all treated patients [label:warfarin:boxed_warning:0]. Drugs, dietary changes, and other factors affect the INR levels achieved with warfarin therapy [label:warfarin:boxed_warning:0]. Patients should be instructed about prevention measures to minimize bleeding risk and to report signs and symptoms of bleeding [label:warfarin:boxed_warning:0].",
+  "citations": [
+   "label:warfarin:boxed_warning:0"
+  ],
+  "abstained": false,
+  "abstain_reason": null
+ },
+ "answer": {
+  "text": "Warfarin's boxed warning is \"WARNING: BLEEDING RISK.\" Warfarin sodium can cause major or fatal bleeding [label:warfarin:boxed_warning:0]. Regular INR monitoring is required in all treated patients [label:warfarin:boxed_warning:0]. Drugs, dietary changes, and other factors affect the INR levels achieved with warfarin therapy [label:warfarin:boxed_warning:0]. Patients should be instructed about prevention measures to minimize bleeding risk and to report signs and symptoms of bleeding [label:warfarin:boxed_warning:0].",
+  "abstained": false,
+  "abstain_reason": null,
+  "citations": [
+   "label:warfarin:boxed_warning:0"
+  ],
+  "invented": []
+ },
+ "llm_calls": [
+  {
+   "step": "router",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 804,
+   "output_tokens": 46,
+   "cost_usd": 0.0001034,
+   "latency_ms": 1064
+  },
+  {
+   "step": "generator",
+   "model": "claude-sonnet-5-5",
+   "input_tokens": 3591,
+   "output_tokens": 257,
+   "cost_usd": 0.009752,
+   "latency_ms": 3159
+  }
+ ],
+ "latency_ms": 16357,
+ "cost_usd": 0.009855
+}

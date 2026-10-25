@@ -1,0 +1,126 @@
+{
+ "trace_id": "59476e8f4618",
+ "at": "2026-10-25T17:48:49.377307+00:00",
+ "question": "List Phase 2 trials of olaparib in prostate cancer.",
+ "entities": [
+  {
+   "mention": "olaparib",
+   "generic_name": "olaparib",
+   "rxcui": [
+    "1942482",
+    "1942485",
+    "1942487",
+    "1942489"
+   ],
+   "resolved": true,
+   "source": "synonym_map"
+  }
+ ],
+ "route": {
+  "kind": "trials",
+  "reason": "The question asks for Phase 2 trial registry records of olaparib in prostate cancer, which is answered by ClinicalTrials.gov data alone.",
+  "label_query": null
+ },
+ "tool_calls": [
+  {
+   "name": "search_trials",
+   "input": {
+    "drug": "olaparib",
+    "condition": "prostate cancer",
+    "phase": [
+     "PHASE2"
+    ],
+    "limit": 10
+   },
+   "ok": true,
+   "error": null,
+   "result_ids": [
+    "trial:NCT03570476",
+    "trial:NCT03516812",
+    "trial:NCT05262608",
+    "trial:NCT05005728",
+    "trial:NCT05568550",
+    "trial:NCT04748042",
+    "trial:NCT03810105",
+    "trial:NCT04556617",
+    "trial:NCT06065059",
+    "trial:NCT06401980"
+   ]
+  }
+ ],
+ "retrieved": [
+  "trial:NCT03570476",
+  "trial:NCT03516812",
+  "trial:NCT05262608",
+  "trial:NCT05005728",
+  "trial:NCT05568550",
+  "trial:NCT04748042",
+  "trial:NCT03810105",
+  "trial:NCT04556617",
+  "trial:NCT06065059",
+  "trial:NCT06401980"
+ ],
+ "draft": {
+  "text": "Phase 2 (including Phase 1/2) trials involving olaparib in prostate cancer found in the evidence:\n- NCT03570476, Olaparib Before Surgery in Treating Participants With Localized Prostate Cancer, Phase 2, Terminated [trial:NCT03570476].\n- NCT03516812, Testosterone and Olaparib in Treating Patients With Castration-Resistant Prostate Cancer, Phase 2, Completed [trial:NCT03516812].\n- NCT05262608, The Study of Olaparib in Newly Diagnosed mCRPC Patients With HRR Gene Mutation, Phase 2, Unknown [trial:NCT05262608].\n- NCT05005728, XmAb20717 (Vudalimab) Alone or in Combination With Chemotherapy or Targeted Therapy in Patients With mCRPC (includes a vudalimab + olaparib arm), Phase 2, Completed [trial:NCT05005728].\n- NCT05568550, Pembro With Radiation With or Without Olaparib, Phase 2, Recruiting [trial:NCT05568550].\n- NCT04748042, Focal Radiation With Pulsed Systemic Therapy of Abiraterone, ADT, Lynparza Towards Castration Sensitive Oligometastatic Prostate Cancer (FAALCON), Phase 2, Active not recruiting [trial:NCT04748042].\n- NCT03810105, A Study of Olaparib and Durvalumab in Prostate Cancer, Phase 2, Terminated [trial:NCT03810105].\n- NCT04556617, PLX2853 in Combination With Abiraterone Acetate and Prednisone and in Combination With Olaparib in mCRPC, Phase 1/2, Terminated [trial:NCT04556617].\n- NCT06065059, Study to Evaluate TNG348 Alone and With a PARP Inhibitor in Patients With BRCA 1/2 Mutant or HRD+ Solid Tumors (prostate cancer among the conditions), Phase 1/2, Terminated [trial:NCT06065059].\n\nNCT06401980 (darolutamide in mCRPC) lists no olaparib intervention, so it is excluded [trial:NCT06401980].",
+  "citations": [
+   "trial:NCT03570476",
+   "trial:NCT03516812",
+   "trial:NCT05262608",
+   "trial:NCT05005728",
+   "trial:NCT05568550",
+   "trial:NCT04748042",
+   "trial:NCT03810105",
+   "trial:NCT04556617",
+   "trial:NCT06065059",
+   "trial:NCT06401980"
+  ],
+  "abstained": false,
+  "abstain_reason": null
+ },
+ "answer": {
+  "text": "Phase 2 (including Phase 1/2) trials involving olaparib in prostate cancer found in the evidence:\n- NCT03570476, Olaparib Before Surgery in Treating Participants With Localized Prostate Cancer, Phase 2, Terminated [trial:NCT03570476].\n- NCT03516812, Testosterone and Olaparib in Treating Patients With Castration-Resistant Prostate Cancer, Phase 2, Completed [trial:NCT03516812].\n- NCT05262608, The Study of Olaparib in Newly Diagnosed mCRPC Patients With HRR Gene Mutation, Phase 2, Unknown [trial:NCT05262608].\n- NCT05005728, XmAb20717 (Vudalimab) Alone or in Combination With Chemotherapy or Targeted Therapy in Patients With mCRPC (includes a vudalimab + olaparib arm), Phase 2, Completed [trial:NCT05005728].\n- NCT05568550, Pembro With Radiation With or Without Olaparib, Phase 2, Recruiting [trial:NCT05568550].\n- NCT04748042, Focal Radiation With Pulsed Systemic Therapy of Abiraterone, ADT, Lynparza Towards Castration Sensitive Oligometastatic Prostate Cancer (FAALCON), Phase 2, Active not recruiting [trial:NCT04748042].\n- NCT03810105, A Study of Olaparib and Durvalumab in Prostate Cancer, Phase 2, Terminated [trial:NCT03810105].\n- NCT04556617, PLX2853 in Combination With Abiraterone Acetate and Prednisone and in Combination With Olaparib in mCRPC, Phase 1/2, Terminated [trial:NCT04556617].\n- NCT06065059, Study to Evaluate TNG348 Alone and With a PARP Inhibitor in Patients With BRCA 1/2 Mutant or HRD+ Solid Tumors (prostate cancer among the conditions), Phase 1/2, Terminated [trial:NCT06065059].\n\nNCT06401980 (darolutamide in mCRPC) lists no olaparib intervention, so it is excluded [trial:NCT06401980].",
+  "abstained": false,
+  "abstain_reason": null,
+  "citations": [
+   "trial:NCT03570476",
+   "trial:NCT03516812",
+   "trial:NCT05262608",
+   "trial:NCT05005728",
+   "trial:NCT05568550",
+   "trial:NCT04748042",
+   "trial:NCT03810105",
+   "trial:NCT04556617",
+   "trial:NCT06065059",
+   "trial:NCT06401980"
+  ],
+  "invented": []
+ },
+ "llm_calls": [
+  {
+   "step": "router",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 987,
+   "output_tokens": 72,
+   "cost_usd": 0.0001347,
+   "latency_ms": 1571
+  },
+  {
+   "step": "trial_planner",
+   "model": "claude-sonnet-5-5",
+   "input_tokens": 1809,
+   "output_tokens": 108,
+   "cost_usd": 0.004698,
+   "latency_ms": 1486
+  },
+  {
+   "step": "generator",
+   "model": "claude-sonnet-5-5",
+   "input_tokens": 2943,
+   "output_tokens": 911,
+   "cost_usd": 0.014996,
+   "latency_ms": 5034
+  }
+ ],
+ "latency_ms": 8101,
+ "cost_usd": 0.019829
+}

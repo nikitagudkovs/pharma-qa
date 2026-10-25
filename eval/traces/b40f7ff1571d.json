@@ -1,0 +1,49 @@
+{
+ "trace_id": "b40f7ff1571d",
+ "at": "2026-10-25T17:48:18.243489+00:00",
+ "question": "What are the contraindications for zuranolone?",
+ "entities": [
+  {
+   "mention": "zuranolone",
+   "generic_name": "zuranolone",
+   "rxcui": [],
+   "resolved": false,
+   "source": "llm_fallback"
+  }
+ ],
+ "route": {
+  "kind": "label",
+  "reason": "Contraindications are a drug label section, and the question asks only about zuranolone's label information.",
+  "label_query": "zuranolone contraindications"
+ },
+ "tool_calls": [],
+ "retrieved": [],
+ "draft": null,
+ "answer": {
+  "text": "I can't answer that from trial or label data.",
+  "abstained": true,
+  "abstain_reason": "no label in the corpus for zuranolone",
+  "citations": [],
+  "invented": []
+ },
+ "llm_calls": [
+  {
+   "step": "entity_fallback",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 320,
+   "output_tokens": 16,
+   "cost_usd": 4e-05,
+   "latency_ms": 1224
+  },
+  {
+   "step": "router",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 989,
+   "output_tokens": 60,
+   "cost_usd": 0.00012890000000000002,
+   "latency_ms": 1068
+  }
+ ],
+ "latency_ms": 2293,
+ "cost_usd": 0.000169
+}

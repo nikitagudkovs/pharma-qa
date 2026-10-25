@@ -1,0 +1,138 @@
+{
+ "trace_id": "e80468477028",
+ "at": "2026-10-25T17:45:29.231960+00:00",
+ "question": "What trials are testing tirzepatide for obstructive sleep apnea?",
+ "entities": [
+  {
+   "mention": "tirzepatide",
+   "generic_name": "tirzepatide",
+   "rxcui": [
+    "2601743",
+    "2601755",
+    "2601761",
+    "2601767",
+    "2601773",
+    "2601784",
+    "2644396",
+    "2644401",
+    "2644405",
+    "2644409",
+    "2644413",
+    "2644417",
+    "2669706",
+    "2669709",
+    "2669712",
+    "2669715",
+    "2669718",
+    "2669721",
+    "2679317",
+    "2679319",
+    "2679321",
+    "2679323",
+    "2679325",
+    "2679327",
+    "2732437",
+    "2732440",
+    "2732442",
+    "2732444",
+    "2732446",
+    "2732448",
+    "2732449",
+    "2732450",
+    "2732452",
+    "2732454",
+    "2732456",
+    "2732458",
+    "2734623",
+    "2734626",
+    "2734628",
+    "2734630",
+    "2734632",
+    "2734634",
+    "2734636",
+    "2734638",
+    "2734640",
+    "2734642",
+    "2734644",
+    "2734646"
+   ],
+   "resolved": true,
+   "source": "synonym_map"
+  }
+ ],
+ "route": {
+  "kind": "trials",
+  "reason": "The question asks which clinical trials are testing tirzepatide for obstructive sleep apnea, which is answered from ClinicalTrials.gov registry records."
+ },
+ "tool_calls": [
+  {
+   "name": "search_trials",
+   "input": {
+    "drug": "tirzepatide",
+    "condition": "obstructive sleep apnea",
+    "limit": 10
+   },
+   "ok": true,
+   "error": null,
+   "result_ids": [
+    "trial:NCT07846865",
+    "trial:NCT05412004",
+    "trial:NCT06400615"
+   ]
+  }
+ ],
+ "retrieved": [
+  "trial:NCT07846865",
+  "trial:NCT05412004",
+  "trial:NCT06400615"
+ ],
+ "draft": {
+  "text": "Two trials in the evidence test tirzepatide for obstructive sleep apnea. NCT07846865: Tirzepatide Versus Positive Airway Pressure for the Treatment of Obstructive Sleep Apnoea: A Randomised Comparative Effectiveness Trial; Phase 2/3; Not yet recruiting [trial:NCT07846865]. NCT05412004: Obstructive Sleep Apnea Master Protocol GPIF: A Study of Tirzepatide (LY3298176) in Participants With Obstructive Sleep Apnea; Phase 3; Completed [trial:NCT05412004]. A third trial, NCT06400615 (AD109 in patients taking GLP-1 drugs), does not list tirzepatide as an intervention [trial:NCT06400615].",
+  "citations": [
+   "trial:NCT07846865",
+   "trial:NCT05412004",
+   "trial:NCT06400615"
+  ],
+  "abstained": false,
+  "abstain_reason": null
+ },
+ "answer": {
+  "text": "Two trials in the evidence test tirzepatide for obstructive sleep apnea. NCT07846865: Tirzepatide Versus Positive Airway Pressure for the Treatment of Obstructive Sleep Apnoea: A Randomised Comparative Effectiveness Trial; Phase 2/3; Not yet recruiting [trial:NCT07846865]. NCT05412004: Obstructive Sleep Apnea Master Protocol GPIF: A Study of Tirzepatide (LY3298176) in Participants With Obstructive Sleep Apnea; Phase 3; Completed [trial:NCT05412004]. A third trial, NCT06400615 (AD109 in patients taking GLP-1 drugs), does not list tirzepatide as an intervention [trial:NCT06400615].",
+  "abstained": false,
+  "abstain_reason": null,
+  "citations": [
+   "trial:NCT07846865",
+   "trial:NCT05412004",
+   "trial:NCT06400615"
+  ],
+  "invented": []
+ },
+ "llm_calls": [
+  {
+   "step": "router",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 818,
+   "output_tokens": 67,
+   "cost_usd": 0.00011530000000000001,
+   "latency_ms": 1003
+  },
+  {
+   "step": "trial_planner",
+   "model": "claude-sonnet-5-5",
+   "input_tokens": 1815,
+   "output_tokens": 85,
+   "cost_usd": 0.00448,
+   "latency_ms": 1191
+  },
+  {
+   "step": "generator",
+   "model": "claude-sonnet-5-5",
+   "input_tokens": 1341,
+   "output_tokens": 330,
+   "cost_usd": 0.005982,
+   "latency_ms": 2359
+  }
+ ],
+ "latency_ms": 4556,
+ "cost_usd": 0.010577
+}

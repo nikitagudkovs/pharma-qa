@@ -1,0 +1,68 @@
+{
+ "trace_id": "c2a89981c661",
+ "at": "2026-10-25T17:49:19.682606+00:00",
+ "question": "What toxicities does the amiodarone boxed warning describe?",
+ "entities": [
+  {
+   "mention": "amiodarone",
+   "generic_name": "amiodarone",
+   "rxcui": [
+    "833528"
+   ],
+   "resolved": true,
+   "source": "synonym_map"
+  }
+ ],
+ "route": {
+  "kind": "label",
+  "reason": "The question asks about the boxed warning content of amiodarone, which is found in its FDA drug label.",
+  "label_query": "amiodarone boxed warning toxicities"
+ },
+ "tool_calls": [],
+ "retrieved": [
+  "label:amiodarone:boxed_warning:1",
+  "label:amiodarone:boxed_warning:0",
+  "label:amiodarone:warnings_and_cautions:6",
+  "label:amiodarone:warnings_and_cautions:0",
+  "label:amiodarone:use_in_specific_populations:4"
+ ],
+ "draft": {
+  "text": "The amiodarone boxed warning is titled \"Pulmonary, Hepatic and Cardiac Toxicity\" [label:amiodarone:boxed_warning:0]. Pulmonary toxicity (hypersensitivity pneumonitis or interstitial/alveolar pneumonitis) has caused clinically manifest disease at rates as high as 17% in some series, and has been fatal about 10% of the time [label:amiodarone:boxed_warning:0]. Hepatotoxicity can occur and can be fatal [label:amiodarone:boxed_warning:0]. Amiodarone can also exacerbate arrhythmias (proarrhythmic toxicity), so it should be initiated in a clinical setting with continuous electrocardiograms and cardiac resuscitation available [label:amiodarone:boxed_warning:0]. The warning states that its use is accompanied by substantial toxicity, some of it life-threatening, and that it is reserved for patients with indicated life-threatening arrhythmias [label:amiodarone:boxed_warning:1].",
+  "citations": [
+   "label:amiodarone:boxed_warning:0",
+   "label:amiodarone:boxed_warning:1"
+  ],
+  "abstained": false,
+  "abstain_reason": null
+ },
+ "answer": {
+  "text": "The amiodarone boxed warning is titled \"Pulmonary, Hepatic and Cardiac Toxicity\" [label:amiodarone:boxed_warning:0]. Pulmonary toxicity (hypersensitivity pneumonitis or interstitial/alveolar pneumonitis) has caused clinically manifest disease at rates as high as 17% in some series, and has been fatal about 10% of the time [label:amiodarone:boxed_warning:0]. Hepatotoxicity can occur and can be fatal [label:amiodarone:boxed_warning:0]. Amiodarone can also exacerbate arrhythmias (proarrhythmic toxicity), so it should be initiated in a clinical setting with continuous electrocardiograms and cardiac resuscitation available [label:amiodarone:boxed_warning:0]. The warning states that its use is accompanied by substantial toxicity, some of it life-threatening, and that it is reserved for patients with indicated life-threatening arrhythmias [label:amiodarone:boxed_warning:1].",
+  "abstained": false,
+  "abstain_reason": null,
+  "citations": [
+   "label:amiodarone:boxed_warning:0",
+   "label:amiodarone:boxed_warning:1"
+  ],
+  "invented": []
+ },
+ "llm_calls": [
+  {
+   "step": "router",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 987,
+   "output_tokens": 68,
+   "cost_usd": 0.0001327,
+   "latency_ms": 1327
+  },
+  {
+   "step": "generator",
+   "model": "claude-sonnet-5-5",
+   "input_tokens": 3410,
+   "output_tokens": 418,
+   "cost_usd": 0.011,
+   "latency_ms": 2826
+  }
+ ],
+ "latency_ms": 4179,
+ "cost_usd": 0.011133
+}

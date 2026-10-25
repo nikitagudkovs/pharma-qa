@@ -1,0 +1,69 @@
+{
+ "trace_id": "1c12016efa80",
+ "at": "2026-10-25T17:45:56.161742+00:00",
+ "question": "What serious adverse reactions are in the ciprofloxacin boxed warning?",
+ "entities": [
+  {
+   "mention": "ciprofloxacin",
+   "generic_name": "ciprofloxacin",
+   "rxcui": [
+    "309309"
+   ],
+   "resolved": true,
+   "source": "synonym_map"
+  }
+ ],
+ "route": {
+  "kind": "label",
+  "reason": "The question asks about the boxed warning content of ciprofloxacin, which is found in its FDA drug label, not in trial registry records."
+ },
+ "tool_calls": [],
+ "retrieved": [
+  "label:ciprofloxacin:boxed_warning:1",
+  "label:ciprofloxacin:warnings_and_cautions:0",
+  "label:ciprofloxacin:boxed_warning:0",
+  "label:ciprofloxacin:boxed_warning:2",
+  "label:ciprofloxacin:warnings_and_cautions:8"
+ ],
+ "draft": {
+  "text": "The ciprofloxacin boxed warning describes disabling and potentially irreversible serious adverse reactions that have occurred together: tendinitis and tendon rupture, peripheral neuropathy, and central nervous system effects [label:ciprofloxacin:boxed_warning:0]. It also warns that ciprofloxacin may exacerbate muscle weakness in patients with myasthenia gravis and should be avoided in patients with a known history of myasthenia gravis [label:ciprofloxacin:boxed_warning:0]. The label says to discontinue ciprofloxacin immediately and avoid fluoroquinolones in patients who experience any of these serious adverse reactions [label:ciprofloxacin:boxed_warning:0]. Because of these risks, ciprofloxacin should be reserved for patients with no alternative treatment options for acute exacerbation of chronic bronchitis, acute uncomplicated cystitis, and acute sinusitis [label:ciprofloxacin:boxed_warning:2]. Section 5.1 lists the CNS effects as hallucinations, anxiety, depression, insomnia, severe headaches, and confusion [label:ciprofloxacin:warnings_and_cautions:0].",
+  "citations": [
+   "label:ciprofloxacin:boxed_warning:0",
+   "label:ciprofloxacin:boxed_warning:2",
+   "label:ciprofloxacin:warnings_and_cautions:0"
+  ],
+  "abstained": false,
+  "abstain_reason": null
+ },
+ "answer": {
+  "text": "The ciprofloxacin boxed warning describes disabling and potentially irreversible serious adverse reactions that have occurred together: tendinitis and tendon rupture, peripheral neuropathy, and central nervous system effects [label:ciprofloxacin:boxed_warning:0]. It also warns that ciprofloxacin may exacerbate muscle weakness in patients with myasthenia gravis and should be avoided in patients with a known history of myasthenia gravis [label:ciprofloxacin:boxed_warning:0]. The label says to discontinue ciprofloxacin immediately and avoid fluoroquinolones in patients who experience any of these serious adverse reactions [label:ciprofloxacin:boxed_warning:0]. Because of these risks, ciprofloxacin should be reserved for patients with no alternative treatment options for acute exacerbation of chronic bronchitis, acute uncomplicated cystitis, and acute sinusitis [label:ciprofloxacin:boxed_warning:2]. Section 5.1 lists the CNS effects as hallucinations, anxiety, depression, insomnia, severe headaches, and confusion [label:ciprofloxacin:warnings_and_cautions:0].",
+  "abstained": false,
+  "abstain_reason": null,
+  "citations": [
+   "label:ciprofloxacin:boxed_warning:0",
+   "label:ciprofloxacin:boxed_warning:2",
+   "label:ciprofloxacin:warnings_and_cautions:0"
+  ],
+  "invented": []
+ },
+ "llm_calls": [
+  {
+   "step": "router",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 824,
+   "output_tokens": 57,
+   "cost_usd": 0.00011090000000000001,
+   "latency_ms": 1370
+  },
+  {
+   "step": "generator",
+   "model": "claude-sonnet-5-5",
+   "input_tokens": 3588,
+   "output_tokens": 501,
+   "cost_usd": 0.012186,
+   "latency_ms": 4330
+  }
+ ],
+ "latency_ms": 5729,
+ "cost_usd": 0.012297
+}

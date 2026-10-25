@@ -1,0 +1,66 @@
+{
+ "trace_id": "6a0be48848e6",
+ "at": "2026-10-25T17:48:06.467998+00:00",
+ "question": "What does the clopidogrel boxed warning say?",
+ "entities": [
+  {
+   "mention": "clopidogrel",
+   "generic_name": "clopidogrel",
+   "rxcui": [
+    "309362"
+   ],
+   "resolved": true,
+   "source": "synonym_map"
+  }
+ ],
+ "route": {
+  "kind": "label",
+  "reason": "The question asks about the clopidogrel boxed warning, which is contained in the FDA drug label.",
+  "label_query": "clopidogrel boxed warning"
+ },
+ "tool_calls": [],
+ "retrieved": [
+  "label:clopidogrel:boxed_warning:0",
+  "label:clopidogrel:warnings_and_cautions:0",
+  "label:clopidogrel:use_in_specific_populations:1",
+  "label:clopidogrel:pregnancy:1",
+  "label:clopidogrel:indications_and_usage:0"
+ ],
+ "draft": {
+  "text": "The clopidogrel boxed warning is about diminished antiplatelet effect in patients with two loss-of-function alleles of the CYP2C19 gene [label:clopidogrel:boxed_warning:0]. Clopidogrel's effectiveness depends on conversion to an active metabolite by the CYP system, principally CYP2C19 [label:clopidogrel:boxed_warning:0]. At recommended doses, patients who are homozygous for nonfunctional CYP2C19 alleles (CYP2C19 poor metabolizers) form less active metabolite and have a reduced effect on platelet activity [label:clopidogrel:boxed_warning:0]. Tests are available to identify CYP2C19 poor metabolizers [label:clopidogrel:boxed_warning:0]. The warning says to consider another platelet P2Y12 inhibitor in patients identified as poor metabolizers [label:clopidogrel:boxed_warning:0].",
+  "citations": [
+   "label:clopidogrel:boxed_warning:0"
+  ],
+  "abstained": false,
+  "abstain_reason": null
+ },
+ "answer": {
+  "text": "The clopidogrel boxed warning is about diminished antiplatelet effect in patients with two loss-of-function alleles of the CYP2C19 gene [label:clopidogrel:boxed_warning:0]. Clopidogrel's effectiveness depends on conversion to an active metabolite by the CYP system, principally CYP2C19 [label:clopidogrel:boxed_warning:0]. At recommended doses, patients who are homozygous for nonfunctional CYP2C19 alleles (CYP2C19 poor metabolizers) form less active metabolite and have a reduced effect on platelet activity [label:clopidogrel:boxed_warning:0]. Tests are available to identify CYP2C19 poor metabolizers [label:clopidogrel:boxed_warning:0]. The warning says to consider another platelet P2Y12 inhibitor in patients identified as poor metabolizers [label:clopidogrel:boxed_warning:0].",
+  "abstained": false,
+  "abstain_reason": null,
+  "citations": [
+   "label:clopidogrel:boxed_warning:0"
+  ],
+  "invented": []
+ },
+ "llm_calls": [
+  {
+   "step": "router",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 985,
+   "output_tokens": 65,
+   "cost_usd": 0.000131,
+   "latency_ms": 1012
+  },
+  {
+   "step": "generator",
+   "model": "claude-sonnet-5-5",
+   "input_tokens": 3666,
+   "output_tokens": 365,
+   "cost_usd": 0.010982,
+   "latency_ms": 2956
+  }
+ ],
+ "latency_ms": 4188,
+ "cost_usd": 0.011113
+}

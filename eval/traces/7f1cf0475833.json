@@ -1,0 +1,43 @@
+{
+ "trace_id": "7f1cf0475833",
+ "at": "2026-10-25T17:46:08.200736+00:00",
+ "question": "How much does a month of Ozempic cost?",
+ "entities": [
+  {
+   "mention": "Ozempic",
+   "generic_name": "semaglutide",
+   "rxcui": [
+    "2619152",
+    "2619154"
+   ],
+   "resolved": true,
+   "source": "synonym_map"
+  }
+ ],
+ "route": {
+  "kind": "out_of_scope",
+  "reason": "Monthly cost or pricing of Ozempic is not covered by either ClinicalTrials.gov trial records or FDA drug labels."
+ },
+ "tool_calls": [],
+ "retrieved": [],
+ "draft": null,
+ "answer": {
+  "text": "I can't answer that from trial or label data.",
+  "abstained": true,
+  "abstain_reason": "out of scope: Monthly cost or pricing of Ozempic is not covered by either ClinicalTrials.gov trial records or FDA drug labels.",
+  "citations": [],
+  "invented": []
+ },
+ "llm_calls": [
+  {
+   "step": "router",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 806,
+   "output_tokens": 65,
+   "cost_usd": 0.00011310000000000001,
+   "latency_ms": 929
+  }
+ ],
+ "latency_ms": 929,
+ "cost_usd": 0.000113
+}

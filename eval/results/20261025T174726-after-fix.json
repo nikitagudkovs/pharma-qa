@@ -1,0 +1,697 @@
+{
+ "tag": "after-fix",
+ "started_at": "2026-10-25T17:47:26.619342+00:00",
+ "config": {
+  "router": "claude-haiku-5-5",
+  "generator": "claude-sonnet-5-5",
+  "rerank": false,
+  "questions": 30
+ },
+ "metrics": {
+  "routing": 1.0,
+  "entities": 1.0,
+  "recall@5": 1.0,
+  "citation_validity_raw": 1.0,
+  "citation_validity": 1.0,
+  "correctness": 1.0,
+  "abstain_precision": 1.0,
+  "abstain_recall": 1.0,
+  "p50_latency_ms": 6758.0,
+  "mean_cost_usd": 0.011098666666666666,
+  "n": 30
+ },
+ "by_type": {
+  "trial_lookup": {
+   "n": 8,
+   "correct": 1.0,
+   "routing": 1.0,
+   "entities": 1.0,
+   "recall@5": 1.0
+  },
+  "trial_count": {
+   "n": 4,
+   "correct": 1.0,
+   "routing": 1.0,
+   "entities": 1.0,
+   "recall@5": 1.0
+  },
+  "label_fact": {
+   "n": 8,
+   "correct": 1.0,
+   "routing": 1.0,
+   "entities": 1.0,
+   "recall@5": 1.0
+  },
+  "brand_name": {
+   "n": 4,
+   "correct": 1.0,
+   "routing": 1.0,
+   "entities": 1.0,
+   "recall@5": 1.0
+  },
+  "mixed": {
+   "n": 2,
+   "correct": 1.0,
+   "routing": 1.0,
+   "entities": 1.0,
+   "recall@5": 1.0
+  },
+  "should_abstain": {
+   "n": 4,
+   "correct": 1.0,
+   "routing": 1.0,
+   "entities": 1.0,
+   "recall@5": null
+  }
+ },
+ "rows": [
+  {
+   "id": "q01",
+   "type": "trial_lookup",
+   "route_ok": true,
+   "entities_ok": true,
+   "recall_ok": true,
+   "raw_citations_valid": true,
+   "final_citations_valid": true,
+   "correct": true,
+   "abstained": false,
+   "should_abstain": false,
+   "latency_ms": 9671,
+   "cost_usd": 0.022062,
+   "route": "trials",
+   "entities": [
+    "pembrolizumab"
+   ],
+   "answer": "Several Phase 3 (or Phase 2/3) lung cancer trials involve pembrolizumab (Keytruda). Trials where pembrolizumab is the studied drug or a main arm:\n- NCT02142738, Pembrolizumab vs platinum-based chemotherapies in metastatic NSCLC (KEYNOTE-024), Phase 3, Completed [trial:NCT02142738].\n- NCT03302234, Pembrolizumab with ipilimumab or placebo in untreated metastatic NSCLC (KEYNOTE-598), Phase 3, Completed [trial:NCT03302234].\n- NCT01905657, Two doses of pembrolizumab vs docetaxel in previously treated NSCLC (KEYNOTE-010), Phase 2/3, Completed [trial:NCT01905657].\n- NCT05722015, Subcutaneous pembrolizumab with berahyaluronidase alfa vs intravenous pembrolizumab in metastatic NSCLC (MK-3475A-D77), Phase 3, Active, not recruiting [trial:NCT05722015].\n- NCT05226598, Pembrolizumab/vibostolimab coformulation plus chemotherapy vs pembrolizumab plus chemotherapy in metastatic NSCLC (KEYVIBE-007), Phase 3, Terminated [trial:NCT05226598].\n\nTrials where pembrolizumab is a comparator or background therapy:\n- NCT06561386, Nivolumab and relatlimab plus chemotherapy vs pembrolizumab plus chemotherapy in stage IV/recurrent non-squamous NSCLC, Phase 3, Recruiting [trial:NCT06561386].\n- NCT05502237, Zimberelimab and domvanalimab plus chemotherapy vs pembrolizumab plus chemotherapy in untreated metastatic NSCLC, Phase 3, Active, not recruiting [trial:NCT05502237].\n- NCT07063745, Navlimetostat (BMS-986504) with pembrolizumab and chemotherapy vs placebo plus pembrolizumab and chemotherapy in first-line metastatic NSCLC with MTAP deletion, Phase 2/3, Recruiting [trial:NCT07063745].\n- NCT05791097, Ociperlimab with tislelizumab and chemotherapy in first-line NSCLC, Phase 3, Withdrawn; pembrolizumab is listed as an intervention [trial:NCT05791097].\n\nNCT04322617 (anlotinib plus immune checkpoint inhibitors, Phase 2/3, Recruiting) does not name pembrolizumab in its listed interventions [trial:NCT04322617].",
+   "abstain_reason": null,
+   "trace": "eval/traces/64297dcbc494.json"
+  },
+  {
+   "id": "q02",
+   "type": "trial_lookup",
+   "route_ok": true,
+   "entities_ok": true,
+   "recall_ok": true,
+   "raw_citations_valid": true,
+   "final_citations_valid": true,
+   "correct": true,
+   "abstained": false,
+   "should_abstain": false,
+   "latency_ms": 7028,
+   "cost_usd": 0.013711,
+   "route": "trials",
+   "entities": [
+    "semaglutide"
+   ],
+   "answer": "The registry count for recruiting Phase 3 semaglutide trials in heart failure is 3 [count:2]. However, the listed evidence shows only one pure Phase 3 trial with semaglutide: NCT06082063, \"Multifactorial Intervention to Reduce Cardiovascular Disease in Type 1 Diabetes\", Phase 3, Recruiting; conditions include heart failure, and interventions include semaglutide [trial:NCT06082063]. Also listed are NCT06423599, \"Effect of Weight Loss on Physical and Cardiac Performance in People With Obesity and Heart Failure\", Phase 2/3, Recruiting, with semaglutide as an intervention [trial:NCT06423599]. NCT07223242, \"Tailored Exercise Training Study Among Adults With HFpEF\", Phase 2/3, Recruiting, lists exercise training and weight loss interventions, with no semaglutide listed [trial:NCT07223242]. The evidence does not explain how the count of 3 maps to these listed trials.",
+   "abstain_reason": null,
+   "trace": "eval/traces/bba041dd59a7.json"
+  },
+  {
+   "id": "q03",
+   "type": "trial_lookup",
+   "route_ok": true,
+   "entities_ok": true,
+   "recall_ok": true,
+   "raw_citations_valid": true,
+   "final_citations_valid": true,
+   "correct": true,
+   "abstained": false,
+   "should_abstain": false,
+   "latency_ms": 7583,
+   "cost_usd": 0.014045,
+   "route": "trials",
+   "entities": [
+    "dupilumab"
+   ],
+   "answer": "Yes. Recruiting trials of dupilumab for eosinophilic esophagitis include:\n- NCT06695897: Non-interventional observational study of long-term efficacy and safety of dupilumab in patients 12 years and older with EoE in Germany; phase n/a; RECRUITING [trial:NCT06695897].\n- NCT07112378: A Study of Dupilumab in Small Children With Eosinophilic Esophagitis; Phase 3; RECRUITING [trial:NCT07112378].\n- NCT06705387: Dupilumab Versus Topical Corticosteroid Effectiveness - Comparison in the Treatment of Stenotic EoE; Phase 2; RECRUITING [trial:NCT06705387].\n- NCT06665971: Effect of Dupilumab on the Muscle Function of the Esophagus in Participants with EoE; Phase 4; RECRUITING [trial:NCT06665971].\nAlso recruiting, but broader in scope: NCT07257835, Dupilumab Therapy for EGIDs (eosinophilic gastrointestinal disorders, not EoE specifically); phase n/a [trial:NCT07257835].\nNCT07012928 is a recruiting EoE study with no listed intervention, so it is not clearly a dupilumab trial [trial:NCT07012928].",
+   "abstain_reason": null,
+   "trace": "eval/traces/5af6288303fd.json"
+  },
+  {
+   "id": "q04",
+   "type": "trial_lookup",
+   "route_ok": true,
+   "entities_ok": true,
+   "recall_ok": true,
+   "raw_citations_valid": true,
+   "final_citations_valid": true,
+   "correct": true,
+   "abstained": false,
+   "should_abstain": false,
+   "latency_ms": 8881,
+   "cost_usd": 0.019799,
+   "route": "trials",
+   "entities": [
+    "olaparib"
+   ],
+   "answer": "Phase 2 (including Phase 1/2) trials involving olaparib in prostate cancer:\n- NCT03570476, Olaparib Before Surgery in Treating Participants With Localized Prostate Cancer, Phase 2, Terminated [trial:NCT03570476].\n- NCT03516812, Testosterone and Olaparib in Treating Patients With Castration-Resistant Prostate Cancer, Phase 2, Completed [trial:NCT03516812].\n- NCT05262608, The Study of Olaparib in Newly Diagnosed mCRPC Patients With HRR Gene Mutation, Phase 2, Unknown [trial:NCT05262608].\n- NCT05005728, XmAb20717 (Vudalimab) Alone or in Combination With Chemotherapy or Targeted Therapy in mCRPC (includes a vudalimab + olaparib arm), Phase 2, Completed [trial:NCT05005728].\n- NCT05568550, Pembro With Radiation With or Without Olaparib, Phase 2, Recruiting [trial:NCT05568550].\n- NCT04748042, Focal Radiation With Pulsed Systemic Therapy of Abiraterone, ADT, Lynparza Towards Castration Sensitive Oligometastatic Prostate Cancer (FAALCON), Phase 2, Active not recruiting [trial:NCT04748042].\n- NCT03810105, A Study of Olaparib and Durvalumab in Prostate Cancer, Phase 2, Terminated [trial:NCT03810105].\n- NCT04556617, PLX2853 in Combination With Abiraterone Acetate and Prednisone and in Combination With Olaparib in mCRPC, Phase 1/2, Terminated [trial:NCT04556617].\n- NCT06065059, Study to Evaluate TNG348 Alone and With a PARP Inhibitor in BRCA1/2 Mutant or HRD+ Solid Tumors (prostate cancer among conditions; olaparib intervention), Phase 1/2, Terminated [trial:NCT06065059].\nNCT06401980 (darolutamide in mCRPC) is Phase 2 but lists no olaparib intervention, so it is not included [trial:NCT06401980].",
+   "abstain_reason": null,
+   "trace": "eval/traces/d4b70fb43b7a.json"
+  },
+  {
+   "id": "q05",
+   "type": "trial_lookup",
+   "route_ok": true,
+   "entities_ok": true,
+   "recall_ok": true,
+   "raw_citations_valid": true,
+   "final_citations_valid": true,
+   "correct": true,
+   "abstained": false,
+   "should_abstain": false,
+   "latency_ms": 6488,
+   "cost_usd": 0.010669,
+   "route": "trials",
+   "entities": [
+    "tirzepatide"
+   ],
+   "answer": "Two trials in the evidence test tirzepatide for obstructive sleep apnea. NCT07846865: Tirzepatide Versus Positive Airway Pressure for the Treatment of Obstructive Sleep Apnoea: A Randomised Comparative Effectiveness Trial; Phase 2/3; Not yet recruiting [trial:NCT07846865]. NCT05412004: Obstructive Sleep Apnea Master Protocol GPIF: A Study of Tirzepatide (LY3298176) in Participants With Obstructive Sleep Apnea; Phase 3; Completed [trial:NCT05412004]. A third trial, NCT06400615 (AD109 in patients taking GLP-1 drugs), does not list tirzepatide as an intervention, so it is not counted [trial:NCT06400615].",
+   "abstain_reason": null,
+   "trace": "eval/traces/4effe873b3ff.json"
+  },
+  {
+   "id": "q06",
+   "type": "trial_lookup",
+   "route_ok": true,
+   "entities_ok": true,
+   "recall_ok": true,
+   "raw_citations_valid": true,
+   "final_citations_valid": true,
+   "correct": true,
+   "abstained": false,
+   "should_abstain": false,
+   "latency_ms": 7836,
+   "cost_usd": 0.017689,
+   "route": "trials",
+   "entities": [
+    "apixaban"
+   ],
+   "answer": "Completed Phase 3 trials involving apixaban in atrial fibrillation:\n- NCT02933697: Compare Apixaban and Vitamin-K Antagonists in Patients With AF and ESKD. Phase 3, Completed [trial:NCT02933697].\n- NCT00496769: A Phase III Study of Apixaban in Patients With Atrial Fibrillation. Phase 3, Completed [trial:NCT00496769].\n- NCT00412984: Apixaban for the Prevention of Stroke in Subjects With Atrial Fibrillation. Phase 3, Completed [trial:NCT00412984].\n- NCT02283294: Apixaban for Early Prevention of Recurrent Embolic Stroke and Hemorrhagic Transformation. Phase 3, Completed [trial:NCT02283294].\n- NCT03153150: Start or STop Anticoagulants Randomised Trial (SoSTART). Phase 3, Completed; apixaban is among the interventions [trial:NCT03153150].\n- NCT03996772: PREvention of STroke in Intracerebral haemorrhaGE Survivors With Atrial Fibrillation. Phase 3, Completed [trial:NCT03996772].\n- NCT03181386: Tooth Extraction in Patients With Atrial Fibrillation in Use of New Oral Anticoagulants. Phase 3, Completed; apixaban is among the interventions [trial:NCT03181386].\n\nNot listed above: NCT02889562 (apixaban vs warfarin for post-operative AF) is labeled Phase 2/3, Completed [trial:NCT02889562]. NCT01924065 (stroke risk after cardioversion) is Phase 3, Completed, but its listed interventions are only cardioversion and an unspecified oral anticoagulant, not apixaban specifically [trial:NCT01924065].",
+   "abstain_reason": null,
+   "trace": "eval/traces/d89f972ecf0f.json"
+  },
+  {
+   "id": "q07",
+   "type": "trial_lookup",
+   "route_ok": true,
+   "entities_ok": true,
+   "recall_ok": true,
+   "raw_citations_valid": true,
+   "final_citations_valid": true,
+   "correct": true,
+   "abstained": false,
+   "should_abstain": false,
+   "latency_ms": 8442,
+   "cost_usd": 0.019497,
+   "route": "trials",
+   "entities": [
+    "nivolumab"
+   ],
+   "answer": "Recruiting trials in hepatocellular carcinoma that list nivolumab (or Opdivo) as an intervention:\n- NCT07176650: Ipilimumab biosimilar HLX13 vs. Yervoy as first-line treatment for unresectable HCC; Phase 1; Recruiting. Opdivo is listed as an intervention [trial:NCT07176650].\n- NCT05257590: CVM-1118 with nivolumab for unresectable advanced HCC; Phase 2; Recruiting [trial:NCT05257590].\n- NCT07482059: Combined therapy for unresectable HCC (yttrium-90 microspheres with nivolumab, ipilimumab and lenvatinib); Phase 1/2; Recruiting [trial:NCT07482059].\n- NCT07075120: Ipilimumab and nivolumab with SBRT in locally advanced HCC; Phase 1; Recruiting [trial:NCT07075120].\n- NCT07689175: Adaptive dosing of immune checkpoint inhibitors for HCC (nivolumab, ipilimumab); Phase 2; Recruiting [trial:NCT07689175].\n- NCT04380545: Nivolumab, fluorouracil and interferon alpha 2B for unresectable fibrolamellar cancer (conditions include stage III/IV HCC); Phase 1/2; Recruiting [trial:NCT04380545].\n- NCT07147101: Different first-line immunotherapies for advanced HCC, an observational study (nivolumab plus ipilimumab among the regimens); Phase n/a; Recruiting [trial:NCT07147101].\n- NCT07430202: DNAJB1-PRKACA peptide vaccine with DRP-104, nivolumab and ipilimumab in advanced fibrolamellar carcinoma (listed as fibrolamellar hepatocellular cancer); Phase 1; Recruiting [trial:NCT07430202].\n\nNCT07100405 (PD-1 inhibitor with TACE) and NCT06422403 (extended dosing intervals) do not name nivolumab in their listed interventions, so they are not included.",
+   "abstain_reason": null,
+   "trace": "eval/traces/6e4b22b18604.json"
+  },
+  {
+   "id": "q08",
+   "type": "trial_lookup",
+   "route_ok": true,
+   "entities_ok": true,
+   "recall_ok": true,
+   "raw_citations_valid": true,
+   "final_citations_valid": true,
+   "correct": true,
+   "abstained": false,
+   "should_abstain": false,
+   "latency_ms": 8684,
+   "cost_usd": 0.010979,
+   "route": "trials",
+   "entities": [],
+   "answer": "NCT02339571 is a Phase II/III trial titled \"A Phase II/III Trial of Nivolumab, Ipilimumab, and GM-CSF in Patients With Advanced Melanoma\" [trial:NCT02339571]. It is a randomized study comparing nivolumab plus ipilimumab plus sargramostim versus nivolumab plus ipilimumab in patients with unresectable Stage III or Stage IV melanoma [trial:NCT02339571]. It looks at side effects and how well the treatment works, and it is not yet known whether nivolumab and ipilimumab are more effective with or without sargramostim [trial:NCT02339571]. The primary outcome is overall survival [trial:NCT02339571]. The sponsor is the National Cancer Institute (NCI) [trial:NCT02339571]. Status is ACTIVE_NOT_RECRUITING, with an enrollment of 600 and a start date of 2015-11-23 [trial:NCT02339571].",
+   "abstain_reason": null,
+   "trace": "eval/traces/06220e8535ac.json"
+  },
+  {
+   "id": "q09",
+   "type": "trial_count",
+   "route_ok": true,
+   "entities_ok": true,
+   "recall_ok": true,
+   "raw_citations_valid": true,
+   "final_citations_valid": true,
+   "correct": true,
+   "abstained": false,
+   "should_abstain": false,
+   "latency_ms": 7394,
+   "cost_usd": 0.00744,
+   "route": "trials",
+   "entities": [
+    "nivolumab"
+   ],
+   "answer": "There are 207 Phase 2 ClinicalTrials.gov studies matching nivolumab and melanoma [count:1].",
+   "abstain_reason": null,
+   "trace": "eval/traces/49a3fd0dd7ed.json"
+  },
+  {
+   "id": "q10",
+   "type": "trial_count",
+   "route_ok": true,
+   "entities_ok": true,
+   "recall_ok": true,
+   "raw_citations_valid": true,
+   "final_citations_valid": true,
+   "correct": true,
+   "abstained": false,
+   "should_abstain": false,
+   "latency_ms": 4750,
+   "cost_usd": 0.007099,
+   "route": "trials",
+   "entities": [
+    "semaglutide"
+   ],
+   "answer": "There are 169 ClinicalTrials.gov studies of semaglutide with a status of recruiting [count:1].",
+   "abstain_reason": null,
+   "trace": "eval/traces/e95fce642a2f.json"
+  },
+  {
+   "id": "q11",
+   "type": "trial_count",
+   "route_ok": true,
+   "entities_ok": true,
+   "recall_ok": true,
+   "raw_citations_valid": true,
+   "final_citations_valid": true,
+   "correct": true,
+   "abstained": false,
+   "should_abstain": false,
+   "latency_ms": 4047,
+   "cost_usd": 0.007612,
+   "route": "trials",
+   "entities": [
+    "adalimumab"
+   ],
+   "answer": "58 Phase 3 trials of adalimumab in rheumatoid arthritis were found in ClinicalTrials.gov [count:1].",
+   "abstain_reason": null,
+   "trace": "eval/traces/c37a5f053dda.json"
+  },
+  {
+   "id": "q12",
+   "type": "trial_count",
+   "route_ok": true,
+   "entities_ok": true,
+   "recall_ok": true,
+   "raw_citations_valid": true,
+   "final_citations_valid": true,
+   "correct": true,
+   "abstained": false,
+   "should_abstain": false,
+   "latency_ms": 7753,
+   "cost_usd": 0.00708,
+   "route": "trials",
+   "entities": [
+    "empagliflozin"
+   ],
+   "answer": "There are 114 ClinicalTrials.gov studies registered for empagliflozin and heart failure [count:1].",
+   "abstain_reason": null,
+   "trace": "eval/traces/ac7b13f0cf45.json"
+  },
+  {
+   "id": "q13",
+   "type": "label_fact",
+   "route_ok": true,
+   "entities_ok": true,
+   "recall_ok": true,
+   "raw_citations_valid": true,
+   "final_citations_valid": true,
+   "correct": true,
+   "abstained": false,
+   "should_abstain": false,
+   "latency_ms": 15483,
+   "cost_usd": 0.009365,
+   "route": "label",
+   "entities": [
+    "warfarin"
+   ],
+   "answer": "Warfarin's boxed warning is \"WARNING: BLEEDING RISK.\" Warfarin sodium can cause major or fatal bleeding [label:warfarin:boxed_warning:0]. Regular INR monitoring should be performed in all treated patients [label:warfarin:boxed_warning:0]. Drugs, dietary changes, and other factors affect INR levels achieved with warfarin therapy [label:warfarin:boxed_warning:0]. Patients should be instructed about prevention measures to minimize bleeding risk and to report signs and symptoms of bleeding [label:warfarin:boxed_warning:0].",
+   "abstain_reason": null,
+   "trace": "eval/traces/0b8f979ce8b6.json"
+  },
+  {
+   "id": "q14",
+   "type": "label_fact",
+   "route_ok": true,
+   "entities_ok": true,
+   "recall_ok": true,
+   "raw_citations_valid": true,
+   "final_citations_valid": true,
+   "correct": true,
+   "abstained": false,
+   "should_abstain": false,
+   "latency_ms": 17578,
+   "cost_usd": 0.007913,
+   "route": "label",
+   "entities": [
+    "apixaban"
+   ],
+   "answer": "Apixaban (ELIQUIS) is contraindicated in patients with active pathological bleeding [label:apixaban:contraindications:0]. It is also contraindicated in patients with severe hypersensitivity reaction to ELIQUIS, e.g., anaphylactic reactions [label:apixaban:contraindications:0].",
+   "abstain_reason": null,
+   "trace": "eval/traces/1556773aead3.json"
+  },
+  {
+   "id": "q15",
+   "type": "label_fact",
+   "route_ok": true,
+   "entities_ok": true,
+   "recall_ok": true,
+   "raw_citations_valid": true,
+   "final_citations_valid": true,
+   "correct": true,
+   "abstained": false,
+   "should_abstain": false,
+   "latency_ms": 14213,
+   "cost_usd": 0.009968,
+   "route": "label",
+   "entities": [
+    "pembrolizumab"
+   ],
+   "answer": "Pembrolizumab is a monoclonal antibody that binds to the PD-1 receptor and blocks its interaction with PD-L1 and PD-L2, releasing PD-1 pathway-mediated inhibition of the immune response, including the anti-tumor immune response [label:pembrolizumab:mechanism_of_action:0]. Binding of PD-L1 and PD-L2 to PD-1 on T cells inhibits T cell proliferation and cytokine production, and upregulation of PD-1 ligands in some tumors can contribute to inhibition of active T-cell immune surveillance of tumors [label:pembrolizumab:mechanism_of_action:0]. In syngeneic mouse tumor models, blocking PD-1 activity decreased tumor growth [label:pembrolizumab:mechanism_of_action:0].",
+   "abstain_reason": null,
+   "trace": "eval/traces/f2a03ed6a735.json"
+  },
+  {
+   "id": "q16",
+   "type": "label_fact",
+   "route_ok": true,
+   "entities_ok": true,
+   "recall_ok": true,
+   "raw_citations_valid": true,
+   "final_citations_valid": true,
+   "correct": true,
+   "abstained": false,
+   "should_abstain": false,
+   "latency_ms": 15435,
+   "cost_usd": 0.014374,
+   "route": "label",
+   "entities": [
+    "isotretinoin"
+   ],
+   "answer": "The isotretinoin label says it is contraindicated in pregnancy because it can cause fetal harm [label:isotretinoin:pregnancy:0]. The boxed warning states it can cause life-threatening birth defects, with an extremely high risk if pregnancy occurs while taking any amount, even for short periods [label:isotretinoin:boxed_warning:0]. Potentially any exposed fetus can be affected, and there is no accurate way to determine prenatally whether an exposed fetus has been affected [label:isotretinoin:boxed_warning:0].\n\nDetails:\n- Human exposure is associated with an increased risk of major congenital malformations, spontaneous abortions, and premature births [label:isotretinoin:pregnancy:0]. Documented malformations involve the face, eyes, ears, skull, CNS, cardiovascular system, and thymus and parathyroid glands [label:isotretinoin:pregnancy:0].\n- If pregnancy occurs during treatment, discontinue isotretinoin immediately and refer the patient to an obstetrician-gynecologist experienced in reproductive toxicity for evaluation and counseling [label:isotretinoin:boxed_warning:0].\n- Suspected fetal exposure during or 1 month after treatment should be reported immediately to the FDA via MedWatch and to the iPLEDGE pregnancy registry [label:isotretinoin:warnings_and_cautions:1].\n- Because of the embryo-fetal toxicity risk, isotretinoin is available only through the iPLEDGE REMS restricted program [label:isotretinoin:boxed_warning:0].\n- In patients who can get pregnant, pregnancy testing is required before, during, and after treatment [label:isotretinoin:use_in_specific_populations:2].",
+   "abstain_reason": null,
+   "trace": "eval/traces/af229abb904c.json"
+  },
+  {
+   "id": "q17",
+   "type": "label_fact",
+   "route_ok": true,
+   "entities_ok": true,
+   "recall_ok": true,
+   "raw_citations_valid": true,
+   "final_citations_valid": true,
+   "correct": true,
+   "abstained": false,
+   "should_abstain": false,
+   "latency_ms": 4188,
+   "cost_usd": 0.011113,
+   "route": "label",
+   "entities": [
+    "clopidogrel"
+   ],
+   "answer": "The clopidogrel boxed warning is about diminished antiplatelet effect in patients with two loss-of-function alleles of the CYP2C19 gene [label:clopidogrel:boxed_warning:0]. Clopidogrel's effectiveness depends on conversion to an active metabolite by the CYP system, principally CYP2C19 [label:clopidogrel:boxed_warning:0]. At recommended doses, patients who are homozygous for nonfunctional CYP2C19 alleles (CYP2C19 poor metabolizers) form less active metabolite and have a reduced effect on platelet activity [label:clopidogrel:boxed_warning:0]. Tests are available to identify CYP2C19 poor metabolizers [label:clopidogrel:boxed_warning:0]. The warning says to consider another platelet P2Y12 inhibitor in patients identified as poor metabolizers [label:clopidogrel:boxed_warning:0].",
+   "abstain_reason": null,
+   "trace": "eval/traces/6a0be48848e6.json"
+  },
+  {
+   "id": "q18",
+   "type": "label_fact",
+   "route_ok": true,
+   "entities_ok": true,
+   "recall_ok": true,
+   "raw_citations_valid": true,
+   "final_citations_valid": true,
+   "correct": true,
+   "abstained": false,
+   "should_abstain": false,
+   "latency_ms": 4732,
+   "cost_usd": 0.011919,
+   "route": "label",
+   "entities": [
+    "ciprofloxacin"
+   ],
+   "answer": "The ciprofloxacin boxed warning describes disabling and potentially irreversible serious adverse reactions that have occurred together, including tendinitis and tendon rupture, peripheral neuropathy, and central nervous system effects [label:ciprofloxacin:boxed_warning:0]. It also warns that fluoroquinolones, including ciprofloxacin, may exacerbate muscle weakness in patients with myasthenia gravis, and that ciprofloxacin should be avoided in patients with a known history of myasthenia gravis [label:ciprofloxacin:boxed_warning:0]. The warning says to discontinue ciprofloxacin immediately and avoid fluoroquinolones in patients who experience any of these serious adverse reactions [label:ciprofloxacin:boxed_warning:0]. Because of these risks, ciprofloxacin should be reserved for patients with no alternative treatment options for acute exacerbation of chronic bronchitis, acute uncomplicated cystitis, and acute sinusitis [label:ciprofloxacin:boxed_warning:2].",
+   "abstain_reason": null,
+   "trace": "eval/traces/8e0d5049cdc2.json"
+  },
+  {
+   "id": "q19",
+   "type": "label_fact",
+   "route_ok": true,
+   "entities_ok": true,
+   "recall_ok": true,
+   "raw_citations_valid": true,
+   "final_citations_valid": true,
+   "correct": true,
+   "abstained": false,
+   "should_abstain": false,
+   "latency_ms": 5687,
+   "cost_usd": 0.013328,
+   "route": "label",
+   "entities": [
+    "dupilumab"
+   ],
+   "answer": "Dupilumab (DUPIXENT), an interleukin-4 receptor alpha antagonist, is indicated for: atopic dermatitis (moderate-to-severe, ages 6 months and older, not adequately controlled with topical prescription therapies or when those are not advisable) [label:dupilumab:indications_and_usage:0]; asthma as add-on maintenance treatment (ages 6 years and older, moderate-to-severe, eosinophilic phenotype or oral corticosteroid dependent) [label:dupilumab:indications_and_usage:0]; chronic rhinosinusitis with nasal polyps as add-on maintenance (ages 12 years and older, inadequately controlled) [label:dupilumab:indications_and_usage:2]; eosinophilic esophagitis (ages 1 year and older, weighing at least 15 kg) [label:dupilumab:indications_and_usage:2]; prurigo nodularis in adults [label:dupilumab:indications_and_usage:2]; COPD as add-on maintenance in adults with inadequately controlled disease and an eosinophilic phenotype [label:dupilumab:indications_and_usage:2]; chronic spontaneous urticaria (ages 2 years and older, still symptomatic despite H1 antihistamine treatment) [label:dupilumab:indications_and_usage:2]; bullous pemphigoid in adults [label:dupilumab:indications_and_usage:3]; and allergic fungal rhinosinusitis (ages 6 years and older with a history of sino-nasal surgery) [label:dupilumab:indications_and_usage:3]. Limitations of use: it is not indicated for relief of acute bronchospasm or status asthmaticus [label:dupilumab:indications_and_usage:2], nor for other forms of urticaria [label:dupilumab:indications_and_usage:3].",
+   "abstain_reason": null,
+   "trace": "eval/traces/0f760d2d61b6.json"
+  },
+  {
+   "id": "q20",
+   "type": "label_fact",
+   "route_ok": true,
+   "entities_ok": true,
+   "recall_ok": true,
+   "raw_citations_valid": true,
+   "final_citations_valid": true,
+   "correct": true,
+   "abstained": false,
+   "should_abstain": false,
+   "latency_ms": 4742,
+   "cost_usd": 0.011053,
+   "route": "label",
+   "entities": [
+    "amiodarone"
+   ],
+   "answer": "The amiodarone boxed warning is titled \"Pulmonary, Hepatic and Cardiac Toxicity\" [label:amiodarone:boxed_warning:0]. Pulmonary toxicity (hypersensitivity pneumonitis or interstitial/alveolar pneumonitis) has caused clinically manifest disease at rates as high as 17% in some series, and has been fatal about 10% of the time [label:amiodarone:boxed_warning:0]. Hepatotoxicity can occur and can be fatal [label:amiodarone:boxed_warning:0]. Amiodarone can exacerbate arrhythmias (proarrhythmic toxicity), so it should be initiated where continuous electrocardiograms and cardiac resuscitation are available [label:amiodarone:boxed_warning:0]. The warning also says use is accompanied by substantial toxicity, some of it life-threatening, and that it is intended only for patients with indicated life-threatening arrhythmias [label:amiodarone:boxed_warning:1].",
+   "abstain_reason": null,
+   "trace": "eval/traces/f42c169ed223.json"
+  },
+  {
+   "id": "q21",
+   "type": "brand_name",
+   "route_ok": true,
+   "entities_ok": true,
+   "recall_ok": true,
+   "raw_citations_valid": true,
+   "final_citations_valid": true,
+   "correct": true,
+   "abstained": false,
+   "should_abstain": false,
+   "latency_ms": 4666,
+   "cost_usd": 0.009069,
+   "route": "label",
+   "entities": [
+    "semaglutide"
+   ],
+   "answer": "Ozempic (semaglutide) is contraindicated in patients with a personal or family history of medullary thyroid carcinoma (MTC) or in patients with Multiple Endocrine Neoplasia syndrome type 2 (MEN 2) [label:semaglutide:contraindications:0]. It is also contraindicated in patients with a serious hypersensitivity reaction to semaglutide or to any of the excipients in Ozempic [label:semaglutide:contraindications:0]. Serious hypersensitivity reactions including anaphylaxis and angioedema have been reported with Ozempic [label:semaglutide:contraindications:0].",
+   "abstain_reason": null,
+   "trace": "eval/traces/d78772231c58.json"
+  },
+  {
+   "id": "q22",
+   "type": "brand_name",
+   "route_ok": true,
+   "entities_ok": true,
+   "recall_ok": true,
+   "raw_citations_valid": true,
+   "final_citations_valid": true,
+   "correct": true,
+   "abstained": false,
+   "should_abstain": false,
+   "latency_ms": 5150,
+   "cost_usd": 0.011658,
+   "route": "label",
+   "entities": [
+    "apixaban"
+   ],
+   "answer": "Eliquis (apixaban) has a boxed warning with two parts. (A) Premature discontinuation increases the risk of thrombotic events: stopping any oral anticoagulant, including Eliquis, raises this risk [label:apixaban:boxed_warning:0]. If Eliquis is discontinued for a reason other than pathological bleeding or completion of a course of therapy, consider coverage with another anticoagulant [label:apixaban:boxed_warning:0]. (B) Spinal/epidural hematoma: epidural or spinal hematomas may occur in patients receiving neuraxial anesthesia or undergoing spinal puncture, and these may result in long-term or permanent paralysis [label:apixaban:boxed_warning:0]. Factors that can increase this risk include indwelling epidural catheters, concomitant drugs that affect hemostasis (such as NSAIDs, platelet inhibitors, other anticoagulants), a history of traumatic or repeated epidural or spinal punctures, and a history of spinal deformity or spinal surgery [label:apixaban:boxed_warning:1]. The optimal timing between Eliquis administration and neuraxial procedures is not known [label:apixaban:boxed_warning:1]. Patients should be monitored frequently for signs and symptoms of neurological impairment, and urgent treatment is necessary if neurological compromise is noted [label:apixaban:boxed_warning:1].",
+   "abstain_reason": null,
+   "trace": "eval/traces/efefb8f2e155.json"
+  },
+  {
+   "id": "q23",
+   "type": "brand_name",
+   "route_ok": true,
+   "entities_ok": true,
+   "recall_ok": true,
+   "raw_citations_valid": true,
+   "final_citations_valid": true,
+   "correct": true,
+   "abstained": false,
+   "should_abstain": false,
+   "latency_ms": 4252,
+   "cost_usd": 0.008967,
+   "route": "label",
+   "entities": [
+    "sertraline"
+   ],
+   "answer": "Yes. Zoloft (sertraline) has a boxed warning for suicidal thoughts and behaviors [label:sertraline:boxed_warning:0]. Antidepressants increased the risk of suicidal thoughts and behaviors in pediatric and young adult patients in short-term studies [label:sertraline:boxed_warning:0]. The label says to closely monitor all antidepressant-treated patients for clinical worsening and for emergence of suicidal thoughts and behaviors [label:sertraline:boxed_warning:0].",
+   "abstain_reason": null,
+   "trace": "eval/traces/398a611efafe.json"
+  },
+  {
+   "id": "q24",
+   "type": "brand_name",
+   "route_ok": true,
+   "entities_ok": true,
+   "recall_ok": true,
+   "raw_citations_valid": true,
+   "final_citations_valid": true,
+   "correct": true,
+   "abstained": false,
+   "should_abstain": false,
+   "latency_ms": 4732,
+   "cost_usd": 0.01026,
+   "route": "label",
+   "entities": [
+    "atorvastatin"
+   ],
+   "answer": "Lipitor (atorvastatin) is a selective, competitive inhibitor of HMG-CoA reductase, the rate-limiting enzyme that converts HMG-CoA to mevalonate, a precursor of sterols including cholesterol [label:atorvastatin:mechanism_of_action:0]. In animal models, it lowers plasma cholesterol and lipoprotein levels by inhibiting HMG-CoA reductase and cholesterol synthesis in the liver, and by increasing the number of hepatic LDL receptors on the cell surface to enhance LDL uptake and catabolism [label:atorvastatin:mechanism_of_action:0]. It also reduces LDL production and the number of LDL particles [label:atorvastatin:mechanism_of_action:0].",
+   "abstain_reason": null,
+   "trace": "eval/traces/3649ee1975a5.json"
+  },
+  {
+   "id": "q25",
+   "type": "mixed",
+   "route_ok": true,
+   "entities_ok": true,
+   "recall_ok": true,
+   "raw_citations_valid": true,
+   "final_citations_valid": true,
+   "correct": true,
+   "abstained": false,
+   "should_abstain": false,
+   "latency_ms": 9289,
+   "cost_usd": 0.022016,
+   "route": "both",
+   "entities": [
+    "pembrolizumab"
+   ],
+   "answer": "Yes. ClinicalTrials.gov lists 144 Phase 3 studies matching pembrolizumab and lung cancer [count:1]. Examples: NCT03302234, Pembrolizumab Given With Ipilimumab or Placebo in Untreated Metastatic NSCLC (KEYNOTE-598), Phase 3, Completed [trial:NCT03302234]; NCT06561386, Nivolumab and Relatlimab Plus Chemotherapy vs Pembrolizumab Plus Chemotherapy in Stage IV/Recurrent Non-squamous NSCLC, Phase 3, Recruiting [trial:NCT06561386]; NCT01905657, Two Doses of Pembrolizumab vs Docetaxel in Previously Treated NSCLC (KEYNOTE-010), Phase 2/3, Completed [trial:NCT01905657]. Common adverse reactions (reported in \u226520% of patients) with pembrolizumab as a single agent: fatigue, musculoskeletal pain, rash, diarrhea, pyrexia, cough, decreased appetite, pruritus, dyspnea, constipation, pain, abdominal pain, nausea, and hypothyroidism [label:pembrolizumab:adverse_reactions:0]. In combination with chemotherapy or chemoradiotherapy, the label lists additional reactions such as alopecia, peripheral neuropathy, mucosal inflammation, stomatitis, vomiting, and headache [label:pembrolizumab:adverse_reactions:0].",
+   "abstain_reason": null,
+   "trace": "eval/traces/d225bb7efb9a.json"
+  },
+  {
+   "id": "q26",
+   "type": "mixed",
+   "route_ok": true,
+   "entities_ok": true,
+   "recall_ok": true,
+   "raw_citations_valid": true,
+   "final_citations_valid": true,
+   "correct": true,
+   "abstained": false,
+   "should_abstain": false,
+   "latency_ms": 9512,
+   "cost_usd": 0.023699,
+   "route": "both",
+   "entities": [
+    "empagliflozin"
+   ],
+   "answer": "Yes. The registry count shows 13 recruiting empagliflozin trials in chronic kidney disease [count:2]. Examples from the evidence (all RECRUITING):\n- NCT07074418, Effect of Empagliflozin in Patients With eGFR Between 10 and 20 ml/Min/1.73m2, Phase 4 [trial:NCT07074418].\n- NCT06013865, Empagliflozin Treatment in Kidney Transplant Recipients, Phase 4 [trial:NCT06013865].\n- NCT06430684, Feasibility Trial of Sodium-GLucose coTransporter 2 INhibitors in Pediatric Chronic KIDney DiSease, Early Phase 1 [trial:NCT06430684].\n- NCT06642272, A Pragmatic Trial Comparing Empagliflozin and Dapagliflozin Through Cluster Randomization Embedded in the Electronic Health Record, Phase 4 [trial:NCT06642272].\n- NCT05786443, Safety and Efficacy of Empagliflozin in Hemodialysis, Phase 2 [trial:NCT05786443].\n- NCT05715814, meChANisms and sAfety of SGLT2 Inhibition in peRitoneal dialYsis, Phase 3 [trial:NCT05715814].\n- NCT06249932, Empagliflozin in Heart Failure with Reduced Ejection Fraction and End Stage Renal Disease, Phase 4 [trial:NCT06249932].\n- NCT06249945, EMPAgliflozin in Heart Failure With PReserved Ejection Fraction and End Stage Renal Disease, Phase 4 [trial:NCT06249945].\nOther recruiting trials in the evidence that involve SGLT2 inhibitors in kidney disease are NCT06929169 [trial:NCT06929169] and NCT07309094 [trial:NCT07309094].\n\nContraindication: the label lists hypersensitivity to empagliflozin or any of the excipients in JARDIANCE, with reactions such as angioedema having occurred [label:empagliflozin:contraindications:0]. No other contraindications appear in the provided evidence.",
+   "abstain_reason": null,
+   "trace": "eval/traces/288b02d680d1.json"
+  },
+  {
+   "id": "q27",
+   "type": "should_abstain",
+   "route_ok": true,
+   "entities_ok": true,
+   "recall_ok": null,
+   "raw_citations_valid": null,
+   "final_citations_valid": true,
+   "correct": true,
+   "abstained": true,
+   "should_abstain": true,
+   "latency_ms": 957,
+   "cost_usd": 0.000136,
+   "route": "out_of_scope",
+   "entities": [
+    "pembrolizumab"
+   ],
+   "answer": "I can't answer that from trial or label data.",
+   "abstain_reason": "out of scope: Forecasting future revenue/earnings for Keytruda is not answerable from ClinicalTrials.gov registry records or FDA drug labels.",
+   "trace": "eval/traces/b955573980e7.json"
+  },
+  {
+   "id": "q28",
+   "type": "should_abstain",
+   "route_ok": true,
+   "entities_ok": true,
+   "recall_ok": null,
+   "raw_citations_valid": null,
+   "final_citations_valid": true,
+   "correct": true,
+   "abstained": true,
+   "should_abstain": true,
+   "latency_ms": 2293,
+   "cost_usd": 0.000169,
+   "route": "label",
+   "entities": [
+    "zuranolone"
+   ],
+   "answer": "I can't answer that from trial or label data.",
+   "abstain_reason": "no label in the corpus for zuranolone",
+   "trace": "eval/traces/b40f7ff1571d.json"
+  },
+  {
+   "id": "q29",
+   "type": "should_abstain",
+   "route_ok": true,
+   "entities_ok": true,
+   "recall_ok": null,
+   "raw_citations_valid": null,
+   "final_citations_valid": true,
+   "correct": true,
+   "abstained": true,
+   "should_abstain": true,
+   "latency_ms": 1337,
+   "cost_usd": 0.000133,
+   "route": "out_of_scope",
+   "entities": [
+    "semaglutide"
+   ],
+   "answer": "I can't answer that from trial or label data.",
+   "abstain_reason": "out of scope: Monthly cost or pricing of Ozempic is not answerable from ClinicalTrials.gov records or FDA drug labels.",
+   "trace": "eval/traces/28d142031704.json"
+  },
+  {
+   "id": "q30",
+   "type": "should_abstain",
+   "route_ok": true,
+   "entities_ok": true,
+   "recall_ok": null,
+   "raw_citations_valid": null,
+   "final_citations_valid": true,
+   "correct": true,
+   "abstained": true,
+   "should_abstain": true,
+   "latency_ms": 2076,
+   "cost_usd": 0.000138,
+   "route": "out_of_scope",
+   "entities": [
+    "warfarin"
+   ],
+   "answer": "I can't answer that from trial or label data.",
+   "abstain_reason": "out of scope: This asks for medical advice about the user's own treatment (whether to stop warfarin before dental surgery), which neither the trial registry nor drug labels can answer.",
+   "trace": "eval/traces/cbc3fd2e14e4.json"
+  }
+ ]
+}

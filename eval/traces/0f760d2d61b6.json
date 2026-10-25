@@ -1,0 +1,77 @@
+{
+ "trace_id": "0f760d2d61b6",
+ "at": "2026-10-25T17:48:10.871407+00:00",
+ "question": "What is dupilumab indicated for?",
+ "entities": [
+  {
+   "mention": "dupilumab",
+   "generic_name": "dupilumab",
+   "rxcui": [
+    "1876401",
+    "1876406",
+    "2099300",
+    "2099302",
+    "2375327",
+    "2375329",
+    "2559706",
+    "2559707"
+   ],
+   "resolved": true,
+   "source": "synonym_map"
+  }
+ ],
+ "route": {
+  "kind": "label",
+  "reason": "Indications for dupilumab come from its FDA drug label, not from trial registry records.",
+  "label_query": "dupilumab indications"
+ },
+ "tool_calls": [],
+ "retrieved": [
+  "label:dupilumab:indications_and_usage:3",
+  "label:dupilumab:contraindications:0",
+  "label:dupilumab:indications_and_usage:0",
+  "label:dupilumab:mechanism_of_action:0",
+  "label:dupilumab:indications_and_usage:2"
+ ],
+ "draft": {
+  "text": "Dupilumab (DUPIXENT), an interleukin-4 receptor alpha antagonist, is indicated for: atopic dermatitis (moderate-to-severe, ages 6 months and older, not adequately controlled with topical prescription therapies or when those are not advisable) [label:dupilumab:indications_and_usage:0]; asthma as add-on maintenance treatment (ages 6 years and older, moderate-to-severe, eosinophilic phenotype or oral corticosteroid dependent) [label:dupilumab:indications_and_usage:0]; chronic rhinosinusitis with nasal polyps as add-on maintenance (ages 12 years and older, inadequately controlled) [label:dupilumab:indications_and_usage:2]; eosinophilic esophagitis (ages 1 year and older, weighing at least 15 kg) [label:dupilumab:indications_and_usage:2]; prurigo nodularis in adults [label:dupilumab:indications_and_usage:2]; COPD as add-on maintenance in adults with inadequately controlled disease and an eosinophilic phenotype [label:dupilumab:indications_and_usage:2]; chronic spontaneous urticaria (ages 2 years and older, still symptomatic despite H1 antihistamine treatment) [label:dupilumab:indications_and_usage:2]; bullous pemphigoid in adults [label:dupilumab:indications_and_usage:3]; and allergic fungal rhinosinusitis (ages 6 years and older with a history of sino-nasal surgery) [label:dupilumab:indications_and_usage:3]. Limitations of use: it is not indicated for relief of acute bronchospasm or status asthmaticus [label:dupilumab:indications_and_usage:2], nor for other forms of urticaria [label:dupilumab:indications_and_usage:3].",
+  "citations": [
+   "label:dupilumab:indications_and_usage:0",
+   "label:dupilumab:indications_and_usage:2",
+   "label:dupilumab:indications_and_usage:3"
+  ],
+  "abstained": false,
+  "abstain_reason": null
+ },
+ "answer": {
+  "text": "Dupilumab (DUPIXENT), an interleukin-4 receptor alpha antagonist, is indicated for: atopic dermatitis (moderate-to-severe, ages 6 months and older, not adequately controlled with topical prescription therapies or when those are not advisable) [label:dupilumab:indications_and_usage:0]; asthma as add-on maintenance treatment (ages 6 years and older, moderate-to-severe, eosinophilic phenotype or oral corticosteroid dependent) [label:dupilumab:indications_and_usage:0]; chronic rhinosinusitis with nasal polyps as add-on maintenance (ages 12 years and older, inadequately controlled) [label:dupilumab:indications_and_usage:2]; eosinophilic esophagitis (ages 1 year and older, weighing at least 15 kg) [label:dupilumab:indications_and_usage:2]; prurigo nodularis in adults [label:dupilumab:indications_and_usage:2]; COPD as add-on maintenance in adults with inadequately controlled disease and an eosinophilic phenotype [label:dupilumab:indications_and_usage:2]; chronic spontaneous urticaria (ages 2 years and older, still symptomatic despite H1 antihistamine treatment) [label:dupilumab:indications_and_usage:2]; bullous pemphigoid in adults [label:dupilumab:indications_and_usage:3]; and allergic fungal rhinosinusitis (ages 6 years and older with a history of sino-nasal surgery) [label:dupilumab:indications_and_usage:3]. Limitations of use: it is not indicated for relief of acute bronchospasm or status asthmaticus [label:dupilumab:indications_and_usage:2], nor for other forms of urticaria [label:dupilumab:indications_and_usage:3].",
+  "abstained": false,
+  "abstain_reason": null,
+  "citations": [
+   "label:dupilumab:indications_and_usage:0",
+   "label:dupilumab:indications_and_usage:2",
+   "label:dupilumab:indications_and_usage:3"
+  ],
+  "invented": []
+ },
+ "llm_calls": [
+  {
+   "step": "router",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 979,
+   "output_tokens": 57,
+   "cost_usd": 0.0001264,
+   "latency_ms": 1336
+  },
+  {
+   "step": "generator",
+   "model": "claude-sonnet-5-5",
+   "input_tokens": 3056,
+   "output_tokens": 709,
+   "cost_usd": 0.013202,
+   "latency_ms": 4256
+  }
+ ],
+ "latency_ms": 5687,
+ "cost_usd": 0.013328
+}

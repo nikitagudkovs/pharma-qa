@@ -1,0 +1,86 @@
+{
+ "trace_id": "e95fce642a2f",
+ "at": "2026-10-25T17:47:46.859189+00:00",
+ "question": "How many trials of semaglutide are currently recruiting?",
+ "entities": [
+  {
+   "mention": "semaglutide",
+   "generic_name": "semaglutide",
+   "rxcui": [
+    "2619152",
+    "2619154"
+   ],
+   "resolved": true,
+   "source": "synonym_map"
+  }
+ ],
+ "route": {
+  "kind": "trials",
+  "reason": "The question asks how many semaglutide trials are currently recruiting, which is answered from ClinicalTrials.gov registry records alone.",
+  "label_query": null
+ },
+ "tool_calls": [
+  {
+   "name": "count_trials",
+   "input": {
+    "drug": "semaglutide",
+    "status": [
+     "RECRUITING"
+    ]
+   },
+   "ok": true,
+   "error": null,
+   "result_ids": [
+    "count:1"
+   ]
+  }
+ ],
+ "retrieved": [
+  "count:1"
+ ],
+ "draft": {
+  "text": "There are 169 ClinicalTrials.gov studies of semaglutide with a status of recruiting [count:1].",
+  "citations": [
+   "count:1"
+  ],
+  "abstained": false,
+  "abstain_reason": null
+ },
+ "answer": {
+  "text": "There are 169 ClinicalTrials.gov studies of semaglutide with a status of recruiting [count:1].",
+  "abstained": false,
+  "abstain_reason": null,
+  "citations": [
+   "count:1"
+  ],
+  "invented": []
+ },
+ "llm_calls": [
+  {
+   "step": "router",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 985,
+   "output_tokens": 66,
+   "cost_usd": 0.0001315,
+   "latency_ms": 1514
+  },
+  {
+   "step": "trial_planner",
+   "model": "claude-sonnet-5-5",
+   "input_tokens": 1807,
+   "output_tokens": 82,
+   "cost_usd": 0.004434,
+   "latency_ms": 1079
+  },
+  {
+   "step": "generator",
+   "model": "claude-sonnet-5-5",
+   "input_tokens": 912,
+   "output_tokens": 71,
+   "cost_usd": 0.002534,
+   "latency_ms": 2155
+  }
+ ],
+ "latency_ms": 4750,
+ "cost_usd": 0.007099
+}

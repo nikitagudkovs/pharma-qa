@@ -1,0 +1,69 @@
+{
+ "trace_id": "f2a03ed6a735",
+ "at": "2026-10-25T17:48:02.274900+00:00",
+ "question": "What is the mechanism of action of pembrolizumab?",
+ "entities": [
+  {
+   "mention": "pembrolizumab",
+   "generic_name": "pembrolizumab",
+   "rxcui": [
+    "1657746",
+    "1657749",
+    "1657750",
+    "1657751"
+   ],
+   "resolved": true,
+   "source": "synonym_map"
+  }
+ ],
+ "route": {
+  "kind": "label",
+  "reason": "Mechanism of action is described in the FDA drug label for pembrolizumab, not in trial registry records.",
+  "label_query": "pembrolizumab mechanism of action"
+ },
+ "tool_calls": [],
+ "retrieved": [
+  "label:pembrolizumab:mechanism_of_action:0",
+  "label:pembrolizumab:pregnancy:1",
+  "label:pembrolizumab:pregnancy:0",
+  "label:pembrolizumab:use_in_specific_populations:0",
+  "label:pembrolizumab:use_in_specific_populations:1"
+ ],
+ "draft": {
+  "text": "Pembrolizumab is a monoclonal antibody that binds to the PD-1 receptor and blocks its interaction with PD-L1 and PD-L2, releasing PD-1 pathway-mediated inhibition of the immune response, including the anti-tumor immune response [label:pembrolizumab:mechanism_of_action:0]. Binding of PD-L1 and PD-L2 to PD-1 on T cells inhibits T cell proliferation and cytokine production, and upregulation of PD-1 ligands in some tumors can contribute to inhibition of active T-cell immune surveillance of tumors [label:pembrolizumab:mechanism_of_action:0]. In syngeneic mouse tumor models, blocking PD-1 activity decreased tumor growth [label:pembrolizumab:mechanism_of_action:0].",
+  "citations": [
+   "label:pembrolizumab:mechanism_of_action:0"
+  ],
+  "abstained": false,
+  "abstain_reason": null
+ },
+ "answer": {
+  "text": "Pembrolizumab is a monoclonal antibody that binds to the PD-1 receptor and blocks its interaction with PD-L1 and PD-L2, releasing PD-1 pathway-mediated inhibition of the immune response, including the anti-tumor immune response [label:pembrolizumab:mechanism_of_action:0]. Binding of PD-L1 and PD-L2 to PD-1 on T cells inhibits T cell proliferation and cytokine production, and upregulation of PD-1 ligands in some tumors can contribute to inhibition of active T-cell immune surveillance of tumors [label:pembrolizumab:mechanism_of_action:0]. In syngeneic mouse tumor models, blocking PD-1 activity decreased tumor growth [label:pembrolizumab:mechanism_of_action:0].",
+  "abstained": false,
+  "abstain_reason": null,
+  "citations": [
+   "label:pembrolizumab:mechanism_of_action:0"
+  ],
+  "invented": []
+ },
+ "llm_calls": [
+  {
+   "step": "router",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 989,
+   "output_tokens": 70,
+   "cost_usd": 0.0001339,
+   "latency_ms": 1243
+  },
+  {
+   "step": "generator",
+   "model": "claude-sonnet-5-5",
+   "input_tokens": 3272,
+   "output_tokens": 329,
+   "cost_usd": 0.009834,
+   "latency_ms": 2264
+  }
+ ],
+ "latency_ms": 14213,
+ "cost_usd": 0.009968
+}

@@ -1,0 +1,68 @@
+{
+ "trace_id": "1159d7dea406",
+ "at": "2026-10-25T17:46:04.651744+00:00",
+ "question": "How does Lipitor work?",
+ "entities": [
+  {
+   "mention": "Lipitor",
+   "generic_name": "atorvastatin",
+   "rxcui": [
+    "259255",
+    "617310",
+    "617311",
+    "617312"
+   ],
+   "resolved": true,
+   "source": "synonym_map"
+  }
+ ],
+ "route": {
+  "kind": "label",
+  "reason": "Mechanism of action of atorvastatin (Lipitor) is described in the FDA drug label, not in trial registry records."
+ },
+ "tool_calls": [],
+ "retrieved": [
+  "label:atorvastatin:drug_interactions:6",
+  "label:atorvastatin:use_in_specific_populations:3",
+  "label:atorvastatin:mechanism_of_action:0",
+  "label:atorvastatin:pregnancy:0",
+  "label:atorvastatin:pregnancy:3"
+ ],
+ "draft": {
+  "text": "Lipitor (atorvastatin) is a selective, competitive inhibitor of HMG-CoA reductase, the rate-limiting enzyme that converts HMG-CoA to mevalonate, a precursor of sterols including cholesterol [label:atorvastatin:mechanism_of_action:0]. In animal models, it lowers plasma cholesterol and lipoprotein levels by inhibiting HMG-CoA reductase and cholesterol synthesis in the liver, and by increasing the number of hepatic LDL receptors on the cell surface to enhance LDL uptake and catabolism [label:atorvastatin:mechanism_of_action:0]. It also reduces LDL production and the number of LDL particles [label:atorvastatin:mechanism_of_action:0].",
+  "citations": [
+   "label:atorvastatin:mechanism_of_action:0"
+  ],
+  "abstained": false,
+  "abstain_reason": null
+ },
+ "answer": {
+  "text": "Lipitor (atorvastatin) is a selective, competitive inhibitor of HMG-CoA reductase, the rate-limiting enzyme that converts HMG-CoA to mevalonate, a precursor of sterols including cholesterol [label:atorvastatin:mechanism_of_action:0]. In animal models, it lowers plasma cholesterol and lipoprotein levels by inhibiting HMG-CoA reductase and cholesterol synthesis in the liver, and by increasing the number of hepatic LDL receptors on the cell surface to enhance LDL uptake and catabolism [label:atorvastatin:mechanism_of_action:0]. It also reduces LDL production and the number of LDL particles [label:atorvastatin:mechanism_of_action:0].",
+  "abstained": false,
+  "abstain_reason": null,
+  "citations": [
+   "label:atorvastatin:mechanism_of_action:0"
+  ],
+  "invented": []
+ },
+ "llm_calls": [
+  {
+   "step": "router",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 802,
+   "output_tokens": 55,
+   "cost_usd": 0.0001077,
+   "latency_ms": 1190
+  },
+  {
+   "step": "generator",
+   "model": "claude-sonnet-5-5",
+   "input_tokens": 3121,
+   "output_tokens": 309,
+   "cost_usd": 0.009332,
+   "latency_ms": 3060
+  }
+ ],
+ "latency_ms": 4382,
+ "cost_usd": 0.00944
+}
