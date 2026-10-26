@@ -78,9 +78,8 @@ flowchart LR
   C -- invented or missing --> A
 ```
 
-The trust story is the last box. The model can only cite evidence the pipeline handed it, and code, not the model,
-decides whether a citation is real. An invented citation ID, or an answer with no citations, is downgraded to an
-abstain.
+Citation validation runs in code after generation. Every cited ID must match an evidence item passed to the
+generator. An invented citation ID, or an answer with no citations, is converted to an abstain.
 
 | Module | What it does |
 |---|---|
@@ -128,7 +127,7 @@ latency or cost change. The repeat run held 100% correctness. Its one routing mi
 routed `out_of_scope` instead of `label`) still abstained correctly, because corpus coverage is checked in code and
 doesn't depend on the router.
 
-### Things the build turned up
+### Findings during the build
 
 - **The spec's API parameter was wrong.** ClinicalTrials.gov v2 has no `filter.phase`; phases go through
   `aggFilters=phase:2 3`. Found by probing the API before writing the client.
@@ -141,7 +140,7 @@ doesn't depend on the router.
 - **The first eval run crashed.** Concurrent inference on the embedding model segfaults, which would also have hit
   FastAPI's threadpool in production. Inference is now serialized behind a lock (about 10 ms per query).
 
-## Limitations, said plainly
+## Limitations
 
 - **30 questions is small, and the system hits the ceiling.** 100% here means "no failures this set can detect", not
   "no failures". The next step is a harder, larger set: misspellings, multi-drug questions, dosing nuance, and

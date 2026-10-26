@@ -64,13 +64,12 @@
   .kicker { font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
   h1 { font-family: var(--serif); font-weight: 500; font-size: clamp(34px, 5.4vw, 58px); line-height: 1.05;
     letter-spacing: -.015em; margin: 14px 0 18px; max-width: 16ch; }
-  h1 em { font-style: italic; color: var(--accent); }
   .lede { font-size: 19px; color: var(--muted); max-width: 62ch; margin: 0; }
   .stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: var(--line);
     border: 1px solid var(--line); border-radius: 12px; overflow: hidden; margin-top: 36px; }
   @media (min-width: 760px) { .stats { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
   .stat { background: var(--panel); padding: 18px 18px 16px; }
-  .stat b { display: block; font-family: var(--serif); font-weight: 500; font-size: 34px; line-height: 1.1; }
+  .stat b { display: block; font-family: var(--serif); font-weight: 500; font-size: 30px; white-space: nowrap; line-height: 1.1; }
   .stat b small { font-size: 18px; color: var(--muted); }
   .stat span { font-size: 13px; color: var(--muted); }
 
@@ -180,26 +179,27 @@
 <div class="layout">
   <aside class="toc"><ol>
     <li><a href="#architecture">Architecture</a></li>
-    <li><a href="#lifecycle">A question, step by step</a></li>
-    <li><a href="#trust">Trust guardrails</a></li>
+    <li><a href="#lifecycle">Request walkthrough</a></li>
+    <li><a href="#trust">Guardrails</a></li>
     <li><a href="#evaluation">Evaluation</a></li>
-    <li><a href="#fix">The fix</a></li>
-    <li><a href="#process">How it was built</a></li>
-    <li><a href="#next">Limits and next steps</a></li>
+    <li><a href="#fix">Baseline failure and fix</a></li>
+    <li><a href="#process">Build steps</a></li>
+    <li><a href="#next">Limitations and next steps</a></li>
   </ol></aside>
 
   <main>
     <header class="hero">
       <div class="kicker">Prototype · public drug and trial data</div>
-      <h1>Every answer cites real evidence, <em>or it refuses.</em></h1>
-      <p class="lede">A question-answering service over ClinicalTrials.gov and FDA drug labels. Structured trial data
-        goes through typed tools, label documents go through hybrid search, and code checks every citation before an
-        answer goes out. A 30-question eval set measures it.</p>
+      <h1>Pharma Q&amp;A: system overview</h1>
+      <p class="lede">Question answering over the ClinicalTrials.gov API v2 and openFDA drug labels. Trial questions
+        are answered through typed API tools. Label questions are answered by hybrid retrieval over 3,306 label-section
+        chunks for 53 drugs. Every citation is validated in code against the retrieved evidence. Evaluated on a
+        30-question golden set.</p>
       <div class="stats">
-        <div class="stat"><b>92<small>%</small> → 100<small>%</small></b><span>answer correctness, baseline → after one fix</span></div>
-        <div class="stat"><b>100<small>%</small></b><span>citation validity, checked in code</span></div>
-        <div class="stat"><b>4 / 4</b><span>should-abstain questions refused (out of scope or not in the corpus)</span></div>
-        <div class="stat"><b>$0.011</b><span>mean cost per question, p50 ≈ 6 s</span></div>
+        <div class="stat"><b>92.3 → 100<small>%</small></b><span>answer correctness, baseline → after fix</span></div>
+        <div class="stat"><b>100<small>%</small></b><span>citation validity (validated in code)</span></div>
+        <div class="stat"><b>4 / 4</b><span>abstain recall on the 4 should-abstain questions</span></div>
+        <div class="stat"><b>$0.011</b><span>mean cost per question; p50 latency 5.3–6.8 s</span></div>
       </div>
     </header>
 
@@ -207,8 +207,9 @@
     <section id="architecture" class="reveal">
       <div class="num">01</div>
       <h2>Architecture</h2>
-      <p class="point">One question, three routes, one check. Trials are structured data, so they go through tools.
-        Labels are documents, so they go through retrieval. That split is the whole design.</p>
+      <p class="point">Request flow: entity resolution → routing → trial tools and/or label retrieval → generation →
+        citation validation. Trial records are structured and queried through API tools. Labels are unstructured text and
+        are retrieved by search.</p>
       <div class="panel diagram" role="img" aria-label="Request flow diagram">
         <svg viewBox="0 0 1180 470" xmlns="http://www.w3.org/2000/svg" font-family="IBM Plex Sans, system-ui, sans-serif">
           <defs>
@@ -294,14 +295,14 @@
           </g>
         </svg>
       </div>
-      <p class="caption">The highlighted check is the trust story: the model can only cite evidence the pipeline handed
-        it, and code, not the model, decides whether a citation is real. Every step writes to a per-request JSON trace.</p>
+      <p class="caption">Citation validation runs in code after generation. Every cited ID must match an evidence item
+        passed to the generator; otherwise the response is converted to an abstain. Each request writes a JSON trace.</p>
 
       <h3>Components</h3>
       <div class="grid2">
         <div class="card"><h4>Entity resolution</h4><p>Brand and generic names come from a synonym map built from label
-          metadata (Keytruda → pembrolizumab). The LLM only extracts mentions when the map finds nothing. Unknown drugs are
-          kept and flagged, never dropped.</p></div>
+          metadata (Keytruda → pembrolizumab). The LLM extracts mentions only when the map finds none. Unresolved mentions
+          are kept and marked unresolved.</p></div>
         <div class="card"><h4>Router <span class="tag">Haiku 5.5</span></h4><p>Structured output: <code>trials | label |
           both | out_of_scope</code>, plus <code>label_query</code>, the label part of the question rewritten as a
           standalone search query.</p></div>
@@ -312,8 +313,8 @@
           chunked by label section. BM25 and <code>bge-small</code> embeddings run in parallel, merged with Reciprocal Rank
           Fusion and filtered to the resolved drug. Top 5 go to the generator.</p></div>
         <div class="card"><h4>Generator <span class="tag">Sonnet 5.5</span></h4><p>Returns a Pydantic
-          <code>DraftAnswer</code>: text with inline <code>[evidence-id]</code> markers, a citation list, and an abstain
-          flag with a reason. Never free text that has to be parsed.</p></div>
+          <code>DraftAnswer</code>: text with inline <code>[evidence-id]</code> markers, a citation list, an abstain
+          flag and an abstain reason. No free-text parsing.</p></div>
         <div class="card"><h4>API, tracing, hosting</h4><p>FastAPI <code>POST /ask</code> with a per-IP rate limit.
           A JSON trace per request holds entities, route, tool calls, retrieved IDs, the draft, tokens, latency and cost.
           Runs in Docker on Cloud Run (Terraform), scaling 0 → 2.</p></div>
@@ -323,9 +324,9 @@
     <!-- 02 -->
     <section id="lifecycle" class="reveal">
       <div class="num">02</div>
-      <h2>A question, step by step</h2>
-      <p class="point">A real trace from the eval run: 9.7 seconds and $0.022 end to end. Almost all of the time is
-        the generator writing a 10-trial answer.</p>
+      <h2>Request walkthrough</h2>
+      <p class="point">Trace of eval question q01, after-fix run. Total 9.7 s and $0.022, of which the generator call is
+        6.1 s and $0.017.</p>
       <ol class="rail">
         <li data-n="1"><div class="step"><strong>Question</strong></div>
           <div class="io">"Which Phase 3 trials is Keytruda being tested in for lung cancer?"</div></li>
@@ -336,22 +337,22 @@
         <li data-n="4"><div class="step"><strong>Plan and run tools</strong><span class="meta">Sonnet 5.5 · 1.3 s · $0.005</span></div>
           <div class="io">search_trials(drug="pembrolizumab", condition="lung cancer", phase=["PHASE3"], limit=10)
 → 10 trials: trial:NCT01905657, trial:NCT03302234, trial:NCT04322617, …</div>
-          <p>Arguments are validated before the request. A malformed NCT ID or a "PHASE9" never reaches the API.</p></li>
+          <p>Arguments are validated with Pydantic before the HTTP request. Invalid values (NCT ID pattern, unknown phase, limit &gt; 50) are rejected.</p></li>
         <li data-n="5"><div class="step"><strong>Generate</strong><span class="meta">Sonnet 5.5 · 6.1 s · $0.017</span></div>
           <div class="io">"NCT02142738, Pembrolizumab vs platinum-based chemotherapies in metastatic NSCLC
 (KEYNOTE-024), Phase 3, Completed [trial:NCT02142738]. …"</div></li>
         <li data-n="6" class="key"><div class="step"><strong>Check citations, in code</strong><span class="meta">no LLM call</span></div>
-          <p>All 10 cited IDs exist in the evidence passed in, so the answer ships with 10 links to ClinicalTrials.gov.
-            One invented ID would have turned the whole answer into an abstain.</p></li>
+          <p>All 10 cited IDs are in the evidence set, so the response returns 10 citations linking to ClinicalTrials.gov.
+            Any cited ID not in the evidence set converts the response to an abstain.</p></li>
       </ol>
     </section>
 
     <!-- 03 -->
     <section id="trust" class="reveal">
       <div class="num">03</div>
-      <h2>Trust guardrails</h2>
-      <p class="point">In this domain a refusal beats a guess, so each risk has a control, and most controls are code
-        rather than prompt instructions.</p>
+      <h2>Guardrails</h2>
+      <p class="point">One control per failure mode. Six of eight are enforced in code or infrastructure. Out-of-scope
+        detection is a model decision; evidence-only answering is a prompt instruction.</p>
       <div class="panel scroll"><table>
         <thead><tr><th>Risk</th><th>Control</th><th>Enforced by</th></tr></thead>
         <tbody>
@@ -371,13 +372,14 @@
     <section id="evaluation" class="reveal">
       <div class="num">04</div>
       <h2>Evaluation</h2>
-      <p class="point">30 questions, written and labelled against the real label and trial records before any LLM code
-        existed, so the first scorecard is an honest baseline. Every metric is computed in code.</p>
+      <p class="point">30 questions. Expected routes, entities, sources and required facts were taken from the label and
+        trial records before the LLM components were written. All metrics are computed in code from the pipeline's
+        structured output.</p>
 
       <h3>Answer correctness</h3>
       <div class="panel">
         <div class="bars" id="bars"><span class="caption">Loading runs…</span></div>
-        <p class="caption">The amber mark is this project's own bar (80%), not an industry standard.</p>
+        <p class="caption">Amber line: 80% target (project-defined).</p>
       </div>
 
       <h3>All metrics, every saved run</h3>
@@ -400,7 +402,7 @@
       <div class="grid2">
         <div class="card"><h4>Routing · entities</h4><p>Exact match against <code>expected_route</code> and the expected set of generic names.</p></div>
         <div class="card"><h4>Retrieval recall@5</h4><p>Each expected source type (trial, count, label section) has a hit in the top 5 of that type.</p></div>
-        <div class="card"><h4>Citation validity</h4><p>Measured on the model's raw draft and again after the check. The check guarantees the second.</p></div>
+        <div class="card"><h4>Citation validity</h4><p>Measured on the model's draft and on the final response. The final value is 100% by construction.</p></div>
         <div class="card"><h4>Answer correctness</h4><p>Every required fact, with accepted alternatives ("MTC" or "medullary thyroid"), appears in the answer.</p></div>
       </div>
     </section>
@@ -408,9 +410,10 @@
     <!-- 05 -->
     <section id="fix" class="reveal">
       <div class="num">05</div>
-      <h2>The fix the eval found</h2>
-      <p class="point">The baseline failed 2 of 26 answerable questions, and both traces showed the same cause: label
-        search ran on the whole question. Query decomposition fixed both, at no cost in latency or spend.</p>
+      <h2>Baseline failure and fix</h2>
+      <p class="point">Baseline: 24 of 26 answerable questions correct; q16 and q25 failed. Cause in both traces: label
+        retrieval used the full question as the query. Fix: the router returns <code>label_query</code>, a label-only
+        query used for retrieval. Result: 26 of 26; latency and cost unchanged.</p>
       <div class="ba">
         <div class="card">
           <h4><span class="tag warn">baseline</span> searched with the full question</h4>
@@ -420,7 +423,7 @@
             <li>adverse_reactions:31 · lung-cancer subgroup</li>
             <li>adverse_reactions:76</li><li>adverse_reactions:84</li><li>adverse_reactions:85</li>
           </ol>
-          <p style="margin-top:8px">The trial wording pulled in lung-cancer-specific chunks, so the answer said the summary wasn't available.</p>
+          <p style="margin-top:8px">Top 5 are lung-cancer subgroup chunks. The adverse-reaction summary chunk (:0) is not retrieved, and the answer reports the summary as unavailable.</p>
         </div>
         <div class="card">
           <h4><span class="tag">after fix</span> searched with <code>label_query</code></h4>
@@ -430,63 +433,62 @@
             <li class="win">adverse_reactions:0 · "most common (≥20%): fatigue, …"</li>
             <li>adverse_reactions:31</li><li>adverse_reactions:41</li><li>adverse_reactions:62</li>
           </ol>
-          <p style="margin-top:8px">The summary chunk is now in the top 5, and the answer lists the common adverse reactions.</p>
+          <p style="margin-top:8px">Summary chunk retrieved at rank 2. The answer lists the most common adverse reactions.</p>
         </div>
       </div>
-      <p class="caption" style="margin-top:14px">The same change fixed q16 (isotretinoin and pregnancy). "Isotretinoin pregnancy"
-        retrieves the boxed warning ("life-threatening birth defects"), which the full question missed. A repeat run kept
-        100% correctness. Its one routing miss, an unknown drug sent <code>out_of_scope</code> instead of <code>label</code>,
-        still abstained, because corpus coverage is checked in code.</p>
+      <p class="caption" style="margin-top:14px">q16 (isotretinoin, pregnancy): <code>label_query</code> "isotretinoin
+        pregnancy" retrieves the boxed warning; the full-question query did not. Repeat run: 100% correctness, one routing
+        deviation (q28, drug not in corpus, routed <code>out_of_scope</code> instead of <code>label</code>). q28 still
+        abstained because corpus coverage is checked in code.</p>
     </section>
 
     <!-- 06 -->
     <section id="process" class="reveal">
       <div class="num">06</div>
-      <h2>How it was built</h2>
-      <p class="point">Eval first, in small steps that each ended in something runnable. Most of the interesting findings
-        came from checking assumptions against the real data.</p>
+      <h2>Build steps</h2>
+      <p class="point">Order of work and the finding from each step. The eval set was written before the LLM components.</p>
       <ol class="timeline">
         <li><span class="i">01</span><span class="what">Probe both APIs</span><span class="found">
-          <strong>The spec's <code>filter.phase</code> doesn't exist</strong> in ClinicalTrials.gov v2. Phases go through
+          <strong><code>filter.phase</code> does not exist</strong> in ClinicalTrials.gov v2. Phase filtering uses
           <code>aggFilters=phase:2 3</code>.</span></li>
         <li><span class="i">02</span><span class="what">Ingest labels, build synonyms</span><span class="found">
-          53 drugs, 3,306 section chunks. <strong>Tecentriq and Tagrisso have no harmonized openFDA metadata</strong>, so they're
-          found by product text instead.</span></li>
+          53 drugs, 3,306 section chunks. <strong>Tecentriq and Tagrisso have no harmonized openFDA metadata</strong>, so they are
+          matched on product data text.</span></li>
         <li><span class="i">03</span><span class="what">Write the golden set</span><span class="found">
-          Before any LLM code. <strong>The Ozempic label says "MTC"</strong>, not "medullary thyroid carcinoma", so an answer
-          written from memory would have been a false failure.</span></li>
+          Before the LLM components. <strong>The Ozempic label uses "MTC"</strong>, not "medullary thyroid carcinoma"; the
+          check accepts either form.</span></li>
         <li><span class="i">04</span><span class="what">Hybrid retrieval</span><span class="found">
-          Recall@5 was 14/14 with correct entities. <strong>The cross-encoder reranker scored 13/14</strong>, so it ships off.</span></li>
+          Recall@5 14/14 with correct entities. <strong>Cross-encoder reranker: 13/14</strong>; disabled by default.</span></li>
         <li><span class="i">05</span><span class="what">Pipeline and unit tests</span><span class="found">
-          18 offline tests with a scripted fake LLM: citation check, abstain paths, argument validation. They cost nothing to run.</span></li>
+          18 offline tests with a scripted fake LLM: citation check, abstain paths, argument validation. No API calls.</span></li>
         <li><span class="i">06</span><span class="what">Baseline eval</span><span class="found">
-          <strong>The first run crashed.</strong> Concurrent inference on the embedding model segfaults, and FastAPI's
-          threadpool would hit it too. Inference is now locked. Then 92.3% correctness.</span></li>
+          <strong>First run segfaulted:</strong> concurrent inference on the embedding model. FastAPI's threadpool triggers
+          the same fault. Inference is serialized with a lock. Baseline: 92.3% correctness.</span></li>
         <li><span class="i">07</span><span class="what">One fix, rerun, repeat</span><span class="found">
-          <code>label_query</code> decomposition → 100%, and a repeat run measures variance. Every run is saved with
+          <code>label_query</code> → 100% correctness. A repeat run measures run-to-run variance. Each run is saved with
           per-question traces.</span></li>
         <li><span class="i">08</span><span class="what">Ship</span><span class="found">
-          Docker image, then Cloud Run through Terraform: secret in Secret Manager, scale 0 → 2, budget alert, a one-command deploy.</span></li>
+          Docker image, then Cloud Run via Terraform: API key in Secret Manager, 0–2 instances, budget alert, <code>infra/deploy.sh</code>.</span></li>
       </ol>
     </section>
 
     <!-- 07 -->
     <section id="next" class="reveal">
       <div class="num">07</div>
-      <h2>Limits, and what changes at scale</h2>
-      <p class="point">100% on 30 questions means this set can't find more failures, not that there are none. The
-        prototype makes deliberate cuts, and each one is a production next step.</p>
+      <h2>Limitations and next steps</h2>
+      <p class="point">The after-fix runs score 100% on most metrics, so the 30-question set no longer separates good from
+        bad changes. Each limitation below maps to a production change.</p>
       <div class="grid2">
-        <div class="card"><h4>Small, easy eval</h4><p>30 questions hit the ceiling. The next set needs misspellings, multi-drug questions, dosing nuance and ambiguous labels.</p></div>
-        <div class="card"><h4>String-match grading</h4><p>Cheap, deterministic and explainable, but a correct paraphrase can fail. Needs an LLM judge calibrated against expert labels.</p></div>
-        <div class="card"><h4>Synonym map, not an ontology</h4><p>No fuzzy matching and no condition hierarchy, so "NSCLC" is not treated as part of "lung cancer".</p></div>
-        <div class="card"><h4>Snapshot data</h4><p>Trial responses are cached for repeatable evals, as of 2026-10-25. There's one label per drug and no reindexing.</p></div>
+        <div class="card"><h4>Eval set size</h4><p>30 questions at ceiling. Next set: misspellings, multi-drug questions, dosing detail, ambiguous label text.</p></div>
+        <div class="card"><h4>String-match grading</h4><p>Deterministic, but a correct paraphrase can fail. Next: an LLM judge calibrated against expert labels.</p></div>
+        <div class="card"><h4>Synonym map</h4><p>No fuzzy matching and no condition hierarchy, so "NSCLC" is not treated as part of "lung cancer".</p></div>
+        <div class="card"><h4>Snapshot data</h4><p>Trial responses are cached for repeatable evals, as of 2026-10-25. One label per drug; no reindexing.</p></div>
       </div>
       <h3>At production scale</h3>
       <div class="next">
         <div class="card"><h4>Curated ontology</h4><p>MeSH, RxNorm or an in-house drug and disease taxonomy, for drugs and conditions, including hierarchy in trial search.</p></div>
         <div class="card"><h4>Managed hybrid index</h4><p>Azure AI Search over the full label corpus, with reindexing keyed on label version and freshness shown per citation.</p></div>
-        <div class="card"><h4>Eval as a CI gate</h4><p>A curator-labelled golden set, a calibrated judge, repeated runs for variance, and user feedback flowing back into the set.</p></div>
+        <div class="card"><h4>Eval as a CI gate</h4><p>A curator-labelled golden set, a calibrated judge, repeated runs for variance, and user feedback added to the set.</p></div>
       </div>
     </section>
 
