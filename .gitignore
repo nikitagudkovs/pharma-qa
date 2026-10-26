@@ -7,3 +7,7 @@ data/cache/live/
 /traces/
 .DS_Store
 data/cache/openfda/
+infra/.terraform/
+infra/*.tfstate*
+infra/terraform.tfvars
+infra/.terraform.lock.hcl.bak

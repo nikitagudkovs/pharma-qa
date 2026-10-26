@@ -1,0 +1,10 @@
+# Uploaded to Cloud Build; mirrors .dockerignore
+.git
+.venv
+.env
+traces/
+data/cache/openfda/
+**/__pycache__
+.pytest_cache
+infra/
+docs/

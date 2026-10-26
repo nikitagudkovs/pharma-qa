@@ -37,6 +37,30 @@ curl -s localhost:8000/ask -H 'content-type: application/json' \
 # -> {answer, citations, route, entities, abstained, abstain_reason, trace_id, latency_ms, cost_usd, ...}
 ```
 
+### Deploy to Google Cloud Run (free tier)
+
+[`infra/`](infra/) is Terraform for the whole stack: APIs, an Artifact Registry repo that keeps the 2 newest images,
+a runtime service account, a Secret Manager secret for the API key, the Cloud Run service (2 GiB, scales 0 → 2), public
+access, and a 1-unit monthly budget alert. Cloud Build builds the image for `linux/amd64`, so it works from an Apple
+Silicon laptop. The API key is added to Secret Manager by hand, so it never enters Terraform state.
+
+```bash
+infra/bootstrap.sh <billing-account-id>   # once: creates the project, links billing
+infra/deploy.sh                           # every deploy: build, then terraform apply
+```
+
+```bash
+infra/warm.sh on    # demo day: keep one instance warm, no cold start (billed while warm)
+infra/warm.sh off   # back to scale-to-zero
+```
+
+The scripts use a dedicated `pharma-qa` gcloud configuration and pass Terraform a short-lived access token, so other
+gcloud accounts and application-default credentials on the machine are left alone. Scaled to zero, it costs nothing
+while idle, but **a cold start takes about 75 s**, against about 13 s locally at 1 CPU. Cloud Run streams the ~1 GB of
+PyTorch libraries into the instance on first read. Swapping PyTorch for an ONNX embedding runtime is the fix; until
+then, use `warm.sh on` before a demo. Cloud Run's front end reserves `/healthz`, so it returns 404 from outside;
+the startup probe still uses it internally.
+
 ## Architecture
 
 ```mermaid
