@@ -1,0 +1,555 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How Pharma Q&amp;A works</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f5f4ef; --panel: #fffefa; --ink: #16201c; --muted: #5b6862; --faint: #8a958f; --line: #dcdfd8;
+    --accent: #0f6b5a; --accent-soft: #e1efe9; --warn: #9a5b00; --warn-soft: #f8eedb;
+    --good: #1d7a3e; --good-soft: #e3f2e6; --bad: #a3322a; --trial: #2c5ea8; --label: #7a4a9e;
+    --dot: rgba(22, 32, 28, .07);
+    --serif: "Newsreader", "Iowan Old Style", Georgia, serif;
+    --sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0e1311; --panel: #151b19; --ink: #e5ebe8; --muted: #9aa8a1; --faint: #6f7d76; --line: #27312d;
+      --accent: #4fc3a7; --accent-soft: #15302a; --warn: #e3a64a; --warn-soft: #30261a;
+      --good: #6fd08f; --good-soft: #17301f; --bad: #ef7d74; --trial: #7fa8ea; --label: #c39be3;
+      --dot: rgba(229, 235, 232, .06);
+    }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.6 var(--sans); }
+  a { color: var(--accent); }
+  code, .mono { font-family: var(--mono); font-size: .86em; }
+
+  .topbar { position: sticky; top: 0; z-index: 5; background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+  .topbar .in { max-width: 1180px; margin: 0 auto; padding: 10px 16px; display: flex; align-items: center; gap: 16px; }
+  .brand { font-family: var(--serif); font-size: 19px; font-weight: 600; color: var(--ink); text-decoration: none; white-space: nowrap; }
+  @media (max-width: 640px) { .topbar nav a:not(.cta):not([target]) { display: none; } }
+  .topbar nav { margin-left: auto; display: flex; gap: 6px; flex-wrap: wrap; }
+  .topbar nav a { font-size: 14px; color: var(--muted); text-decoration: none; padding: 5px 10px; border-radius: 6px;
+    border: 1px solid transparent; }
+  .topbar nav a:hover { color: var(--ink); border-color: var(--line); }
+  .topbar nav a.cta { color: #fff; background: var(--accent); }
+  @media (prefers-color-scheme: dark) { .topbar nav a.cta { color: #08201a; } }
+
+  .layout { max-width: 1180px; margin: 0 auto; padding: 0 16px 80px; display: grid; grid-template-columns: 1fr; gap: 48px; }
+  @media (min-width: 1100px) { .layout { grid-template-columns: 190px minmax(0, 1fr); } }
+  .toc { display: none; }
+  @media (min-width: 1100px) {
+    .toc { display: block; position: sticky; top: 72px; align-self: start; padding-top: 56px; }
+    .toc ol { list-style: none; margin: 0; padding: 0; counter-reset: s; }
+    .toc li { counter-increment: s; margin: 2px 0; }
+    .toc a { display: block; font-size: 14px; color: var(--muted); text-decoration: none; padding: 4px 0 4px 12px;
+      border-left: 2px solid var(--line); }
+    .toc a::before { content: counter(s, decimal-leading-zero) "  "; font-family: var(--mono); font-size: 11px; color: var(--faint); }
+    .toc a.on { color: var(--ink); border-left-color: var(--accent); }
+  }
+  main { min-width: 0; }
+
+  .hero { padding: 64px 0 40px; border-bottom: 1px solid var(--line); position: relative; }
+  .hero::before { content: ""; position: absolute; inset: 0 -40px; z-index: -1;
+    background-image: radial-gradient(var(--dot) 1px, transparent 1px); background-size: 18px 18px;
+    mask-image: linear-gradient(to bottom, #000 40%, transparent); }
+  .kicker { font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+  h1 { font-family: var(--serif); font-weight: 500; font-size: clamp(34px, 5.4vw, 58px); line-height: 1.05;
+    letter-spacing: -.015em; margin: 14px 0 18px; max-width: 16ch; }
+  h1 em { font-style: italic; color: var(--accent); }
+  .lede { font-size: 19px; color: var(--muted); max-width: 62ch; margin: 0; }
+  .stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: var(--line);
+    border: 1px solid var(--line); border-radius: 12px; overflow: hidden; margin-top: 36px; }
+  @media (min-width: 760px) { .stats { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+  .stat { background: var(--panel); padding: 18px 18px 16px; }
+  .stat b { display: block; font-family: var(--serif); font-weight: 500; font-size: 34px; line-height: 1.1; }
+  .stat b small { font-size: 18px; color: var(--muted); }
+  .stat span { font-size: 13px; color: var(--muted); }
+
+  section { padding: 56px 0 8px; scroll-margin-top: 60px; }
+  .num { font-family: var(--mono); font-size: 12px; color: var(--faint); letter-spacing: .06em; }
+  h2 { font-family: var(--serif); font-weight: 500; font-size: clamp(26px, 3.4vw, 36px); line-height: 1.15;
+    margin: 6px 0 10px; letter-spacing: -.01em; }
+  .point { font-size: 18px; color: var(--muted); max-width: 68ch; margin: 0 0 26px; }
+  h3 { font-size: 15px; font-weight: 600; margin: 30px 0 10px; letter-spacing: .01em; }
+  p { max-width: 72ch; }
+
+  .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 20px; }
+  .diagram { overflow-x: auto; padding: 18px 12px; }
+  .diagram svg { display: block; min-width: 760px; width: 100%; height: auto; }
+  .caption { font-size: 14px; color: var(--muted); margin: 10px 2px 0; }
+
+  .grid2 { display: grid; gap: 14px; grid-template-columns: 1fr; }
+  @media (min-width: 820px) { .grid2 { grid-template-columns: 1fr 1fr; } }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; }
+  .card h4 { margin: 0 0 6px; font-size: 15px; }
+  .card p { margin: 0; font-size: 14.5px; color: var(--muted); }
+  .tag { display: inline-block; font: 11px/1.6 var(--mono); padding: 0 7px; border-radius: 4px; background: var(--accent-soft);
+    color: var(--accent); vertical-align: 1px; }
+  .tag.warn { background: var(--warn-soft); color: var(--warn); }
+  .tag.trial { background: color-mix(in srgb, var(--trial) 14%, transparent); color: var(--trial); }
+  .tag.label { background: color-mix(in srgb, var(--label) 14%, transparent); color: var(--label); }
+
+  /* Worked example: a step rail */
+  .rail { list-style: none; margin: 0; padding: 0; position: relative; }
+  .rail::before { content: ""; position: absolute; left: 15px; top: 8px; bottom: 8px; width: 2px; background: var(--line); }
+  .rail li { position: relative; padding: 0 0 22px 48px; }
+  .rail li::before { content: attr(data-n); position: absolute; left: 0; top: 0; width: 32px; height: 32px; border-radius: 50%;
+    background: var(--panel); border: 2px solid var(--line); display: grid; place-items: center;
+    font: 500 12px var(--mono); color: var(--muted); }
+  .rail li.key::before { border-color: var(--accent); color: var(--accent); }
+  .rail .step { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 12px; }
+  .rail .step strong { font-size: 16px; }
+  .rail .meta { font: 12px var(--mono); color: var(--faint); }
+  .rail .io { margin-top: 6px; font: 13px/1.55 var(--mono); color: var(--muted); background: var(--panel);
+    border: 1px solid var(--line); border-radius: 8px; padding: 9px 12px; overflow-x: auto; white-space: pre; }
+  .rail p { margin: 4px 0 0; font-size: 15px; color: var(--muted); }
+
+  table { width: 100%; border-collapse: collapse; font-size: 14.5px; }
+  th, td { text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font: 500 11px var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--faint); }
+  td.n, th.n { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .scroll { overflow-x: auto; }
+  .delta { font: 12px var(--mono); margin-left: 4px; }
+  .delta.up { color: var(--good); } .delta.down { color: var(--bad); }
+  td.hit { color: var(--good); font-weight: 600; }
+
+  /* Bars for the correctness story */
+  .bars { display: grid; gap: 10px; margin: 4px 0 4px; }
+  .bar { display: grid; grid-template-columns: 120px 1fr 64px; align-items: center; gap: 12px; font-size: 14px; }
+  .bar .track { height: 12px; background: color-mix(in srgb, var(--line) 70%, transparent); border-radius: 6px; overflow: hidden; position: relative; }
+  .bar .fill { height: 100%; background: var(--accent); border-radius: 6px; width: 0; transition: width 900ms cubic-bezier(.2,.7,.2,1); }
+  .bar .fill.base { background: var(--faint); }
+  .bar .target { position: absolute; top: -3px; bottom: -3px; width: 2px; background: var(--warn); }
+  .bar b { font-family: var(--serif); font-weight: 500; font-size: 20px; text-align: right; }
+
+  /* Before / after retrieval */
+  .ba { display: grid; gap: 14px; grid-template-columns: 1fr; }
+  @media (min-width: 820px) { .ba { grid-template-columns: 1fr 1fr; } }
+  .ba ol { margin: 8px 0 0; padding-left: 20px; font: 13px/1.8 var(--mono); color: var(--muted); }
+  .ba li.win { color: var(--good); font-weight: 500; }
+  .ba .q { font: 13px var(--mono); color: var(--ink); background: var(--bg); border-radius: 6px; padding: 6px 9px; display: inline-block; }
+
+  .timeline { list-style: none; margin: 0; padding: 0; display: grid; gap: 1px; background: var(--line);
+    border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+  .timeline li { background: var(--panel); padding: 14px 18px; display: grid; grid-template-columns: 34px 1fr; gap: 4px 12px; }
+  @media (min-width: 820px) { .timeline li { grid-template-columns: 34px 230px 1fr; } }
+  .timeline .i { font: 500 12px var(--mono); color: var(--faint); padding-top: 2px; }
+  .timeline .what { font-weight: 600; font-size: 15px; }
+  .timeline .found { font-size: 14.5px; color: var(--muted); grid-column: 2; }
+  @media (min-width: 820px) { .timeline .found { grid-column: 3; } }
+  .timeline .found strong { color: var(--ink); font-weight: 500; }
+
+  .next { counter-reset: n; display: grid; gap: 14px; grid-template-columns: 1fr; }
+  @media (min-width: 820px) { .next { grid-template-columns: repeat(3, 1fr); } }
+  .next .card { counter-increment: n; }
+  .next .card h4::before { content: counter(n) ". "; color: var(--accent); font-family: var(--mono); font-size: 13px; }
+
+  footer { margin-top: 56px; padding-top: 20px; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted);
+    display: flex; flex-wrap: wrap; gap: 8px 18px; }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal { opacity: 0; transform: translateY(10px); transition: opacity 600ms ease, transform 600ms ease; }
+    .reveal.in { opacity: 1; transform: none; }
+    .hero > * { animation: rise 700ms both cubic-bezier(.2,.7,.2,1); }
+    .hero > *:nth-child(2) { animation-delay: 80ms; } .hero > *:nth-child(3) { animation-delay: 160ms; }
+    .hero > *:nth-child(4) { animation-delay: 260ms; }
+    @keyframes rise { from { opacity: 0; transform: translateY(14px); } }
+  }
+</style>
+</head>
+<body>
+<div class="topbar"><div class="in">
+  <a class="brand" href="/">Pharma Q&amp;A</a>
+  <nav>
+    <a href="#architecture">Architecture</a>
+    <a href="#evaluation">Evaluation</a>
+    <a href="https://github.com/nikitagudkovs/pharma-qa" target="_blank" rel="noopener">GitHub</a>
+    <a class="cta" href="/">Try the app</a>
+  </nav>
+</div></div>
+
+<div class="layout">
+  <aside class="toc"><ol>
+    <li><a href="#architecture">Architecture</a></li>
+    <li><a href="#lifecycle">A question, step by step</a></li>
+    <li><a href="#trust">Trust guardrails</a></li>
+    <li><a href="#evaluation">Evaluation</a></li>
+    <li><a href="#fix">The fix</a></li>
+    <li><a href="#process">How it was built</a></li>
+    <li><a href="#next">Limits and next steps</a></li>
+  </ol></aside>
+
+  <main>
+    <header class="hero">
+      <div class="kicker">Prototype · public drug and trial data</div>
+      <h1>Every answer cites real evidence, <em>or it refuses.</em></h1>
+      <p class="lede">A question-answering service over ClinicalTrials.gov and FDA drug labels. Structured trial data
+        goes through typed tools, label documents go through hybrid search, and code checks every citation before an
+        answer goes out. A 30-question eval set measures it.</p>
+      <div class="stats">
+        <div class="stat"><b>92<small>%</small> → 100<small>%</small></b><span>answer correctness, baseline → after one fix</span></div>
+        <div class="stat"><b>100<small>%</small></b><span>citation validity, checked in code</span></div>
+        <div class="stat"><b>4 / 4</b><span>should-abstain questions refused (out of scope or not in the corpus)</span></div>
+        <div class="stat"><b>$0.011</b><span>mean cost per question, p50 ≈ 6 s</span></div>
+      </div>
+    </header>
+
+    <!-- 01 -->
+    <section id="architecture" class="reveal">
+      <div class="num">01</div>
+      <h2>Architecture</h2>
+      <p class="point">One question, three routes, one check. Trials are structured data, so they go through tools.
+        Labels are documents, so they go through retrieval. That split is the whole design.</p>
+      <div class="panel diagram" role="img" aria-label="Request flow diagram">
+        <svg viewBox="0 0 1180 470" xmlns="http://www.w3.org/2000/svg" font-family="IBM Plex Sans, system-ui, sans-serif">
+          <defs>
+            <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="var(--muted)"/>
+            </marker>
+            <marker id="ahw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="var(--warn)"/>
+            </marker>
+          </defs>
+          <g fill="none" stroke="var(--muted)" stroke-width="1.6" marker-end="url(#ah)">
+            <path d="M140 207 H166"/>
+            <path d="M330 207 H356"/>
+            <path d="M500 195 C 520 195, 515 112, 531 112"/>
+            <path d="M500 219 C 520 219, 515 302, 531 302"/>
+            <path d="M705 112 C 728 112, 722 195, 741 195"/>
+            <path d="M705 302 C 728 302, 722 219, 741 219"/>
+            <path d="M875 207 H901"/>
+            <path d="M1025 207 H1051" stroke="var(--good)"/>
+          </g>
+          <g fill="none" stroke="var(--muted)" stroke-width="1.3" stroke-dasharray="4 4" marker-end="url(#ah)">
+            <path d="M620 52 V76"/>
+            <path d="M620 400 V338"/>
+          </g>
+          <g fill="none" stroke="var(--warn)" stroke-width="1.6" marker-end="url(#ahw)">
+            <path d="M430 239 V372 H770 V391"/>
+            <path d="M965 239 V391"/>
+          </g>
+          <g font-size="13" fill="var(--faint)" font-family="IBM Plex Mono, monospace">
+            <text x="516" y="98" text-anchor="end">trials</text>
+            <text x="516" y="328" text-anchor="end">label</text>
+            <text x="512" y="212">both →</text>
+            <text x="448" y="366">out of scope</text>
+            <text x="975" y="300">invented or</text>
+            <text x="975" y="315">missing ID</text>
+            <text x="1040" y="166" text-anchor="middle" fill="var(--good)">valid</text>
+          </g>
+
+          <!-- nodes -->
+          <g font-size="16" fill="var(--ink)">
+            <rect x="20" y="175" width="120" height="64" rx="10" fill="var(--panel)" stroke="var(--line)" stroke-width="1.5"/>
+            <text x="80" y="212" text-anchor="middle" font-weight="600">Question</text>
+
+            <rect x="170" y="175" width="160" height="64" rx="10" fill="var(--panel)" stroke="var(--line)" stroke-width="1.5"/>
+            <text x="250" y="202" text-anchor="middle" font-weight="600">Entity resolution</text>
+            <text x="250" y="223" text-anchor="middle" font-size="13" fill="var(--muted)">map → LLM fallback</text>
+
+            <rect x="360" y="175" width="140" height="64" rx="10" fill="var(--panel)" stroke="var(--line)" stroke-width="1.5"/>
+            <text x="430" y="202" text-anchor="middle" font-weight="600">Router</text>
+            <text x="430" y="223" text-anchor="middle" font-size="13" fill="var(--muted)">Haiku 5.5</text>
+
+            <rect x="535" y="12" width="170" height="40" rx="8" fill="none" stroke="var(--line)" stroke-dasharray="4 4"/>
+            <text x="620" y="30" text-anchor="middle" font-size="12.5" fill="var(--trial)" font-weight="500">ClinicalTrials.gov API v2</text>
+            <text x="620" y="45" text-anchor="middle" font-size="11" fill="var(--faint)">live · disk cache</text>
+
+            <rect x="535" y="80" width="170" height="64" rx="10" fill="var(--panel)" stroke="var(--trial)" stroke-width="1.5"/>
+            <text x="620" y="107" text-anchor="middle" font-weight="600">Trial tools</text>
+            <text x="620" y="128" text-anchor="middle" font-size="13" fill="var(--muted)">search · count · get</text>
+
+            <rect x="535" y="270" width="170" height="64" rx="10" fill="var(--panel)" stroke="var(--label)" stroke-width="1.5"/>
+            <text x="620" y="297" text-anchor="middle" font-weight="600">Label RAG</text>
+            <text x="620" y="318" text-anchor="middle" font-size="13" fill="var(--muted)">BM25 + vectors · RRF</text>
+
+            <rect x="535" y="400" width="170" height="44" rx="8" fill="none" stroke="var(--line)" stroke-dasharray="4 4"/>
+            <text x="620" y="418" text-anchor="middle" font-size="12.5" fill="var(--label)" font-weight="500">openFDA drug labels</text>
+            <text x="620" y="434" text-anchor="middle" font-size="11" fill="var(--faint)">53 drugs · 3,306 chunks</text>
+
+            <rect x="745" y="175" width="130" height="64" rx="10" fill="var(--panel)" stroke="var(--line)" stroke-width="1.5"/>
+            <text x="810" y="202" text-anchor="middle" font-weight="600">Generator</text>
+            <text x="810" y="223" text-anchor="middle" font-size="13" fill="var(--muted)">Sonnet 5.5</text>
+
+            <rect x="905" y="175" width="120" height="64" rx="10" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/>
+            <text x="965" y="202" text-anchor="middle" font-weight="600" fill="var(--accent)">Citation check</text>
+            <text x="965" y="223" text-anchor="middle" font-size="13" fill="var(--accent)">in code</text>
+
+            <rect x="1055" y="175" width="110" height="64" rx="10" fill="var(--good-soft)" stroke="var(--good)" stroke-width="1.5"/>
+            <text x="1110" y="202" text-anchor="middle" font-weight="600">Answer</text>
+            <text x="1110" y="223" text-anchor="middle" font-size="13" fill="var(--muted)">+ citations</text>
+
+            <rect x="745" y="395" width="310" height="50" rx="10" fill="var(--warn-soft)" stroke="var(--warn)" stroke-width="1.5"/>
+            <text x="900" y="417" text-anchor="middle" font-weight="600">Abstain</text>
+            <text x="900" y="435" text-anchor="middle" font-size="13" fill="var(--muted)">out of scope · no evidence · bad citation</text>
+          </g>
+        </svg>
+      </div>
+      <p class="caption">The highlighted check is the trust story: the model can only cite evidence the pipeline handed
+        it, and code, not the model, decides whether a citation is real. Every step writes to a per-request JSON trace.</p>
+
+      <h3>Components</h3>
+      <div class="grid2">
+        <div class="card"><h4>Entity resolution</h4><p>Brand and generic names come from a synonym map built from label
+          metadata (Keytruda → pembrolizumab). The LLM only extracts mentions when the map finds nothing. Unknown drugs are
+          kept and flagged, never dropped.</p></div>
+        <div class="card"><h4>Router <span class="tag">Haiku 5.5</span></h4><p>Structured output: <code>trials | label |
+          both | out_of_scope</code>, plus <code>label_query</code>, the label part of the question rewritten as a
+          standalone search query.</p></div>
+        <div class="card"><h4>Trial tools <span class="tag trial">ClinicalTrials.gov</span></h4><p>Typed
+          <code>search_trials</code>, <code>count_trials</code> and <code>get_trial</code>. Pydantic validates arguments
+          before any request. Counts come from the registry's <code>totalCount</code>, not the model.</p></div>
+        <div class="card"><h4>Label RAG <span class="tag label">openFDA</span></h4><p>One prescription label per drug,
+          chunked by label section. BM25 and <code>bge-small</code> embeddings run in parallel, merged with Reciprocal Rank
+          Fusion and filtered to the resolved drug. Top 5 go to the generator.</p></div>
+        <div class="card"><h4>Generator <span class="tag">Sonnet 5.5</span></h4><p>Returns a Pydantic
+          <code>DraftAnswer</code>: text with inline <code>[evidence-id]</code> markers, a citation list, and an abstain
+          flag with a reason. Never free text that has to be parsed.</p></div>
+        <div class="card"><h4>API, tracing, hosting</h4><p>FastAPI <code>POST /ask</code> with a per-IP rate limit.
+          A JSON trace per request holds entities, route, tool calls, retrieved IDs, the draft, tokens, latency and cost.
+          Runs in Docker on Cloud Run (Terraform), scaling 0 → 2.</p></div>
+      </div>
+    </section>
+
+    <!-- 02 -->
+    <section id="lifecycle" class="reveal">
+      <div class="num">02</div>
+      <h2>A question, step by step</h2>
+      <p class="point">A real trace from the eval run: 9.7 seconds and $0.022 end to end. Almost all of the time is
+        the generator writing a 10-trial answer.</p>
+      <ol class="rail">
+        <li data-n="1"><div class="step"><strong>Question</strong></div>
+          <div class="io">"Which Phase 3 trials is Keytruda being tested in for lung cancer?"</div></li>
+        <li data-n="2"><div class="step"><strong>Resolve entities</strong><span class="meta">synonym map · no LLM call</span></div>
+          <div class="io">Keytruda → pembrolizumab</div></li>
+        <li data-n="3"><div class="step"><strong>Route</strong><span class="meta">Haiku 5.5 · 2.2 s · $0.0001</span></div>
+          <div class="io">kind = "trials"   label_query = null</div></li>
+        <li data-n="4"><div class="step"><strong>Plan and run tools</strong><span class="meta">Sonnet 5.5 · 1.3 s · $0.005</span></div>
+          <div class="io">search_trials(drug="pembrolizumab", condition="lung cancer", phase=["PHASE3"], limit=10)
+→ 10 trials: trial:NCT01905657, trial:NCT03302234, trial:NCT04322617, …</div>
+          <p>Arguments are validated before the request. A malformed NCT ID or a "PHASE9" never reaches the API.</p></li>
+        <li data-n="5"><div class="step"><strong>Generate</strong><span class="meta">Sonnet 5.5 · 6.1 s · $0.017</span></div>
+          <div class="io">"NCT02142738, Pembrolizumab vs platinum-based chemotherapies in metastatic NSCLC
+(KEYNOTE-024), Phase 3, Completed [trial:NCT02142738]. …"</div></li>
+        <li data-n="6" class="key"><div class="step"><strong>Check citations, in code</strong><span class="meta">no LLM call</span></div>
+          <p>All 10 cited IDs exist in the evidence passed in, so the answer ships with 10 links to ClinicalTrials.gov.
+            One invented ID would have turned the whole answer into an abstain.</p></li>
+      </ol>
+    </section>
+
+    <!-- 03 -->
+    <section id="trust" class="reveal">
+      <div class="num">03</div>
+      <h2>Trust guardrails</h2>
+      <p class="point">In this domain a refusal beats a guess, so each risk has a control, and most controls are code
+        rather than prompt instructions.</p>
+      <div class="panel scroll"><table>
+        <thead><tr><th>Risk</th><th>Control</th><th>Enforced by</th></tr></thead>
+        <tbody>
+          <tr><td>Hallucinated source</td><td>Every cited ID, in the list or inline, must be in the retrieved evidence; otherwise the answer becomes an abstain</td><td><span class="tag">code</span></td></tr>
+          <tr><td>Uncited claim</td><td>An answer with no citations is downgraded to an abstain</td><td><span class="tag">code</span></td></tr>
+          <tr><td>LLM miscounting</td><td>Counts come from <code>count_trials</code> → registry <code>totalCount</code></td><td><span class="tag">code</span></td></tr>
+          <tr><td>Drug not in corpus</td><td>No evidence retrieved → abstain before any generation</td><td><span class="tag">code</span></td></tr>
+          <tr><td>Bad tool arguments</td><td>Pydantic validation; invalid calls are logged and skipped</td><td><span class="tag">code</span></td></tr>
+          <tr><td>Revenue, pricing, personal advice</td><td>Routed <code>out_of_scope</code> → abstain</td><td><span class="tag warn">model</span> + code</td></tr>
+          <tr><td>Outside knowledge</td><td>Prompt: use only the given evidence; cite every factual sentence</td><td><span class="tag warn">model</span></td></tr>
+          <tr><td>Cost abuse</td><td>10 questions/min per IP, at most 2 instances, budget alert</td><td><span class="tag">code</span> + infra</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <!-- 04 -->
+    <section id="evaluation" class="reveal">
+      <div class="num">04</div>
+      <h2>Evaluation</h2>
+      <p class="point">30 questions, written and labelled against the real label and trial records before any LLM code
+        existed, so the first scorecard is an honest baseline. Every metric is computed in code.</p>
+
+      <h3>Answer correctness</h3>
+      <div class="panel">
+        <div class="bars" id="bars"><span class="caption">Loading runs…</span></div>
+        <p class="caption">The amber mark is this project's own bar (80%), not an industry standard.</p>
+      </div>
+
+      <h3>All metrics, every saved run</h3>
+      <div class="panel scroll" id="scoreTable"><span class="caption">Loading…</span></div>
+
+      <h3>Question mix</h3>
+      <div class="panel scroll"><table>
+        <thead><tr><th>Type</th><th class="n">n</th><th>Example</th><th>What it tests</th></tr></thead>
+        <tbody>
+          <tr><td>Trial lookup</td><td class="n">8</td><td>"Recruiting Phase 3 trials of semaglutide for heart failure?"</td><td>Routing, tool arguments, citations</td></tr>
+          <tr><td>Trial count</td><td class="n">4</td><td>"How many Phase 2 trials test nivolumab in melanoma?"</td><td>Counting in code, not by the LLM</td></tr>
+          <tr><td>Label fact</td><td class="n">8</td><td>"What is the boxed warning for warfarin?"</td><td>Retrieval, section filtering, faithfulness</td></tr>
+          <tr><td>Brand name</td><td class="n">4</td><td>"Contraindications for Ozempic?"</td><td>Entity resolution (Ozempic → semaglutide)</td></tr>
+          <tr><td>Mixed</td><td class="n">2</td><td>"Is pembrolizumab in any Phase 3 lung cancer trials, and what are its common adverse reactions?"</td><td>Route "both", merged citations</td></tr>
+          <tr><td>Should abstain</td><td class="n">4</td><td>"What will Keytruda earn in 2030?" · a drug not in the corpus</td><td>Refusal instead of a guess</td></tr>
+        </tbody>
+      </table></div>
+
+      <h3>How each metric is scored</h3>
+      <div class="grid2">
+        <div class="card"><h4>Routing · entities</h4><p>Exact match against <code>expected_route</code> and the expected set of generic names.</p></div>
+        <div class="card"><h4>Retrieval recall@5</h4><p>Each expected source type (trial, count, label section) has a hit in the top 5 of that type.</p></div>
+        <div class="card"><h4>Citation validity</h4><p>Measured on the model's raw draft and again after the check. The check guarantees the second.</p></div>
+        <div class="card"><h4>Answer correctness</h4><p>Every required fact, with accepted alternatives ("MTC" or "medullary thyroid"), appears in the answer.</p></div>
+      </div>
+    </section>
+
+    <!-- 05 -->
+    <section id="fix" class="reveal">
+      <div class="num">05</div>
+      <h2>The fix the eval found</h2>
+      <p class="point">The baseline failed 2 of 26 answerable questions, and both traces showed the same cause: label
+        search ran on the whole question. Query decomposition fixed both, at no cost in latency or spend.</p>
+      <div class="ba">
+        <div class="card">
+          <h4><span class="tag warn">baseline</span> searched with the full question</h4>
+          <span class="q">"Is pembrolizumab in any Phase 3 lung cancer trials, and what are its common adverse reactions?"</span>
+          <ol>
+            <li>adverse_reactions:30 · lung-cancer subgroup</li>
+            <li>adverse_reactions:31 · lung-cancer subgroup</li>
+            <li>adverse_reactions:76</li><li>adverse_reactions:84</li><li>adverse_reactions:85</li>
+          </ol>
+          <p style="margin-top:8px">The trial wording pulled in lung-cancer-specific chunks, so the answer said the summary wasn't available.</p>
+        </div>
+        <div class="card">
+          <h4><span class="tag">after fix</span> searched with <code>label_query</code></h4>
+          <span class="q">"pembrolizumab adverse reactions"</span>
+          <ol>
+            <li>adverse_reactions:152</li>
+            <li class="win">adverse_reactions:0 · "most common (≥20%): fatigue, …"</li>
+            <li>adverse_reactions:31</li><li>adverse_reactions:41</li><li>adverse_reactions:62</li>
+          </ol>
+          <p style="margin-top:8px">The summary chunk is now in the top 5, and the answer lists the common adverse reactions.</p>
+        </div>
+      </div>
+      <p class="caption" style="margin-top:14px">The same change fixed q16 (isotretinoin and pregnancy). "Isotretinoin pregnancy"
+        retrieves the boxed warning ("life-threatening birth defects"), which the full question missed. A repeat run kept
+        100% correctness. Its one routing miss, an unknown drug sent <code>out_of_scope</code> instead of <code>label</code>,
+        still abstained, because corpus coverage is checked in code.</p>
+    </section>
+
+    <!-- 06 -->
+    <section id="process" class="reveal">
+      <div class="num">06</div>
+      <h2>How it was built</h2>
+      <p class="point">Eval first, in small steps that each ended in something runnable. Most of the interesting findings
+        came from checking assumptions against the real data.</p>
+      <ol class="timeline">
+        <li><span class="i">01</span><span class="what">Probe both APIs</span><span class="found">
+          <strong>The spec's <code>filter.phase</code> doesn't exist</strong> in ClinicalTrials.gov v2. Phases go through
+          <code>aggFilters=phase:2 3</code>.</span></li>
+        <li><span class="i">02</span><span class="what">Ingest labels, build synonyms</span><span class="found">
+          53 drugs, 3,306 section chunks. <strong>Tecentriq and Tagrisso have no harmonized openFDA metadata</strong>, so they're
+          found by product text instead.</span></li>
+        <li><span class="i">03</span><span class="what">Write the golden set</span><span class="found">
+          Before any LLM code. <strong>The Ozempic label says "MTC"</strong>, not "medullary thyroid carcinoma", so an answer
+          written from memory would have been a false failure.</span></li>
+        <li><span class="i">04</span><span class="what">Hybrid retrieval</span><span class="found">
+          Recall@5 was 14/14 with correct entities. <strong>The cross-encoder reranker scored 13/14</strong>, so it ships off.</span></li>
+        <li><span class="i">05</span><span class="what">Pipeline and unit tests</span><span class="found">
+          18 offline tests with a scripted fake LLM: citation check, abstain paths, argument validation. They cost nothing to run.</span></li>
+        <li><span class="i">06</span><span class="what">Baseline eval</span><span class="found">
+          <strong>The first run crashed.</strong> Concurrent inference on the embedding model segfaults, and FastAPI's
+          threadpool would hit it too. Inference is now locked. Then 92.3% correctness.</span></li>
+        <li><span class="i">07</span><span class="what">One fix, rerun, repeat</span><span class="found">
+          <code>label_query</code> decomposition → 100%, and a repeat run measures variance. Every run is saved with
+          per-question traces.</span></li>
+        <li><span class="i">08</span><span class="what">Ship</span><span class="found">
+          Docker image, then Cloud Run through Terraform: secret in Secret Manager, scale 0 → 2, budget alert, a one-command deploy.</span></li>
+      </ol>
+    </section>
+
+    <!-- 07 -->
+    <section id="next" class="reveal">
+      <div class="num">07</div>
+      <h2>Limits, and what changes at scale</h2>
+      <p class="point">100% on 30 questions means this set can't find more failures, not that there are none. The
+        prototype makes deliberate cuts, and each one is a production next step.</p>
+      <div class="grid2">
+        <div class="card"><h4>Small, easy eval</h4><p>30 questions hit the ceiling. The next set needs misspellings, multi-drug questions, dosing nuance and ambiguous labels.</p></div>
+        <div class="card"><h4>String-match grading</h4><p>Cheap, deterministic and explainable, but a correct paraphrase can fail. Needs an LLM judge calibrated against expert labels.</p></div>
+        <div class="card"><h4>Synonym map, not an ontology</h4><p>No fuzzy matching and no condition hierarchy, so "NSCLC" is not treated as part of "lung cancer".</p></div>
+        <div class="card"><h4>Snapshot data</h4><p>Trial responses are cached for repeatable evals, as of 2026-10-25. There's one label per drug and no reindexing.</p></div>
+      </div>
+      <h3>At production scale</h3>
+      <div class="next">
+        <div class="card"><h4>Curated ontology</h4><p>MeSH, RxNorm or an in-house drug and disease taxonomy, for drugs and conditions, including hierarchy in trial search.</p></div>
+        <div class="card"><h4>Managed hybrid index</h4><p>Azure AI Search over the full label corpus, with reindexing keyed on label version and freshness shown per citation.</p></div>
+        <div class="card"><h4>Eval as a CI gate</h4><p>A curator-labelled golden set, a calibrated judge, repeated runs for variance, and user feedback flowing back into the set.</p></div>
+      </div>
+    </section>
+
+    <footer>
+      <span>Data: <a href="https://clinicaltrials.gov">ClinicalTrials.gov</a> · <a href="https://open.fda.gov/apis/drug/label/">openFDA</a>. Not medical advice.</span>
+      <a href="/">Try the app</a>
+      <a href="/#scores">Scorecards</a>
+      <a href="/docs">API docs</a>
+      <a href="https://github.com/nikitagudkovs/pharma-qa" target="_blank" rel="noopener">Source</a>
+    </footer>
+  </main>
+</div>
+
+<script>
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const pct = (v) => v == null ? "—" : (v * 100).toFixed(1).replace(/\.0$/, "") + "%";
+
+// Reveal sections on scroll, and highlight the current one in the side index
+const links = [...document.querySelectorAll(".toc a")];
+const io = new IntersectionObserver((entries) => entries.forEach(e => {
+  if (e.isIntersecting) {
+    e.target.classList.add("in");
+    links.forEach(a => a.classList.toggle("on", a.getAttribute("href") === "#" + e.target.id));
+  }
+}), {rootMargin: "-30% 0px -60% 0px"});
+document.querySelectorAll("section").forEach(s => io.observe(s));
+// Sections already on screen at load shouldn't wait for an intersection change
+requestAnimationFrame(() => document.querySelectorAll("section").forEach(s => {
+  if (s.getBoundingClientRect().top < innerHeight) s.classList.add("in");
+}));
+
+const METRICS = [
+  ["routing", "Routing accuracy", "≥ 90%"], ["entities", "Entity accuracy", "≥ 95%"],
+  ["recall@5", "Retrieval recall@5", "≥ 85%"], ["citation_validity_raw", "Citation validity (model draft)", ""],
+  ["citation_validity", "Citation validity (after check)", "100%"], ["correctness", "Answer correctness", "≥ 80%"],
+  ["abstain_precision", "Abstain precision", ""], ["abstain_recall", "Abstain recall", "100%"],
+];
+
+fetch("/api/scorecards").then(r => r.json()).then(runs => {
+  if (!runs.length) throw new Error("no runs");
+  const shown = runs.slice(-3);
+  document.getElementById("bars").innerHTML = shown.map((r, i) => `
+    <div class="bar"><span>${esc(r.tag)}</span>
+      <div class="track"><div class="fill ${i ? "" : "base"}" data-w="${(r.metrics.correctness * 100).toFixed(1)}"></div>
+        <div class="target" style="left:80%"></div></div>
+      <b>${pct(r.metrics.correctness)}</b></div>`).join("");
+  requestAnimationFrame(() => setTimeout(() =>
+    document.querySelectorAll(".fill").forEach(f => f.style.width = f.dataset.w + "%"), 60));
+
+  const head = shown.map(r => `<th class="n">${esc(r.tag)}</th>`).join("");
+  const rows = METRICS.map(([k, label, target]) => `<tr><td>${label}</td>${shown.map((r, i) => {
+      const v = r.metrics[k], prev = i ? shown[i - 1].metrics[k] : null;
+      const d = (i && v != null && prev != null && Math.abs(v - prev) > 1e-9)
+        ? `<span class="delta ${v > prev ? "up" : "down"}">${v > prev ? "+" : ""}${((v - prev) * 100).toFixed(1)}</span>` : "";
+      return `<td class="n">${pct(v)}${d}</td>`;
+    }).join("")}<td class="n" style="color:var(--faint)">${target}</td></tr>`).join("");
+  const ops = shown.map(r => `<td class="n">${(r.metrics.p50_latency_ms / 1000).toFixed(1)} s · $${r.metrics.mean_cost_usd.toFixed(4)}</td>`).join("");
+  document.getElementById("scoreTable").innerHTML = `<table><thead><tr><th>Metric</th>${head}<th class="n">Target</th></tr></thead>
+    <tbody>${rows}<tr><td>p50 latency · mean cost</td>${ops}<td></td></tr></tbody></table>`;
+}).catch(() => {
+  document.getElementById("bars").innerHTML = `<span class="caption">Scorecards unavailable. Run <code>python -m eval.run</code>.</span>`;
+  document.getElementById("scoreTable").innerHTML = "";
+});
+</script>
+</body>
+</html>

@@ -93,3 +93,8 @@ def healthz() -> dict:
 @app.get("/")
 def index() -> FileResponse:
     return FileResponse(WEB_DIR / "index.html")
+
+
+@app.get("/about")
+def about() -> FileResponse:
+    return FileResponse(WEB_DIR / "about.html")

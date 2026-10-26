@@ -29,6 +29,9 @@
   nav button { border: 1px solid var(--line); background: transparent; color: var(--muted); padding: 6px 12px;
     border-radius: 6px; font: inherit; cursor: pointer; }
   nav button[aria-selected="true"] { background: var(--panel); color: var(--ink); border-color: var(--ink); }
+  nav a.navlink { border: 1px solid var(--line); color: var(--accent); padding: 6px 12px; border-radius: 6px;
+    text-decoration: none; }
+  nav a.navlink:hover { border-color: var(--accent); }
   .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 18px; }
   form { display: flex; gap: 8px; }
   input[type=text] { flex: 1; min-width: 0; padding: 11px 12px; border: 1px solid var(--line); border-radius: 8px;
@@ -83,6 +86,7 @@
     <nav role="tablist">
       <button role="tab" aria-selected="true" data-tab="ask">Ask</button>
       <button role="tab" aria-selected="false" data-tab="scores">Eval scorecards</button>
+      <a class="navlink" href="/about">How it works</a>
     </nav>
   </header>
   <p class="sub">Cited answers from ClinicalTrials.gov and FDA drug labels. It refuses when the evidence doesn't answer the question.</p>
@@ -102,7 +106,8 @@
     <div class="panel" id="scores"><span class="spinner">Loading…</span></div>
   </section>
 
-  <footer>Public data from <a href="https://clinicaltrials.gov">ClinicalTrials.gov</a> and
+  <footer><a href="/about">How it works: architecture, process and evaluation</a> ·
+    Public data from <a href="https://clinicaltrials.gov">ClinicalTrials.gov</a> and
     <a href="https://open.fda.gov/apis/drug/label/">openFDA</a>. Not medical advice.</footer>
 </div>
 <script>
